@@ -1,3 +1,7 @@
+// These are 'get' data objects 
+// spots : '/'
+// booking : renter's dashboard > booking list
+
 const spots = [
   {
     id: 1,
@@ -154,3 +158,43 @@ const spots = [
   },
 ]
 
+const bookings = [
+  {
+    id: 1,
+    car_id: 1,
+    spot : {
+      spot_id: 9,
+      street_address:'1850 Comox St',
+      city: 'Vancouver',
+      province: 'BC',
+      country: 'Canada',
+    },
+    start_date_time: '5/1/2021 8:00:00',
+    end_date_time: '5/1/2021 11:00:00'
+  }
+]
+  
+
+const booked_schedule = [
+  {
+    id: 1,
+    renter: {
+      first_name: '',
+      last_name: '',
+      avatar: ''
+    },
+    car: {
+      car_id: 1,
+      make: '',
+      model: '',
+      color: '',
+      plate_number: ''
+    },
+    spot : {
+      spot_id: 9,
+      street_address:'1850 Comox St'
+    },
+    start_date_time: '5/1/2021 8:00:00',
+    end_date_time: '5/1/2021 11:00:00'
+  }
+]
