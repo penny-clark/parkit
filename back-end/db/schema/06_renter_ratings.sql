@@ -5,6 +5,3 @@ CREATE TABLE renter_ratings (
   renter_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   rating INTEGER NOT NULL
 );
-
-
--- need to confirm if this will work
