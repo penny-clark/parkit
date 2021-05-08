@@ -1,0 +1,37 @@
+{
+   {
+    "id": "1",
+    "owner": {
+      "user_id": "1",
+      "first_name": "Eggert",
+      "last_name":"Eggerson",
+      "owner_email":"egg@egg.com",
+      "avatar": "https://pr.sssagent.com/img/a1.png"
+     },
+    "street_address": "1081 Burrard St",
+    "city": "Vancouver",
+    "province": "BC",
+    "country": "Canada",
+    "price": "16",
+    "picture" : "https://pr.sssagent.com/img/parkingspot1.png",
+    "rating": "4"
+  },
+  {
+    "id": "1",
+    "owner": {
+      "user_id": "1",
+      "first_name": "Eggert",
+      "last_name":"Eggerson",
+      "owner_email":"egg@egg.com",
+      "avatar": "https://pr.sssagent.com/img/a1.png"
+     },
+    "street_address": "1081 Burrard St",
+    "city": "Vancouver",
+    "province": "BC",
+    "country": "Canada",
+    "price": "16",
+    "picture" : "https://pr.sssagent.com/img/parkingspot1.png",
+    "rating": "4"
+  }
+
+}
