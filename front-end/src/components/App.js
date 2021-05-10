@@ -30,16 +30,16 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
-      <TopBar />
+      <div className="main">
+        <TopBar />
 
-      <Typography variant="h2" className="text_h">
-        {this.state.message }
-      </Typography>
-        
-      <Button variant="contained" color="primary" onClick={this.fetchData}>
-        Fetch Data 
-      </Button>       
+        <Typography variant="h2">
+          {this.state.message }
+        </Typography>
+          
+        <Button variant="contained" color="primary" onClick={this.fetchData}>
+          Fetch Data 
+        </Button>       
       </div>
 
     );

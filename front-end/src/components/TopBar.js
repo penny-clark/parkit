@@ -1,27 +1,63 @@
-import React, { Component } from 'react';
-import './App.scss';
-import Button from '@material-ui/core/Button';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import React, { Component, useState } from 'react';
+import './TopBar.scss';
+import { Button, Typography, Link } from '@material-ui/core';
+import { AppBar, Toolbar, Drawer, Divider} from '@material-ui/core';
+import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 
-export default function TopBar(props) {
-  return (
+import Owner_menuList from './Owner_menuList';
+import Renter_menuList from './Renter_menuList';
 
-    //<div className="App">
-      <AppBar position="static">
+
+export default function TopBar(props) {
+
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setSelectedTab(newValue);
+
+  }
+
+  return (
+    <div>
+      <AppBar position="fixed" className="topbar">
         <Toolbar>
-          <Typography variant="h1" className="test_h">
-            Park It
-          </Typography>
-          <Button>
-            <AccountCircle />
-            My Dashboard
+          
+          <div className="bar_left">
+            <Link href="#" variant="h1" className="logo">
+              Park It
+            </Link>
+          </div>
+    
+          <Button className="BT_dashboard" onClick={()=>{setOpenDrawer(true)}}>
+            <AccountCircle className="icon_w_text"/> My Dashboard
           </Button>
           
         </Toolbar>
     </AppBar> 
-   // </div>
 
+    <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
+      <Typography>
+
+      </Typography>
+            <AccountCircle />
+
+          
+
+        <Tabs value={selectedTab} onChange={handleChange} >
+          <Tab label="Renter"/>
+          <Tab label="Owner"/>
+        </Tabs>
+
+        {selectedTab === 0 && <Owner_menuList />}
+        {selectedTab === 1 && <Renter_menuList />}
+
+        
+
+    </Drawer>
+    </div>
   );
 }
 
