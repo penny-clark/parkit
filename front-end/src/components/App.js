@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +30,12 @@ class App extends Component {
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
-        </button>        
+        </button> 
+        
+        <h2>material-ui test</h2>
+        <Button variant="contained" color="primary">
+          Hello World
+        </Button>       
       </div>
     );
   }
