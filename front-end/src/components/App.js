@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
 import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
+import TopBar from "./TopBar";
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class App extends Component {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
+      console.log("hello")
       console.log(response.data) // The entire response from the Rails API
 
       console.log(response.data.message) // Just the message
@@ -26,17 +29,19 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button> 
+      <TopBar />
+
+      <Typography variant="h2" className="text_h">
+        {this.state.message }
+      </Typography>
         
-        <h2>material-ui test</h2>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>       
+      <Button variant="contained" color="primary" onClick={this.fetchData}>
+        Fetch Data 
+      </Button>       
       </div>
+
     );
   }
 }
