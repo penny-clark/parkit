@@ -39,7 +39,7 @@ router.get("/spots", (request, response) => {
   });
 });
 
-// get spots by user
+// get spots by user id
 // not sure if we can do the route like this, but it would be great if we can
 router.get("spots/:user_id", (req, res) => {
   const id = req.params.user_id;
