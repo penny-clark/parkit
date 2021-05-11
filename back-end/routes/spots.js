@@ -139,5 +139,5 @@ router.delete("spots/:spot_id", (req, res) => {
 //     });
 // });
 
-
+return router;
 }
