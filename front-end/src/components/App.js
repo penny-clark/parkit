@@ -21,7 +21,7 @@ class App extends Component {
     .then((response) => {
       // handle success
       console.log(response.data) // The entire response from the Rails API
-      const onespot = response.data["1"]
+      const onespot = response.data["1"].street_address
       const printdata = JSON.stringify(onespot)
       // console.log(response.data.message) // Just the message
       this.setState({
@@ -42,7 +42,7 @@ class App extends Component {
           </Typography>
             
           <Button variant="contained" color="primary" onClick={this.fetchData}>
-            Fetch Data : Spot id:1 
+            Fetch Data : street_address of id:1 
           </Button>    
 
           <SearchBar />
