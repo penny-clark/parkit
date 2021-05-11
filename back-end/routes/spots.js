@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = (db) => {
 
 //get all spots 
-router.get("/spots", (request, response) => {
+router.get("/", (request, response) => {
  return db.query(
     `
     SELECT
@@ -41,7 +41,7 @@ router.get("/spots", (request, response) => {
 
 // get spots by user id
 // not sure if we can do the route like this, but it would be great if we can
-router.get("spots/:user_id", (req, res) => {
+router.get("/user/:id/", (req, res) => {
   const id = req.params.user_id;
     return db.query(
       `
@@ -66,13 +66,14 @@ router.get("spots/:user_id", (req, res) => {
       GROUP BY spots.id, users.id
       ORDER BY spots.id
     `, [id]
-    ).then(({ rows: spots }) => {
-      response.json(
-        spots.reduce(
-          (previous, current) => ({ ...previous, [current.id]: current }),
-          {}
-        )
-      );
+    ).then(data => {
+      const spots = data.rows;
+      res.json({ spots });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
     });
   });
 
@@ -95,7 +96,7 @@ router.get("spots/:user_id", (req, res) => {
 
 //post an edit to a spot
 
-router.post("spots/:spot_id", (req, res) => {
+router.post("/:id", (req, res) => {
   return db.query`
   UPDATE spots SET user_id = $1, streetaddress = $2, city = $3, province = $4, country = $5, postal_code = $6, picture = $7 WHERE id = $8
   `, [req.params.user_id, req.params.street_address, req.params.city, req.params.province, req.params.country, req.params.postal_code, req.params.picture, req.params.price, req.params.id]
@@ -111,7 +112,7 @@ router.post("spots/:spot_id", (req, res) => {
 
 //delete a spot
 //where should this route to? 
-router.delete("spots/:spot_id", (req, res) => {
+router.delete("/:id", (req, res) => {
   return db.query(`
   DELETE FROM spots where spot_id = $1;
   `, [req.params.id])

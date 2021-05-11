@@ -3,7 +3,7 @@ const router = express.Router();
 module.exports = (db) => {
 
 // gets all the cars
-router.get("/cars", (req, res) => {
+router.get("/", (req, res) => {
   return db.query(`
   SELECT id, user_id, make, model, colour, plate_number FROM cars
   `)
@@ -19,7 +19,7 @@ router.get("/cars", (req, res) => {
 });
 
 // get a specific user's cars
-router.get("/cars/:user_id", (req, res) => {
+router.get("/user/:id", (req, res) => {
   const id = req.params.user_id;
   return db.query(`
   SELECT id, user_id, make, model, colour, plate_number FROM cars WHERE user_id = $1
@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.delete("cars/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   return db.query(`
   DELETE FROM cars where booking_id = $1;
   `, [req.params.id])

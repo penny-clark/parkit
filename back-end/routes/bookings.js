@@ -5,7 +5,7 @@ module.exports = (db) => {
 
 //gets all bookings with renter related info - orders from future to past dates
 
-router.get("/bookings/renter", (req, res) => {
+router.get("/renter", (req, res) => {
   return db.query(
     `
     SELECT
@@ -31,7 +31,7 @@ router.get("/bookings/renter", (req, res) => {
     ORDER BY bookings.start_date_time DESC
   `
   ).then(({ rows: bookings }) => {
-    response.json(
+    res.json(
       bookings.reduce(
         (previous, current) => ({ ...previous, [current.id]: current }),
         {}
@@ -43,7 +43,7 @@ router.get("/bookings/renter", (req, res) => {
 
 //get bookings for a specific renter
 
-router.get("/bookings/renter/:id", (req, res) => {
+router.get("/renter/:id", (req, res) => {
   const id = req.params.id
   return db.query(
     `
@@ -71,8 +71,8 @@ router.get("/bookings/renter/:id", (req, res) => {
     ORDER BY bookings.start_date_time DESC
   `, [id]
   ).then(({ rows: bookings }) => {
-    response.json(
-      bookings.reduce(
+    res.json(
+      bookings[0].reduce(
         (previous, current) => ({ ...previous, [current.id]: current }),
         {}
       )
@@ -81,7 +81,7 @@ router.get("/bookings/renter/:id", (req, res) => {
 });
 
 //gets all the bookigns with info relevant to the owner
-router.get("/bookings/owner", (req, res) => {
+router.get("/owner", (req, res) => {
   return db.query(
     `
     SELECT
@@ -103,7 +103,7 @@ router.get("/bookings/owner", (req, res) => {
     ORDER BY bookings.start_date_time
   `
   ).then(({ rows: bookings }) => {
-    response.json(
+    res.json(
       bookings.reduce(
         (previous, current) => ({ ...previous, [current.id]: current }),
         {}
@@ -114,7 +114,7 @@ router.get("/bookings/owner", (req, res) => {
 
 // gets all bookings for an owner's spots
 
-router.get("/bookings/owner/:id", (req, res) => {
+router.get("/owner/:id", (req, res) => {
   const id = req.params.id
   return db.query(
     `
@@ -170,7 +170,7 @@ router.post("/", (req, res) => {
 
 // delete booking - by booking ids
 
-router.delete("bookings/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   return db.query(`
   DELETE FROM bookings where id = $1;
   `, [req.params.id])

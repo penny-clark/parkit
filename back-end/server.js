@@ -17,6 +17,16 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
 
+// Separated Routes for each Resource
+const spotsRoutes = require("./routes/spots");
+const bookingsRoutes = require("./routes/bookings");
+const carsRoutes = require("./routes/cars");
+
+// Mount resource routes
+App.use('/api/spots', spotsRoutes(db));
+App.use('/api/bookings', bookingsRoutes(db));
+App.use('/api/cars', carsRoutes(db));
+
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
