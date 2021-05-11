@@ -39,43 +39,7 @@ router.get("/", (request, response) => {
   });
 });
 
-// get spots by user id
-// not sure if we can do the route like this, but it would be great if we can
-router.get("/user/:id/", (req, res) => {
-  const id = req.params.user_id;
-    return db.query(
-      `
-      SELECT
-        spots.id,
-        json_build_object('user_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'owner_email', users.email, 'avatar', users.avatar) 
-        AS owner,
-        spots.street_address,
-        spots.city,
-        spots.province,
-        spots.country,
-        spots.price,
-        spots.picture,
-        CASE WHEN AVG(spot_ratings.rating) IS NULL
-        THEN NULL
-        ELSE AVG(spot_ratings.rating)
-        END AS rating
-      FROM spots
-      LEFT JOIN users ON users.id = spots.user_id
-      LEFT OUTER JOIN spot_ratings ON spot_ratings.spot_id = spots.id
-      WHERE users.id = $1
-      GROUP BY spots.id, users.id
-      ORDER BY spots.id
-    `, [id]
-    ).then(data => {
-      const spots = data.rows;
-      res.json({ spots });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-  });
+// get spots by user id moves to users route
 
 //post a new spot
 
