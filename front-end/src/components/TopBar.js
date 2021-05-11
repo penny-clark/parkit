@@ -1,24 +1,13 @@
 import React, { Component, useState } from 'react';
-<<<<<<< HEAD
-import './TopBar.scss';
-import { Button, Typography, Link } from '@material-ui/core';
-import { AppBar, Toolbar, Drawer, Divider} from '@material-ui/core';
-=======
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 
 import './TopBar.scss';
 import { Button, Typography, Link, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
->>>>>>> topbar
 import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import OwnerMenuList from './OwnerMenuList';
 import RenterMenuList from './RenterMenuList';
-
-
-import Owner_menuList from './Owner_menuList';
-import Renter_menuList from './Renter_menuList';
-
 
 export default function TopBar(props) {
 
@@ -28,10 +17,6 @@ export default function TopBar(props) {
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
-<<<<<<< HEAD
-
-=======
->>>>>>> topbar
   }
 
   return (
@@ -53,26 +38,6 @@ export default function TopBar(props) {
     </AppBar> 
 
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
-<<<<<<< HEAD
-      <Typography>
-
-      </Typography>
-            <AccountCircle />
-
-          
-
-        <Tabs value={selectedTab} onChange={handleChange} >
-          <Tab label="Renter"/>
-          <Tab label="Owner"/>
-        </Tabs>
-
-        {selectedTab === 0 && <Owner_menuList />}
-        {selectedTab === 1 && <Renter_menuList />}
-
-        
-
-    </Drawer>
-=======
       
       <ListItem>
         <ListItemAvatar>
@@ -103,7 +68,6 @@ export default function TopBar(props) {
       </Switch>
       </Router>
 
->>>>>>> topbar
     </div>
   );
 }
