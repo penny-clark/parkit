@@ -1,4 +1,3 @@
-const db = require('./db');
 //Query functions for bookings tasks
 
 //RENTER FUNCTION

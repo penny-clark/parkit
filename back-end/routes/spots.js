@@ -7,7 +7,7 @@ module.exports = (db) => {
 
 //get spots by user
 
-router.get("/:user_id", (req, res) => {
+router.get("myspots/:user_id", (req, res) => {
   db.getSpotsforDashboard (req.params.user_id)
     .then(spot => {
       res.json({ spot });
@@ -35,7 +35,7 @@ router.get("/:user_id", (req, res) => {
 
 //post an edit to a spot
 
-router.post("/:spot_id", (req, res) => {
+router.post("myspots/:spot_id", (req, res) => {
   db.updateSpot(params)
     .then(spot => {
       res.json({ spot });
@@ -61,10 +61,10 @@ router.delete("/:spot_id", (req, res) => {
     });
 });
 
-//Renter route
+//Renter route - brings back spots matching search criteria
 //not sure what route to put
-router.get("/spots", (req, res) => {
-  db.getSpotsforSearch(postalcode)
+router.get("/search", (req, res) => {
+  db.getSpotsForSearch(city)
     .then(spot => {
       res.json({ spot });
     })

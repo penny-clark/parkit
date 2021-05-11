@@ -7,7 +7,7 @@ module.exports = (db) => {
  // get bookings - by spot id (when owner has more than a spot)
 
 //get bookings - query function will match by spot id : for the owner
-router.get("/:user_id", (req, res) => {
+router.get("ownerreservations/:user_id", (req, res) => {
   db.getBookingsforOwner (req.params.user_id)
     .then(booking => {
       res.json({ booking });
@@ -20,7 +20,7 @@ router.get("/:user_id", (req, res) => {
 });
 
 //get bookings - query function will match by car id for the renter
-router.get("/:user_id", (req, res) => {
+router.get("renterreservations/:user_id", (req, res) => {
   db.getBookingsforRenter (req.params.user_id)
     .then(booking => {
       res.json({ booking });

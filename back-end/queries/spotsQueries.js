@@ -1,5 +1,3 @@
-const db = require('./db');
-
 //query funtions for spots related task 
 
 //OWNER FUNCTION 
@@ -24,7 +22,7 @@ module.exports.createSpot = createSpot;
 //WF slide 14 my spots listing: 
 //QUERY for spot id, address, price per hour, image
 
-const getSpotsfoDashboard = (id) => {
+const getSpotsforDashboard = (id) => {
   return db.query(`
   //QUERY GOES HERE
   `, [id])
@@ -34,7 +32,7 @@ const getSpotsfoDashboard = (id) => {
     .catch(error => console.log(error));
 };
 
-module.exports.getSpotsfoDashboard = getSpotsfoDashboard;
+module.exports.getSpotsforDashboard = getSpotsfoDashboard;
 
 //edit a spot
 //UPDATE  info coming in for put request (user_id, street address, city, provice, country, postal code)
@@ -51,18 +49,32 @@ const updateSpot = (params) => {
 
 module.exports.updateSpot = updateSpot;
 
-//RENTER FUNCTION
-//find spots based on map search (for homepage)
-//QUERY spots BY first two letter of postal code - SELECT address price, rating, all owner user details (id, name, email, avatar), rating
-
-const getSpotsfoDashboard = (postalcode) => {
+const deleteSpot = (params) => {
   return db.query(`
-  //QUERY GOES HERE
-  `, [postalcode])
+  DELETE FROM spots where spot_id = $1;
+  `, [params])
     .then(res => {
       return res.rows;
     })
     .catch(error => console.log(error));
 };
 
-module.exports.getSpotsfoDashboard = getSpotsfoDashboard;
+module.exports.deleteSpot = deleteSpot;
+
+//RENTER FUNCTION
+//find spots based on map search (for homepage)
+//QUERY spots BY first two letter of postal code - SELECT address price, rating, all owner user details (id, name, email, avatar), rating
+
+const getSpotsForSearch = (city) => {
+  return db.query(`
+  SELECT id, street_address, city, country, postal_code, picture, price
+  FROM spots
+  WHERE user_id = $1
+  `, [city])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(error => console.log(error));
+};
+
+module.exports.getSpotsForSearch = getSpotsForSearch;
