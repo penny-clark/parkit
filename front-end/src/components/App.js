@@ -3,8 +3,10 @@ import axios from 'axios';
 
 import './App.scss';
 import { Typography, Button } from '@material-ui/core';
-import TopBar from "./TopBar";
-import RenterMenuList from './RenterMenuList';
+
+import TopBar from './TopBar';
+import SearchBar from './SearchBar';
+import { Search } from '@material-ui/icons';
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class App extends Component {
             Fetch Data 
           </Button>    
 
-
+          <SearchBar />
       </div>
 
     );
