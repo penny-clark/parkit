@@ -1,0 +1,29 @@
+.topbar {
+
+  *{
+    color: #fff;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .bar_left {
+    flex-grow: 1;
+    
+    .logo {
+      font-size: 2rem;
+    }
+  }
+
+  .BT_dashboard {
+    font-size: 1rem;
+    .icon_w_text {
+      margin-right: .5rem;
+    }
+  }
+}
