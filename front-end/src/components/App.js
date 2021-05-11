@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import './App.scss';
-import Button from '@material-ui/core/Button';
-import { Typography } from '@material-ui/core';
-import TopBar from "./TopBar";
+import { Typography, Button } from '@material-ui/core';
+
+import TopBar from './TopBar';
+import SearchBar from './SearchBar';
+import { Search } from '@material-ui/icons';
 
 class App extends Component {
   constructor(props) {
@@ -31,15 +34,18 @@ class App extends Component {
     return (
 
       <div className="main">
-        <TopBar />
+   
+          <TopBar />
 
-        <Typography variant="h2">
-          {this.state.message }
-        </Typography>
-          
-        <Button variant="contained" color="primary" onClick={this.fetchData}>
-          Fetch Data 
-        </Button>       
+          <Typography variant="h2">
+            {this.state.message }
+          </Typography>
+            
+          <Button variant="contained" color="primary" onClick={this.fetchData}>
+            Fetch Data 
+          </Button>    
+
+          <SearchBar />
       </div>
 
     );

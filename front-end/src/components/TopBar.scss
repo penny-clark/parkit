@@ -8,10 +8,13 @@
     color: #fff;
   }
 
+<<<<<<< HEAD
   a:hover {
     text-decoration: none;
   }
 
+=======
+>>>>>>> topbar
   .bar_left {
     flex-grow: 1;
     
@@ -26,4 +29,17 @@
       margin-right: .5rem;
     }
   }
+<<<<<<< HEAD
+=======
+}
+
+.tab_dashboard {
+  .tab_item {
+    background-color: rgb(100, 96, 96);
+    opacity: 1;
+  }
+  .tab_item.Mui-selected {
+    background-color: rgb(83, 177, 130);
+  }
+>>>>>>> topbar
 }
