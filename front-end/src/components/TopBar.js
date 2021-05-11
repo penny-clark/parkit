@@ -1,10 +1,11 @@
 import React, { Component, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
+
 import './TopBar.scss';
 import { Button, Typography, Link, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-
 import OwnerMenuList from './OwnerMenuList';
 import RenterMenuList from './RenterMenuList';
 
@@ -59,6 +60,15 @@ export default function TopBar(props) {
         {selectedTab === 1 && <OwnerMenuList />}        
 
     </Drawer>
+    < Router>
+      <Switch>
+        <Route exact path="/mybookings">My Bookings : ID</Route>
+        <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
+        <Route exact path="/mycars">My Cars : ID</Route>
+        <Route exact path="/addnewcar">Add a Car : ID</Route>
+      </Switch>
+      </Router>
+
     </div>
   );
 }

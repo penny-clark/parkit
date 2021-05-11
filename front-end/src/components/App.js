@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import './App.scss';
 import { Typography, Button } from '@material-ui/core';
 import TopBar from "./TopBar";
+import RenterMenuList from './RenterMenuList';
 
 class App extends Component {
   constructor(props) {
@@ -30,15 +32,18 @@ class App extends Component {
     return (
 
       <div className="main">
-        <TopBar />
+   
+          <TopBar />
 
-        <Typography variant="h2">
-          {this.state.message }
-        </Typography>
-          
-        <Button variant="contained" color="primary" onClick={this.fetchData}>
-          Fetch Data 
-        </Button>       
+          <Typography variant="h2">
+            {this.state.message }
+          </Typography>
+            
+          <Button variant="contained" color="primary" onClick={this.fetchData}>
+            Fetch Data 
+          </Button>    
+
+
       </div>
 
     );
