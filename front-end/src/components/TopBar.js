@@ -3,11 +3,10 @@ import './TopBar.scss';
 import { Button, Typography, Link, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
-import { CssBaseline } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 
-import Owner_menuList from './Owner_menuList';
-import Renter_menuList from './Renter_menuList';
+import OwnerMenuList from './OwnerMenuList';
+import RenterMenuList from './RenterMenuList';
 
 
 export default function TopBar(props) {
@@ -56,10 +55,8 @@ export default function TopBar(props) {
       </Tabs>
       </AppBar>
 
-        {selectedTab === 0 && <Renter_menuList />}
-        {selectedTab === 1 && <Owner_menuList />}
-
-        
+        {selectedTab === 0 && <RenterMenuList />}
+        {selectedTab === 1 && <OwnerMenuList />}        
 
     </Drawer>
     </div>

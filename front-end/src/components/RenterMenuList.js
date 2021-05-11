@@ -5,7 +5,7 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 
 
-export default function Renter_menuList(props) {
+export default function RenterMenuList(props) {
   return (
     <List>
         <ListItem button>

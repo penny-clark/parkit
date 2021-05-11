@@ -5,7 +5,7 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 
 
-export default function Owner_menuList(props) {
+export default function OwnerMenuList(props) {
   return (
     <List>
         <ListItem button>
