@@ -17,16 +17,16 @@ class App extends Component {
   }
 
   fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+    axios.get('/api/spots') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
-      console.log("hello")
       console.log(response.data) // The entire response from the Rails API
-
-      console.log(response.data.message) // Just the message
+      const onespot = response.data["1"]
+      const printdata = JSON.stringify(onespot)
+      // console.log(response.data.message) // Just the message
       this.setState({
-        message: response.data.message
-      });
+         message: printdata
+       });
     }) 
   }
 
@@ -37,12 +37,12 @@ class App extends Component {
    
           <TopBar />
 
-          <Typography variant="h2">
+          <Typography variant="body1">
             {this.state.message }
           </Typography>
             
           <Button variant="contained" color="primary" onClick={this.fetchData}>
-            Fetch Data 
+            Fetch Data : Spot id:1 
           </Button>    
 
           <SearchBar />
