@@ -1,8 +1,9 @@
 import React, { Component, useState } from 'react';
 import './TopBar.scss';
-import { Button, Typography, Link } from '@material-ui/core';
-import { AppBar, Toolbar, Drawer, Divider} from '@material-ui/core';
+import { Button, Typography, Link, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
+import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
+import { CssBaseline } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 
 import Owner_menuList from './Owner_menuList';
@@ -17,7 +18,6 @@ export default function TopBar(props) {
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
-
   }
 
   return (
@@ -39,17 +39,22 @@ export default function TopBar(props) {
     </AppBar> 
 
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
-      <Typography>
+      
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar alt="user_name" src="https://pr.sssagent.com/img/a1.png" /> 
+        </ListItemAvatar>
+        <ListItemText>
+        User ID
+        </ListItemText>
+      </ListItem>
 
-      </Typography>
-            <AccountCircle />
-
-          
-
-        <Tabs value={selectedTab} onChange={handleChange} >
-          <Tab label="Renter"/>
-          <Tab label="Owner"/>
-        </Tabs>
+      <AppBar position="static">
+      <Tabs value={selectedTab} onChange={handleChange} >
+        <Tab label="Renter"/>
+        <Tab label="Owner"/>
+      </Tabs>
+      </AppBar>
 
         {selectedTab === 0 && <Owner_menuList />}
         {selectedTab === 1 && <Renter_menuList />}

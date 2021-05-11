@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
-import Button from '@material-ui/core/Button';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import TopBar from "./TopBar";
 
 class App extends Component {
