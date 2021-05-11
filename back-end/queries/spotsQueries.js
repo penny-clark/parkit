@@ -5,11 +5,11 @@
 //WF Slide 13 spot registration form:
 //INSERT info coming in for put request (user_id, street address, city, provice, country, postal code)
 
-const createSpot = (userID, streetaddress, city, province, country, postalcode) => {
+const createSpot = (userID, streetaddress, city, province, country, postalcode, picture, price) => {
   return db.query(`
-  INSERT INTO bookings (userID, streetaddress, city, province, country, postalcode)
+  INSERT INTO spots (user_id, streetaddress, city, province, country, postalcode, picture, price)
   VALUES ($1, $2, $3, $4, $5, $6);
-  `, [userID, streetaddress, city, province, country, postalcode])
+  `, [userID, streetaddress, city, province, country, postalcode, picture, price])
     .then(res => {
       return res.rows;
     })
@@ -22,7 +22,7 @@ module.exports.createSpot = createSpot;
 //WF slide 14 my spots listing: 
 //QUERY for spot id, address, price per hour, image
 
-const getSpotsforDashboard = (id) => {
+const getSpotsForDashboard = (id) => {
   return db.query(`
   //QUERY GOES HERE
   `, [id])
@@ -32,15 +32,15 @@ const getSpotsforDashboard = (id) => {
     .catch(error => console.log(error));
 };
 
-module.exports.getSpotsforDashboard = getSpotsfoDashboard;
+module.exports.getSpotsForDashboard = getSpotsForDashboard;
 
 //edit a spot
 //UPDATE  info coming in for put request (user_id, street address, city, provice, country, postal code)
 
-const updateSpot = (params) => {
+const updateSpot = (userID, streetaddress, city, province, country, postalcode, picture, price, id) => {
   return db.query(`
-  DELETe spot WIRTE QUERY;
-  `, [params])
+  UPDATE spots SET user_id = $1, streetaddress = $2, city = $3, province = $4, country = $5, postal_code = $6, picture = $7 WHERE id = $8
+  `, [userID, streetaddress, city, province, country, postalcode, picture, price, id])
     .then(res => {
       return res.rows;
     })

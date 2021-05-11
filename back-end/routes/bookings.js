@@ -3,6 +3,10 @@ const router = express.Router();
 // for Owner
 module.exports = (db) => {
 
+router.get("/bookings", (req, res) => {
+  
+})
+
 
  // get bookings - by spot id (when owner has more than a spot)
 
