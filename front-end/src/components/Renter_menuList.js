@@ -16,7 +16,19 @@ export default function Renter_menuList(props) {
 
         <ListItem button>
           <ListItemIcon>
+            <ListItemText>Bookmark Spots</ListItemText>
+          </ListItemIcon>
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
             <ListItemText>My Cars</ListItemText>
+          </ListItemIcon>
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <ListItemText>Add New Car</ListItemText>
           </ListItemIcon>
         </ListItem>
       </List>

@@ -50,14 +50,14 @@ export default function TopBar(props) {
       </ListItem>
 
       <AppBar position="static">
-      <Tabs value={selectedTab} onChange={handleChange} >
-        <Tab label="Renter"/>
-        <Tab label="Owner"/>
+      <Tabs value={selectedTab} onChange={handleChange} className="tab_dashboard">
+        <Tab label="Renter" className="tab_item"/>
+        <Tab label="Owner" className="tab_item"/>
       </Tabs>
       </AppBar>
 
-        {selectedTab === 0 && <Owner_menuList />}
-        {selectedTab === 1 && <Renter_menuList />}
+        {selectedTab === 0 && <Renter_menuList />}
+        {selectedTab === 1 && <Owner_menuList />}
 
         
 

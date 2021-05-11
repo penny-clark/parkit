@@ -19,6 +19,12 @@ export default function Owner_menuList(props) {
             <ListItemText>My Spots</ListItemText>
           </ListItemIcon>
         </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <ListItemText>Add New Spot</ListItemText>
+          </ListItemIcon>
+        </ListItem>
       </List>
   );
 }
