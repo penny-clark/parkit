@@ -170,9 +170,9 @@ router.post("/", (req, res) => {
 
 // delete booking - by booking ids
 
-router.delete("bookings/:booking_id", (req, res) => {
+router.delete("bookings/:id", (req, res) => {
   return db.query(`
-  DELETE FROM bookings where booking_id = $1;
+  DELETE FROM bookings where id = $1;
   `, [req.params.id])
     .then( booking => {
       res.json({ booking });
@@ -184,4 +184,5 @@ router.delete("bookings/:booking_id", (req, res) => {
     });
 });
 
+return router;
 }
