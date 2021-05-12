@@ -128,6 +128,45 @@ module.exports = (db) => {
         });
     });
 
+     //get all of a renter's bookmarked spots
+     router.get("/bookmarks/:id", (req, res) => {
+      const id = req.params.id;
+      return db.query(`
+      SELECT
+      bookmarked_spots.id as bookmark_id,
+      bookmarked_so
+      spots.id,
+      json_build_object('user_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'owner_email', users.email, 'avatar', users.avatar) 
+      AS owner,
+      spots.street_address,
+      spots.city,
+      spots.province,
+      spots.country,
+      spots.price,
+      spots.picture,
+      CASE WHEN AVG(spot_ratings.rating) IS NULL
+      THEN NULL
+      ELSE AVG(spot_ratings.rating)
+      END AS rating
+    FROM bookmarked_spots
+    LEFT JOIN spots on bookmarked_spots.spot_id = spots.id
+    LEFT JOIN users ON users.id = spots.user_id
+    LEFT OUTER JOIN spot_ratings ON spot_ratings.spot_id = spots.id
+    WHERE bookmarked_spots.user_id = $1  
+    GROUP BY bookmarked_spots.id, spots.id, users.id
+    ORDER BY spots.id
+      `, [id])
+        .then(data => {
+          const cars = data.rows;
+          res.json({ cars });
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    });
+
   return router;
 }
 
