@@ -8,7 +8,9 @@ import { Typography, Button } from '@material-ui/core';
 import TopBar from './TopBar';
 import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
+import SpotList from './SpotList';
 import RenterD_myBookings from './RenterD_myBookings';
+
 
 
 export default function App(props)  {
@@ -38,7 +40,6 @@ export default function App(props)  {
       })
     }, []);
 
-
   return (
 
       <div className="main">
@@ -48,8 +49,10 @@ export default function App(props)  {
          
     < Router>
       <Switch>
-        <Route exact path="/"> <SearchBar />, <SearchResult /> </Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={user} spots={state.spots}/> </Route>
+        <Route exact path="/"> <SearchBar />, <SearchResult /> <SpotList
+          spots={state.spots}
+          /> </Route>
+        <Route exact path="/mybookings"> <RenterD_myBookings user={user}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
         <Route exact path="/mycars">My Cars : ID</Route>
         <Route exact path="/addnewcar">Add a Car : ID</Route>
