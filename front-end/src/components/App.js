@@ -26,7 +26,8 @@ export default function App(props)  {
   }
 
   const [state, setState] = useState({
-    spots: []
+    spots: [],
+    user: {}
   });
 
   useEffect( () => {
@@ -49,9 +50,9 @@ export default function App(props)  {
          
     < Router>
       <Switch>
-        <Route exact path="/"> <SearchBar />, <SearchResult /> <SpotList
+        <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
           spots={state.spots}
-          /> </Route>
+          /></Route>
         <Route exact path="/mybookings"> <RenterD_myBookings user={user}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
         <Route exact path="/mycars">My Cars : ID</Route>

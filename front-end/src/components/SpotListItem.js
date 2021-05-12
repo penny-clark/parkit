@@ -1,20 +1,18 @@
 import React from "react";
 
+
+import './SpotListItem.scss';
+import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
+
 export default function SpotListItem(props) {
 
   return (
-    <main>
-    <section>
-      <h2>{props.street_address}</h2>
-      <section>
-        <p >{props.city}</p>
-        <p>{props.province}</p>
-        <p>{props.country}</p>
-        <p>{props.postal_code}</p>
-        <p>{props.rating}</p>
-        <p>{props.price}</p>
-      </section>
-    </section>
-    </main>
+    <div className="spotlist_box">
+    <Typography variant="body1">{props.street_address}</Typography> 
+    <Typography variant="body1">{props.price}</Typography> 
+    <Typography variant="body1">{props.rating}</Typography> 
+        
+    </div>
   )
 }

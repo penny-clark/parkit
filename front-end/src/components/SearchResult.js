@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import './TopBar.scss';
 import { Tabs, Tab, AppBar } from '@material-ui/core';
+import SpotList from './SpotList';
 
 export default function SearchResult(props) {
  
@@ -12,7 +13,7 @@ export default function SearchResult(props) {
   }
 
   return (
- 
+    <div>
     <AppBar position="static">
     <Tabs value={selectedTab} onChange={handleChange} className="tab_dashboard">
       <Tab label="MapView" className="tab_item"/>
@@ -20,5 +21,7 @@ export default function SearchResult(props) {
     </Tabs>
     </AppBar>
 
+    
+   </div>
   );
 }
