@@ -14,23 +14,11 @@ export default function RenterD_myBookings(props) {
 
   const user = props.user
 
-  const myBookings = []
-
-  const getRenterData = () => {
-    for ( const item of bookings) {
-      if (item.car_id === user.car_id) {
-        myBookings.push(item)
-      }
-    }
-    console.log(myBookings)
-    return myBookings;
-  }
 
   return (
    
       <Typography variant="body1">
       This is My booking list page of user id : {user.first_name} 
-     
       </Typography>
  
   );

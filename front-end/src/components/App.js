@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 
@@ -11,9 +11,9 @@ import SearchResult from './SearchResult';
 import RenterD_myBookings from './RenterD_myBookings';
 
 
-class App extends Component {
+export default function App(props)  {
 
-  state = {
+  const user = {
     user_id: 1,
     first_name: "Eggert",
     last_name: "Eggerson",
@@ -23,18 +23,33 @@ class App extends Component {
     car_id: 1
   }
 
-  render() {
-    return (
+  const [state, setState] = useState({
+    spots: []
+  });
+
+  useEffect( () => {
+    Promise.all([
+      axios.get("/api/spots")
+    ]).then((all) => {
+        const spots = all[0].data
+        const setSpots = Object.keys(spots).map(key => {return spots[key]})
+        setState(prev => ({ ...prev, spots: setSpots}))
+        console.log(setSpots, "this is what I made my spots")
+      })
+    }, []);
+
+
+  return (
 
       <div className="main">
 
-          <TopBar user={this.state}/>
+          <TopBar user={user}/>
 
          
     < Router>
       <Switch>
         <Route exact path="/"> <SearchBar />, <SearchResult /> </Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={this.state}/> </Route>
+        <Route exact path="/mybookings"> <RenterD_myBookings user={user} spots={state.spots}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
         <Route exact path="/mycars">My Cars : ID</Route>
         <Route exact path="/addnewcar">Add a Car : ID</Route>
@@ -43,7 +58,6 @@ class App extends Component {
       </div>
 
     );
-  }
+  
 }
 
-export default App;
