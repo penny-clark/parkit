@@ -7,6 +7,7 @@ import { Typography, Button } from '@material-ui/core';
 import TopBar from './TopBar';
 import SearchBar from './SearchBar';
 import { Search } from '@material-ui/icons';
+import SpotList from './SpotList';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends Component {
          message: printdata
        });
     }) 
+
   }
 
   render() {
@@ -46,6 +48,11 @@ class App extends Component {
           </Button>    
 
           <SearchBar />
+
+{/* added for spots testing */}
+          <SpotList>
+          spots={spots}
+          </SpotList>
       </div>
 
     );
