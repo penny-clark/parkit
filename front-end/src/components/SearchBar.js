@@ -18,7 +18,8 @@ import DateTimePicker from '@material-ui/lab/DateTimePicker';
 
 export default function SearchBar(props) {
 
-  const [value, setValue] = useState(new Date());
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
 
   return (
     <div className="searchbox">
@@ -41,20 +42,20 @@ export default function SearchBar(props) {
       <DateTimePicker
 
         renderInput={(props) => <TextField {...props} />}
-        label="DateTimePicker"
-        value={value}
+        label="Start Time"
+        value={startTime}
         onChange={(newValue) => {
-          setValue(newValue);
+          setStartTime(newValue);
         }}
       />
       </Grid>
       <Grid item spacing={2} justify="center">
         <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
-        label="DateTimePicker"
-        value={value}
+        label="End Time"
+        value={endTime}
         onChange={(newValue) => {
-          setValue(newValue);
+          setEndTime(newValue);
         }}
       />
       </Grid>
