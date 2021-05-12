@@ -22,6 +22,7 @@ export default function TopBar(props) {
     setSelectedTab(newValue);
   }
   
+  const user = props.user
 
   return (
     <div>
@@ -41,14 +42,15 @@ export default function TopBar(props) {
         </Toolbar>
     </AppBar> 
 
+    
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
       
       <ListItem>
         <ListItemAvatar>
-          <Avatar alt="user_name" src="https://pr.sssagent.com/img/a1.png" /> 
+          <Avatar alt="user_name" src={user.avatar} /> 
         </ListItemAvatar>
         <ListItemText>
-        User ID
+        {user.first_name} {user.last_name}
         </ListItemText>
       </ListItem>
 

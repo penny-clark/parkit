@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
 
 import './App.scss';
@@ -10,13 +10,21 @@ import SearchResult from './SearchResult';
 
 class App extends Component {
 
-  
+  state = {
+    user_id: 1,
+    first_name: "Eggert",
+    last_name: "Eggerson",
+    owner_email: "egg@egg.com",
+    avatar: "https://pr.sssagent.com/img/a1.png"
+  }
+
   render() {
     return (
 
       <div className="main">
 
-          <TopBar />
+          <TopBar user={this.state}/>
+
           <SearchBar />
           <SearchResult />
       </div>
