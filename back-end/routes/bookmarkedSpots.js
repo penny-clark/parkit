@@ -4,15 +4,14 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  //for Owner
-  //post a new rating
+  //for renter to bookmark a favourite spot
   router.post("/", (req, res) => {
     return db.query(`
-      INSERT INTO renter_ratings (owner_id, renter_id, rating)
-      VALUES ($1, $2, $3);
-      `, [req.params.id, req.params.renter_id, req.params.rating])
-      .then(rating => {
-        res.json({ rating });
+      INSERT INTO bookmarked_spots (user_id, spot_id)
+      VALUES ($1, $2);
+      `, [req.params.id, req.params.spot_id])
+      .then(bookmark => {
+        res.json({ bookmark });
       })
       .catch(err => {
         res
