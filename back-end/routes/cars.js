@@ -18,22 +18,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// get a specific user's cars
-router.get("/user/:id", (req, res) => {
-  const id = req.params.user_id;
-  return db.query(`
-  SELECT id, user_id, make, model, colour, plate_number FROM cars WHERE user_id = $1
-  `, [id])
-    .then(data => {
-      const cars = data.rows;
-      res.json({ cars });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
+// get a specific user's cars - moved to users route
 
 // adds a new car
 router.post("/", (req, res) => {
