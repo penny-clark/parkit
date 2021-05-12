@@ -6,9 +6,11 @@ module.exports = (db) => {
 
   //for Owner
   //post a new rating
-
   router.post("/", (req, res) => {
-    db.createRenterRating(params)
+    return db.query(`
+      INSERT INTO renter_ratings (owner_id, renter_id, rating)
+      VALUES ($1, $2, $3);
+      `, [req.params.id, req.params.renter_id, req.params.rating])
       .then(rating => {
         res.json({ rating });
       })
@@ -18,7 +20,5 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-
-  
-
+  return router;
 }

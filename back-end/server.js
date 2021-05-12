@@ -22,12 +22,16 @@ const spotsRoutes = require("./routes/spots");
 const bookingsRoutes = require("./routes/bookings");
 const carsRoutes = require("./routes/cars");
 const usersRoutes = require("./routes/users");
+const spotRatingRoutes = require("./routes/spotRatings")
+const renterRatingRoutes = require("./routes/renterratings")
 
 // Mount resource routes
 App.use('/api/spots', spotsRoutes(db));
 App.use('/api/bookings', bookingsRoutes(db));
 App.use('/api/cars', carsRoutes(db));
-App.use('/api/users', usersRoutes(db))
+App.use('/api/users', usersRoutes(db));
+App.use('/api/spotratings', spotRatingRoutes(db));
+App.use('api/renterratings', renterRatingRoutes(db));
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
