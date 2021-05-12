@@ -27,7 +27,7 @@ export default function App(props)  {
 
   const [state, setState] = useState({
     spots: [],
-    user: {}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
   });
 
   useEffect( () => {

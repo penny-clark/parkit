@@ -2,6 +2,24 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+    const id = req.params.id;
+    return db.query(`
+    SELECT id, first_name, last_name, email, avatar
+    FROM
+    users
+    `)
+      .then(data => {
+        const users = data.rows;
+        res.json( users );
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
 
   //get spots for owner dashboard
   router.get("/spots/:id/", (req, res) => {
