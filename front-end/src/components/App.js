@@ -27,34 +27,11 @@ export default function App(props) {
     }, []);
 
 
-
-
-  // fetchData = () => {
-  //   axios.get('/api/spots') // You can simply make your requests to "/api/whatever you want"
-  //   .then((response) => {
-  //     // handle success
-  //     console.log(response.data) // The entire response from the Rails API
-  //     const onespot = response.data["1"].street_address
-  //     const printdata = JSON.stringify(onespot)
-  //     console.log(response.data)
-  //     // console.log(response.data.message) // Just the message
-  //     this.setState({
-  //        message: printdata
-  //      });
-  //   }) 
-
-
-
-
     return (
 
       <div className="main">
    
           <TopBar />
-
-          <Typography variant="body1">
-          </Typography>
-             
 
           <SearchBar />
 
