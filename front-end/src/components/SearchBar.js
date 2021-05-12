@@ -21,7 +21,7 @@ export default function SearchBar(props) {
   const [value, setValue] = useState(new Date());
 
   return (
-    <div class="searchbox">
+    <div className="searchbox">
        
        
        <FormControl fullWidth variant="filled">

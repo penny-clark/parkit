@@ -1,11 +1,14 @@
 import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 
+//import style & material-ui 
 import './TopBar.scss';
 import { Button, Typography, Link, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
+
+//import components
 import OwnerMenuList from './OwnerMenuList';
 import RenterMenuList from './RenterMenuList';
 
@@ -18,6 +21,8 @@ export default function TopBar(props) {
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   }
+  
+  const user = props.user
 
   return (
     <div>
@@ -37,14 +42,15 @@ export default function TopBar(props) {
         </Toolbar>
     </AppBar> 
 
+    
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
       
       <ListItem>
         <ListItemAvatar>
-          <Avatar alt="user_name" src="https://pr.sssagent.com/img/a1.png" /> 
+          <Avatar alt="user_name" src={user.avatar} /> 
         </ListItemAvatar>
         <ListItemText>
-        User ID
+        {user.first_name} {user.last_name}
         </ListItemText>
       </ListItem>
 
@@ -53,20 +59,13 @@ export default function TopBar(props) {
         <Tab label="Renter" className="tab_item"/>
         <Tab label="Owner" className="tab_item"/>
       </Tabs>
-      </AppBar>
+      </AppBar> 
 
         {selectedTab === 0 && <RenterMenuList />}
         {selectedTab === 1 && <OwnerMenuList />}        
 
     </Drawer>
-    < Router>
-      <Switch>
-        <Route exact path="/mybookings">My Bookings : ID</Route>
-        <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-        <Route exact path="/mycars">My Cars : ID</Route>
-        <Route exact path="/addnewcar">Add a Car : ID</Route>
-      </Switch>
-      </Router>
+
 
     </div>
   );

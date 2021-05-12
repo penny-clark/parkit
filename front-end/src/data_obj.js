@@ -4,7 +4,7 @@
 //  - booked_schedule : owner's dashboard > booked schedule
 //  
 
-const spots = [
+export const spots = [
   {
     id: 1,
     owner: {
@@ -170,7 +170,7 @@ const spots = [
 ]
 
 // renter's dashboard > booking list
-const bookings = [
+export const bookings = [
   {
     id: 1,
     car_id: 1,
@@ -242,7 +242,7 @@ const bookings = [
 ]
   
 
-const booked_schedule = [
+export const booked_schedule = [
   {
     id: 1,
     spot_id: 9,
@@ -332,3 +332,5 @@ const booked_schedule = [
     renter_rating: 5
   }
 ]
+
+
