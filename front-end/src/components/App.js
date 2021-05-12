@@ -6,9 +6,11 @@ import { Typography, Button } from '@material-ui/core';
 
 import TopBar from './TopBar';
 import SearchBar from './SearchBar';
-import { Search } from '@material-ui/icons';
+import SearchResult from './SearchResult';
 
 class App extends Component {
+
+  /* for fetch data 
   constructor(props) {
     super(props)
     this.state = {
@@ -29,23 +31,25 @@ class App extends Component {
        });
     }) 
   }
-
+*/
   render() {
     return (
 
       <div className="main">
    
-          <TopBar />
-
+          
+{/* 
           <Typography variant="body1">
             {this.state.message }
           </Typography>
             
           <Button variant="contained" color="primary" onClick={this.fetchData}>
             Fetch Data : street_address of id:1 
-          </Button>    
-
+          </Button>     */}
+          
+          <TopBar />
           <SearchBar />
+          <SearchResult />
       </div>
 
     );
