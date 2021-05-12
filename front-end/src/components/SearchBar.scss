@@ -1,4 +1,12 @@
 .searchbox {
   width: 90%;
+  max-width: 550px;
   height: 200px;
+
+  .timepicker {
+    width: 90%;
+    margin: 1rem;
+
+  }
+
 }
