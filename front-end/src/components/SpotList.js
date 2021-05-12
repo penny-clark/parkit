@@ -1,16 +1,17 @@
 import React from "react";
-import SpotListItem from "components/SpotListItem";
+import SpotListItem from "./SpotListItem";
 
 
 export default function SpotList(props) {
-  const spotsmap = props.spots.map(day => {
+  console.log(props, "props in  spot list")
+  const spotsmap = props.spots.map(spot => {
     return (
       <SpotListItem
         key={spot.id}
         street_address={spot.street_address}
-        city={props.city}
-        province={props.province}
-        country={props.county}
+        city={spot.city}
+        province={spot.province}
+        country={spot.country}
         price={spot.price}
       />
     );

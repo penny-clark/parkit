@@ -11,10 +11,9 @@ export default function SpotListItem(props) {
         <p>{props.province}</p>
         <p>{props.country}</p>
         <p>{props.postal_code}</p>
+        <p>{props.rating}</p>
+        <p>{props.price}</p>
       </section>
-    <section>
-   <p>{props.rating}</p>
-   </section>
     </section>
     </main>
   )
