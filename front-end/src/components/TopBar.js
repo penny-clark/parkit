@@ -65,14 +65,7 @@ export default function TopBar(props) {
         {selectedTab === 1 && <OwnerMenuList />}        
 
     </Drawer>
-    < Router>
-      <Switch>
-        <Route exact path="/mybookings">My Bookings : ID</Route>
-        <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-        <Route exact path="/mycars">My Cars : ID</Route>
-        <Route exact path="/addnewcar">Add a Car : ID</Route>
-      </Switch>
-      </Router>
+
 
     </div>
   );
