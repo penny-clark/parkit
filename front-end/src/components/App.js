@@ -32,18 +32,26 @@ export default function App(props)  {
 
   const [state, setState] = useState({
     spots: [],
+    renterbookings: [],
+    ownerbookings: [],
     user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
   });
 
-  useEffect( () => {
+  useEffect(() => {
     Promise.all([
-      axios.get("/api/spots")
+      axios.get("/api/spots"),
+      axios.get("api/bookings/renter"),
+      axios.get("api/bookings/owner")
     ]).then((all) => {
         const spots = all[0].data
+        const renterBookings = all[1].data
+        const ownerBookings = all[2].data
         const setSpots = Object.keys(spots).map(key => {return spots[key]})
-        setState(prev => ({ ...prev, spots: setSpots}))
-        console.log(setSpots, "this is what I made my spots")
+        const setRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
+        const setOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
+        setState(prev => ({ ...prev, spots: setSpots, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings}))
       })
+      .catch()
     }, []);
 
   return (

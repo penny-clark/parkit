@@ -20,7 +20,7 @@ router.get("/renter", (req, res) => {
       AS owner,
       CASE WHEN AVG(spot_ratings.rating) IS NULL
       THEN NULL
-      ELSE AVG(spot_ratings.rating)
+      ELSE ROUND(AVG(spot_ratings.rating))
       END AS rating
     FROM bookings
     LEFT JOIN spots ON spots.id = bookings.spot_id
@@ -53,7 +53,7 @@ router.get("/owner", (req, res) => {
       spots.user_id as owner_id,
       bookings.start_date_time,
       bookings.end_date_time,
-      json_build_object('car_id', cars.id, 'car_make', cars.make, 'model', cars.model, 'colour', cars.colour, 'plate_number', cars.plate_number, 'rating', AVG(renter_ratings.rating)) 
+      json_build_object('car_id', cars.id, 'car_make', cars.make, 'model', cars.model, 'colour', cars.colour, 'plate_number', cars.plate_number, 'rating', ROUND(AVG(renter_ratings.rating))) 
       AS car,
       json_build_object('renter_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'renter_email', users.email, 'avatar', users.avatar) 
       AS renter

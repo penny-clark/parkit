@@ -42,8 +42,7 @@ export default function BookingPopup(props) {
             value={endTime}
             onChange={(newValue) => {
             setEndTime(newValue);
-            console.log(endTime, "is end time updated right away")
-            setTotalCost(`Total: ${(newValue - startTime) * (props.spot.cost / 60)}`)
+            setTotalCost(`Total: $${(((endTime - startTime) / 60000) * (props.spot.price / 60)).toFixed(2)}`)
           }}
         />
         </Grid>
