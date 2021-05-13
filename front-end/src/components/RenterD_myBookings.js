@@ -8,13 +8,12 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
-
-import { bookings } from '../data_obj';
+//import hooks
 import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function RenterD_myBookings(props) {
 
- 
+  const bookings = props.bookingsR;
   const thisUserBookings = [];   // array of booking obj of this user
 
   const getBookings = () => {
@@ -44,7 +43,7 @@ export default function RenterD_myBookings(props) {
  
 
       print.push(
-        <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
           <Typography variant="h6">{bookObj.spot.street_address}</Typography>
         </AccordionSummary>

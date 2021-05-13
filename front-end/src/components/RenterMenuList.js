@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 
 import './TopBar.scss';
@@ -7,9 +7,11 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 
 export default function RenterMenuList(props) {
+
   return (
-    <Router>
+    
     <List>
+  
         <Link to="/mybookings" >
         <ListItem button>
           <ListItemIcon>
@@ -38,9 +40,10 @@ export default function RenterMenuList(props) {
           </ListItemIcon>
         </ListItem>
         </Link>
+       
       </List>
 
-      </Router>
+  
     
   );
 }

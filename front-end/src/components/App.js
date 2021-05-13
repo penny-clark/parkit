@@ -3,8 +3,6 @@ import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 
 import './App.scss';
-import { Typography, Button } from '@material-ui/core';
-
 import TopBar from './TopBar';
 import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
@@ -57,22 +55,25 @@ export default function App(props)  {
   return (
 
       <div className="main">
-        
+   
         <TopBar user={state.user}/>
          
-        < Router>
           <Switch>
-            <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
+            <Route exact path="/"> <SearchBar /> <SearchResult/>  <SpotList
               spots={state.spots}
               user={state.user}
               bookSpot={bookSpot}
               /></Route>
-            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user}/> </Route>
+            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user} bookingsR={state.renterbookings}/> </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
             <Route exact path="/addnewcar">Add a Car : ID</Route>
+
+            <Route exact path="/myspotbooking">My spot - Booked Schedule</Route>
+            <Route exact path="/myspots">My spots</Route>
+            <Route exact path="/addnewspot">Add a Spot : ID</Route>
           </Switch>
-        </Router>
+      
       </div>
 
     );
