@@ -10,7 +10,7 @@ import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
 import SpotList from './SpotList';
 import RenterD_myBookings from './RenterD_myBookings';
-
+import RenterD_myCars from './RenterD_myCars';
 
 
 export default function App(props)  {
@@ -53,9 +53,9 @@ export default function App(props)  {
         <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
           spots={state.spots}
           /></Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={user} bookings={state.bookingsR}/> </Route>
+        <Route exact path="/mybookings"> <RenterD_myBookings user={user} /> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-        <Route exact path="/mycars">My Cars : ID</Route>
+        <Route exact path="/mycars"> <RenterD_myCars user={user}  /></Route>
         <Route exact path="/addnewcar">Add a Car : ID</Route>
       </Switch>
     </Router>
