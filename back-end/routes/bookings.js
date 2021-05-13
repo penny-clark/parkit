@@ -81,14 +81,16 @@ router.get("/owner", (req, res) => {
 //post a new booking (for renters)
 
 router.post("/", (req, res) => {
+  console.log(req.body, "REQ BODY FROM BOOKING REQUEST")
   return db.query(`
-  INSERT INTO bookings (spotID, carID, startTime, endTime)
+  INSERT INTO bookings (car_id, spot_id, start_date_time, end_date_time)
   VALUES ($1, $2, $3, $4);
-  `, [req.params.spot_id, req.params.car_id, req.params.start_datetime, req.params.end_datetime])
+  `, [req.body.spot_id, req.body.car_id, req.body.start_datetime, req.body.end_datetime])
     .then(booking => {
-      res.json({ booking });
+      console.log(booking, "booking in the response")
     })
     .catch(err => {
+      console.log(err)
       res
         .status(500)
         .json({ error: err.message });

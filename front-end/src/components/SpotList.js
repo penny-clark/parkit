@@ -8,6 +8,7 @@ export default function SpotList(props) {
     return (
       <SpotListItem
         key={spot.id}
+        id={spot.id}
         user={props.user}
         street_address={spot.street_address}
         city={spot.city}
@@ -16,6 +17,7 @@ export default function SpotList(props) {
         price={spot.price}
         owner={spot.owner}
         rating={spot.rating}
+        bookSpot={props.bookSpot}
       />
     );
   });

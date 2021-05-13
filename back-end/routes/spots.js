@@ -21,7 +21,7 @@ router.get("/", (request, response) => {
       spots.picture,
       CASE WHEN AVG(spot_ratings.rating) IS NULL
       THEN NULL
-      ELSE AVG(spot_ratings.rating)
+      ELSE ROUND(AVG(spot_ratings.rating))
       END AS rating
     FROM spots
     LEFT JOIN users ON users.id = spots.user_id

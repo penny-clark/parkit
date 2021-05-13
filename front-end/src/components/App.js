@@ -15,6 +15,20 @@ import RenterD_myBookings from './RenterD_myBookings';
 
 export default function App(props)  {
 
+  function makeNewBooking(spotId, carId, startTime, endTime) {
+    return axios
+    .post('/api/bookings', {
+      spot_id: spotId,
+      car_id: carId,
+      start_datetime: startTime,
+      end_datetime: endTime
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
+  }
+
   const user = {
     user_id: 1,
     first_name: "Eggert",
@@ -27,7 +41,7 @@ export default function App(props)  {
 
   const [state, setState] = useState({
     spots: [],
-    user: {}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
   });
 
   useEffect( () => {
@@ -53,6 +67,7 @@ export default function App(props)  {
         <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
           spots={state.spots}
           user={state.user}
+          bookSpot={makeNewBooking}
           /></Route>
         <Route exact path="/mybookings"> <RenterD_myBookings user={user}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>

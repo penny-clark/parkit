@@ -7,8 +7,12 @@ import { Button, Typography } from '@material-ui/core';
 
 export default function SpotListItem(props) {
 
-  const showDetail = function () {
+  function showDetail () {
     console.log("clicked!")
+  }
+
+  function save() {
+    props.bookSpot(1, props.id, '2021-06-01 13:00:00', '2021-06-01 14:00:00')
   }
 
   return (
@@ -30,7 +34,9 @@ export default function SpotListItem(props) {
     <Typography variant="body1">{props.owner.email}</Typography>
 
     <Typography variant="body1">{props.rating}</Typography> 
-    {/* </div> */}
+
+    <Button onClick={save}>Confirm & Pay</Button> 
+    
     </div>
 
     </div>
