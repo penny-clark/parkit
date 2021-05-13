@@ -15,16 +15,15 @@ import Collapse from '@material-ui/core/Collapse';
 
 export default function SpotList(props) {
 
-  //console.log(props, "props in  spot list")
 
   const { expanded, setExpanded, handleChange} = useDisplayAction();
-
 
   const [checked, setChecked] = useState(false);
 
   const handleCheckout = () => {
     setChecked((prev) => !prev);
   };
+
 
   const spotsmap = props.spots.map(spot => {
 

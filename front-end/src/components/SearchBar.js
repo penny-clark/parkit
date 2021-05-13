@@ -18,9 +18,9 @@ export default function SearchBar(props) {
   const [startTime, setStartTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
 
+  console.log("keyword in search bar", props.keyword)
   return (
     <div className="searchbox">
-       
       <FormControl fullWidth variant="filled">
       <InputLabel htmlFor="outlined-adornment-amount">Search by Postal code</InputLabel>
         <FilledInput

@@ -19,6 +19,7 @@ router.get("/", (request, response) => {
       spots.country,
       spots.price,
       spots.picture,
+      spots.postal_code,
       CASE WHEN AVG(spot_ratings.rating) IS NULL
       THEN NULL
       ELSE ROUND(AVG(spot_ratings.rating))

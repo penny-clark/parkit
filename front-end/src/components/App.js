@@ -10,6 +10,7 @@ import SpotList from './SpotList';
 import RenterD_myBookings from './RenterD_myBookings';
 import RenterD_myCars from './RenterD_myCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
+import SpotListSearch from './SpotListSearch';
 
 
 export default function App(props)  {
@@ -70,9 +71,7 @@ export default function App(props)  {
          
           <Switch>
             <Route exact path="/"> 
-              <SearchBar /> 
-              <SearchResult/>  
-              <SpotList
+            <SpotListSearch
                 spots={state.spots}
                 user={state.user}
                 bookSpot={bookSpot}
