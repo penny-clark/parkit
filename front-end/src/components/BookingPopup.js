@@ -15,7 +15,7 @@ export default function BookingPopup(props) {
   };
 
   function save() {
-    props.bookSpot(1, props.id, '2021-06-01 13:00:00', '2021-06-01 14:00:00')
+    props.bookSpot(props.user.id, props.id, startTime, endTime)
   }
 
   return (
