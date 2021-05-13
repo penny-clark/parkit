@@ -9,6 +9,7 @@ import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 
 //import components
+import UserNameDisplay from './UserNameDisplay';
 import OwnerMenuList from './OwnerMenuList';
 import RenterMenuList from './RenterMenuList';
 
@@ -47,14 +48,7 @@ export default function TopBar(props) {
     
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
       
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar alt="user_name" src={user.avatar} /> 
-        </ListItemAvatar>
-        <ListItemText>
-        {user.first_name} {user.last_name}
-        </ListItemText>
-      </ListItem>
+      <UserNameDisplay user={user}/>
 
       <AppBar position="static">
       <Tabs value={selectedTab} onChange={handleChange} className="tab_dashboard">

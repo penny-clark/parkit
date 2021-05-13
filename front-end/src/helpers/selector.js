@@ -10,3 +10,15 @@ export function getRenterBookings(userID, bookingsData) {
   }
   return thisUserBookings;
 }
+
+ //get owner's spot address as Array by user ID
+export function getRenterSpots(userID, spotsData) {
+  const thisUserSpots = [];
+
+  for (const item of spotsData) {
+    if(item.owner.user_id === userID) {
+      thisUserSpots.push(item.street_address)
+    }
+  }
+  return thisUserSpots;
+}
