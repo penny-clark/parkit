@@ -3,27 +3,24 @@ import React, { useState, useEffect } from 'react';
 import UserNameDisplay from './UserNameDisplay';
 //import style & material-ui 
 import './RenterDashboad.scss';
-import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
+import { Button, Typography, Divider, ListItem} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
-import useDisplayAction from "../hooks/useDisplayAction"
-import { getRenterBookings } from '../helpers/selector';
+import useDisplayAction from "../hooks/useDisplayAction";
+import { getOwnerBookings, getOwnerSpots } from '../helpers/selector';
 
-export default function RenterD_myBookings(props) {
+export default function OwnerD_BookedSchedule(props) {
 
   //get this owner's booked schedule list from helper function
-  const thisUserBookings = getRenterBookings(props.user.car_id, props.bookingsR)
-
+  const thisUserBookings = getOwnerBookings(props.user.id, props.bookingsO)
+  //get this owner's spot's address array to display
+  const thisUserSpots = getOwnerSpots(props.user.id, props.spots)
+  
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
-
-  function cancel (bookingId) {
-    console.log("clicked cancel button, this is bookingId", bookingId)
-    props.cancelBooking(bookingId)
-  }
 
   // iterate each booking
   const displayBookings = () => {
@@ -35,19 +32,24 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">{bookObj.spot.street_address}</Typography>
+   
+          <UserNameDisplay user={bookObj.renter}/>
+ 
+        <ListItem>
+        <Typography variant="body1">Spot:{thisUserSpots[0]}</Typography>
+        </ListItem>
+          
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start : {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End : {bookObj.end_date_time}</ListItemText>
-          <ListItemText>Spot Owner:</ListItemText>
-          <UserNameDisplay user={bookObj.owner}/>
-          
+          <Typography>
+         Start : {bookObj.start_date_time} <br />
+         End : {bookObj.end_date_time}
+          </Typography>
         </AccordionDetails>
         <AccordionActions>
-          <Button >Contact Owner</Button>
-          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
-            Cancel This Booking
+          <Button >Contact Renter</Button>
+          <Button color="secondary">
+            Cancel
           </Button>
         </AccordionActions>
       </Accordion>
@@ -60,7 +62,7 @@ export default function RenterD_myBookings(props) {
   return (
     <div className="wrap_dashboard">
       <Typography variant="body1">
-      This is "Renter Dashbard - My booking list" of user : {props.user.first_name} 
+      This is "Owner Dashbard - Booked Schedule list" of user : {props.user.first_name} 
       </Typography>
    
       {displayBookings()}
