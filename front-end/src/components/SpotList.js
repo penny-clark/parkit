@@ -63,7 +63,7 @@ export default function SpotList(props) {
       
       <Collapse in={checked}>
           <Paper className="popup">
-            <BookingPopup spot={spot} />
+            <BookingPopup spot={spot} checked={checked} setChecked={setChecked}/>
           </Paper>
       </Collapse>
 
