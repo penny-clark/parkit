@@ -49,22 +49,22 @@ export default function App(props)  {
   return (
 
       <div className="main">
-
-          <TopBar user={state.user}/>
+        
+        <TopBar user={state.user}/>
          
-    < Router>
-      <Switch>
-        <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
-          spots={state.spots}
-          user={state.user}
-          bookSpot={makeNewBooking}
-          /></Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={state.user}/> </Route>
-        <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-        <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
-        <Route exact path="/addnewcar">Add a Car : ID</Route>
-      </Switch>
-    </Router>
+        < Router>
+          <Switch>
+            <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
+              spots={state.spots}
+              user={state.user}
+              bookSpot={makeNewBooking}
+              /></Route>
+            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user}/> </Route>
+            <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
+            <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
+            <Route exact path="/addnewcar">Add a Car : ID</Route>
+          </Switch>
+        </Router>
       </div>
 
     );

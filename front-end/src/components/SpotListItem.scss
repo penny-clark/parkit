@@ -10,3 +10,33 @@
   margin : 1rem 1rem;
   background-color: #fff;
 }
+
+.address {
+  width: 250px;
+}
+
+.icon_with_h6 {
+  padding-top: .2rem;
+}
+
+.bodytext_w_h6 {
+  padding-top: .3rem;
+  padding-left: 2rem;
+}
+
+.grid_fix_width {
+  width: 300px
+}
+
+
+
+.popup.MuiPaper-root{
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -10,6 +10,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 
 import { bookings } from '../data_obj';
+import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function RenterD_myBookings(props) {
 
@@ -28,12 +29,9 @@ export default function RenterD_myBookings(props) {
 
   getBookings();
 
-  
-  const [expanded, setExpanded] = React.useState('panel1');
+  const { expanded, setExpanded, handleChange} = useDisplayAction();
 
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+  
 
   // iterate each booking
 
