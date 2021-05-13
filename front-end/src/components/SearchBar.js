@@ -22,11 +22,12 @@ export default function SearchBar(props) {
     <div className="searchbox">
        
       <FormControl fullWidth variant="filled">
-      <InputLabel htmlFor="outlined-adornment-amount">Postal code</InputLabel>
+      <InputLabel htmlFor="outlined-adornment-amount">Search by Postal code</InputLabel>
         <FilledInput
           id="outlined-adornment-amount"
-          //value={values.amount}
-          //onChange={handleChange('amount')}
+          value={props.keyword}
+          placeholder={"Enter your destination's postal code"}
+          onChange={(event) => props.setKeyword(event.target.value)}
           startAdornment={<InputAdornment position="start"><AddLocationRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />
