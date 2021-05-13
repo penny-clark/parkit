@@ -9,6 +9,7 @@ import SearchResult from './SearchResult';
 import SpotList from './SpotList';
 import RenterD_myBookings from './RenterD_myBookings';
 import RenterD_myCars from './RenterD_myCars';
+import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 
 
 export default function App(props)  {
@@ -68,17 +69,25 @@ export default function App(props)  {
         <TopBar user={state.user}/>
          
           <Switch>
-            <Route exact path="/"> <SearchBar /> <SearchResult/>  <SpotList
-              spots={state.spots}
-              user={state.user}
-              bookSpot={bookSpot}
-              /></Route>
-            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user} bookingsR={state.renterbookings} cancelBooking={cancelBooking}/> </Route>
+            <Route exact path="/"> 
+              <SearchBar /> 
+              <SearchResult/>  
+              <SpotList
+                spots={state.spots}
+                user={state.user}
+                bookSpot={bookSpot}
+              />
+            </Route>
+            <Route exact path="/mybookings"> 
+              <RenterD_myBookings user={state.user} bookingsR={state.renterbookings}/> 
+            </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
             <Route exact path="/addnewcar">Add a Car : ID</Route>
 
-            <Route exact path="/myspotbooking">My spot - Booked Schedule</Route>
+            <Route exact path="/myspotbooking">
+              <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings}/>
+            </Route>
             <Route exact path="/myspots">My spots</Route>
             <Route exact path="/addnewspot">Add a Spot : ID</Route>
           </Switch>
