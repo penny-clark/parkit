@@ -11,9 +11,9 @@ import AccordionActions from '@material-ui/core/AccordionActions';
 
 import { bookings } from '../data_obj';
 
-export default function RenterD_myBookings(props) {
+export default function RenterD_myCars(props) {
 
- 
+  const user = props.user;
   const thisUserBookings = [];   // array of booking obj of this user
 
   const getBookings = () => {
@@ -68,9 +68,9 @@ export default function RenterD_myBookings(props) {
 
 
   return (
-    <div className="wrap_dashboard">
+    <div>
       <Typography variant="body1">
-      This is "Renter Dashbard - My booking list" of user : {props.user.first_name} 
+      This is "Renter Dashbard - My booking list" of user : {user.first_name} 
       </Typography>
    
       {displayBookings()}

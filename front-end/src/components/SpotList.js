@@ -6,6 +6,7 @@ export default function SpotList(props) {
   console.log(props, "props in  spot list")
   const spotsmap = props.spots.map(spot => {
     return (
+      < div className="spotlist_wrap" >
       <SpotListItem
         key={spot.id}
         id={spot.id}
@@ -19,6 +20,7 @@ export default function SpotList(props) {
         rating={spot.rating}
         bookSpot={props.bookSpot}
       />
+      </div>
     );
   });
   return spotsmap;

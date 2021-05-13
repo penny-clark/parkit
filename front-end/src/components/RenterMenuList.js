@@ -11,7 +11,7 @@ export default function RenterMenuList(props) {
     <Router>
     <List>
         <Link to="/mybookings" >
-        <ListItem>
+        <ListItem button>
           <ListItemIcon>
             <ListItemText>My Bookings</ListItemText>
           </ListItemIcon>
