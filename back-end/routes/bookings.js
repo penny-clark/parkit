@@ -85,7 +85,7 @@ router.post("/", (req, res) => {
   return db.query(`
   INSERT INTO bookings (car_id, spot_id, start_date_time, end_date_time)
   VALUES ($1, $2, $3, $4);
-  `, [req.body.spot_id, req.body.car_id, req.body.start_datetime, req.body.end_datetime])
+  `, [req.body.car_id, req.body.spot_id, req.body.start_datetime, req.body.end_datetime])
     .then(booking => {
       console.log(booking, "booking in the response")
     })

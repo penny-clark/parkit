@@ -15,7 +15,7 @@ import RenterD_myCars from './RenterD_myCars';
 
 export default function App(props)  {
 
-  function makeNewBooking(spotId, carId, startTime, endTime) {
+  function bookSpot(spotId, carId, startTime, endTime) {
     return axios
     .post('/api/bookings', {
       spot_id: spotId,
@@ -57,7 +57,7 @@ export default function App(props)  {
             <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
               spots={state.spots}
               user={state.user}
-              bookSpot={makeNewBooking}
+              bookSpot={bookSpot}
               /></Route>
             <Route exact path="/mybookings"> <RenterD_myBookings user={state.user}/> </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>

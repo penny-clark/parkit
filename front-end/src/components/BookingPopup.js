@@ -15,7 +15,7 @@ export default function BookingPopup(props) {
   };
 
   function save() {
-    props.bookSpot(props.user.id, props.id, startTime, endTime)
+    props.bookSpot(props.spot.id, props.user.car_id, startTime, endTime)
   }
 
   return (
