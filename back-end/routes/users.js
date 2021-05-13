@@ -57,7 +57,7 @@ module.exports = (db) => {
           AS owner,
           CASE WHEN AVG(spot_ratings.rating) IS NULL
           THEN NULL
-          ELSE AVG(spot_ratings.rating)
+          ELSE ROUND(AVG(spot_ratings.rating))
           END AS rating
         FROM bookings
         LEFT JOIN spots ON spots.id = bookings.spot_id
