@@ -30,7 +30,10 @@ export default function RenterD_myBookings(props) {
 
   const { expanded, setExpanded, handleChange} = useDisplayAction();
 
-  
+  function cancel (bookingId) {
+    console.log("clicked cancel button, this is bookingId", bookingId)
+    props.cancelBooking(bookingId)
+  }
 
   // iterate each booking
 
@@ -55,8 +58,8 @@ export default function RenterD_myBookings(props) {
         </AccordionDetails>
         <AccordionActions>
           <Button >Contact Owner</Button>
-          <Button color="secondary">
-            Cancel
+          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
+            Cancel This Booking
           </Button>
         </AccordionActions>
       </Accordion>

@@ -103,13 +103,15 @@ router.post("/", (req, res) => {
 // delete booking - by booking ids
 
 router.delete("/:id", (req, res) => {
+  console.log(req.params, "REQ PARAMS FROM DELETE REQUEST")
   return db.query(`
   DELETE FROM bookings where id = $1;
   `, [req.params.id])
     .then( booking => {
-      res.json({ booking });
+      console.log(booking, "cancelled ya!")
     })
     .catch(err => {
+      console.log(err)
       res
         .status(500)
         .json({ error: err.message });

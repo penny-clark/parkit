@@ -27,6 +27,15 @@ export default function App(props)  {
     .catch(err => console.log(err))
   }
 
+  function cancelBooking(id) {
+    console.log("made it to App")
+    return axios
+    .delete(`/api/bookings/${id}`, {})
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
+  }
 
   const [state, setState] = useState({
     spots: [],
@@ -64,7 +73,7 @@ export default function App(props)  {
               user={state.user}
               bookSpot={bookSpot}
               /></Route>
-            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user} bookingsR={state.renterbookings}/> </Route>
+            <Route exact path="/mybookings"> <RenterD_myBookings user={state.user} bookingsR={state.renterbookings} cancelBooking={cancelBooking}/> </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
             <Route exact path="/addnewcar">Add a Car : ID</Route>
