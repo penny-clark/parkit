@@ -10,16 +10,16 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction";
-import { getRenterBookings, getRenterSpots } from '../helpers/selector';
+import { getOwnerBookings, getOwnerSpots } from '../helpers/selector';
 
 export default function OwnerD_BookedSchedule(props) {
 
   //get this owner's booked schedule list from helper function
-  const thisUserBookings = getRenterBookings(props.user.id, props.bookingsO)
+  const thisUserBookings = getOwnerBookings(props.user.id, props.bookingsO)
   //get this owner's spot's address array to display
-  const thisUserSpots = getRenterSpots(props.user.id, props.spots)
+  const thisUserSpots = getOwnerSpots(props.user.id, props.spots)
   
-  //list open/close working with this - from the hook
+  //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
 
   // iterate each booking
@@ -32,9 +32,9 @@ export default function OwnerD_BookedSchedule(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <ListItem>
+   
           <UserNameDisplay user={bookObj.renter}/>
-        </ListItem>
+ 
         <ListItem>
         <Typography variant="body1">Spot:{thisUserSpots[0]}</Typography>
         </ListItem>

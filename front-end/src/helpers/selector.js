@@ -1,6 +1,6 @@
 
   //get owner's bookings as Array by user ID
-export function getRenterBookings(userID, bookingsData) {
+export function getOwnerBookings(userID, bookingsData) {
   const thisUserBookings = [];
 
   for (const item of bookingsData) {
@@ -12,7 +12,7 @@ export function getRenterBookings(userID, bookingsData) {
 }
 
  //get owner's spot address as Array by user ID
-export function getRenterSpots(userID, spotsData) {
+export function getOwnerSpots(userID, spotsData) {
   const thisUserSpots = [];
 
   for (const item of spotsData) {
@@ -22,3 +22,15 @@ export function getRenterSpots(userID, spotsData) {
   }
   return thisUserSpots;
 }
+
+  //get renter's bookings as Array by user ID
+  export function getRenterBookings(user_carID, bookingsData) {
+    const thisUserBookings = [];
+  
+    for (const item of bookingsData) {
+      if(item.car_id === user_carID) {
+        thisUserBookings.push(item)
+      }
+    }
+    return thisUserBookings;
+  }
