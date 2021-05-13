@@ -53,7 +53,7 @@ export default function App(props)  {
         <Route exact path="/"> <SearchBar />, <SearchResult/>  <SpotList
           spots={state.spots}
           /></Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={user}/> </Route>
+        <Route exact path="/mybookings"> <RenterD_myBookings user={user} bookings={state.bookingsR}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
         <Route exact path="/mycars">My Cars : ID</Route>
         <Route exact path="/addnewcar">Add a Car : ID</Route>

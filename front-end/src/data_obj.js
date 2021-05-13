@@ -174,71 +174,292 @@ export const bookings = [
   {
     id: 1,
     car_id: 1,
-    start_date_time: '5/1/2021 8:00:00',
-    end_date_time: '5/1/2021 11:00:00',
-    spot : {
+    renter_id: 1,
+    start_date_time: "2021-05-01T08:00:00.000Z",
+    end_date_time: "2021-05-01T11:00:00.000Z",
+    spot: {
       spot_id: 9,
-      street_address:'1850 Comox St',
-      city: 'Vancouver',
-      province: 'BC',
-      country: 'Canada',
-      postal_code:'V6G 2P4',
+      street_address: "1850 Comox St",
+      city: "Vancouver",
+      province: "BC",
+      postal_code: "V6G 2P4",
       price: 5,
-      picture : 'https://pr.sssagent.com/img/parkingspot9.png'
-    },
-    spot_rating: 4
+      picture: "https://pr.sssagent.com/img/parkingspot1.png"
+      },
+    owner: {
+      user_id: 14,
+      first_name: "Marie",
+      last_name: "Barker",
+      owner_email: "mariebarker22@gamil.com",
+      avatar: "https://pr.sssagent.com/img/a14.png"
+      },
+    rating: "3.0000000000000000"
   },
   {
     id: 2,
     car_id: 2,
-    start_date_time: '5/2/2021 11:00:00',
-    end_date_time: '5/2/2021 15:00:00',
-    spot : {
-      spot_id: 2,
-      street_address: '1950 Franklin St',
-      city: 'Vancouver',
-      province: 'BC',
-      country: 'Canada',
-      postal_code: 'V5L 1R2',
-      price: 3,
-      picture: 'https://pr.sssagent.com/img/parkingspot2.png',
+    renter_id: 6,
+    start_date_time: "2021-05-02T11:00:00.000Z",
+    end_date_time: "2021-05-02T15:00:00.000Z",
+    spot: {
+    spot_id: 2,
+    street_address: "1950 Franklin St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V5L 1R2",
+    price: 3,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
     },
-    spot_rating: 3
+    owner: {
+    user_id: 4,
+    first_name: "Frank",
+    last_name: "Faststuff",
+    owner_email: "franky@frank.com",
+    avatar: "https://pr.sssagent.com/img/a4.png"
+    },
+    rating: "3.0000000000000000"
   },
   {
     id: 3,
     car_id: 5,
-    start_date_time: '5/3/2021 12:00:00',
-    end_date_time: '5/3/2021 20:00:00',
-    spot : {
-      spot_id: 5,
-      street_address: '900 Burrard St',
-      city: 'Vancouver',
-      province: 'BC',
-      country: 'Canada',
-      postal_code : 'V6Z 3G5',
-      price: 1,
-      picture : 'https://pr.sssagent.com/img/parkingspot5.png',
+    renter_id: 2,
+    start_date_time: "2021-05-03T12:00:00.000Z",
+    end_date_time: "2021-05-03T20:00:00.000Z",
+    spot: {
+    spot_id: 5,
+    street_address: "900 Burrard St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6Z 3G5",
+    price: 1,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
     },
-    spot_rating: null
+    owner: {
+    user_id: 9,
+    first_name: "TeeJay",
+    last_name: "Grammar",
+    owner_email: "tj@gmail.com",
+    avatar: "https://pr.sssagent.com/img/a9.png"
+    },
+    rating: "5.0000000000000000"
+    },
+  {
+    id: 4,
+    car_id: 3,
+    renter_id: 7,
+    start_date_time: "2021-05-03T13:00:00.000Z",
+    end_date_time: "2021-05-03T14:00:00.000Z",
+    spot: {
+    spot_id: 6,
+    street_address: "1025 Nelson St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6E 1J1",
+    price: 3,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 11,
+    first_name: "Noah",
+    last_name: "Jin",
+    owner_email: "noahjinn@gmail.com",
+    avatar: "https://pr.sssagent.com/img/a11.png"
+    },
+    rating: "4.0000000000000000"
   },
   {
+    id: 5,
+    car_id: 1,
+    renter_id: 1,
+    start_date_time: "2021-05-03T08:00:00.000Z",
+    end_date_time: "2021-05-03T11:00:00.000Z",
+    spot: {
+    spot_id: 9,
+    street_address: "1850 Comox St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6G 2P4",
+    price: 5,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 14,
+    first_name: "Marie",
+    last_name: "Barker",
+    owner_email: "mariebarker22@gamil.com",
+    avatar: "https://pr.sssagent.com/img/a14.png"
+    },
+    rating: "3.0000000000000000"
+  },
+  {
+    id: 6,
+    car_id: 2,
+    renter_id: 6,
+    start_date_time: "2021-05-07T09:00:00.000Z",
+    end_date_time: "2021-05-07T10:00:00.000Z",
+    spot: {
+    spot_id: 7,
+    street_address: "1133 Barclay St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6E 1G8",
+    price: 3,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 12,
+    first_name: "Brad",
+    last_name: "Wong",
+    owner_email: "bwong@gmail.com",
+    avatar: "https://pr.sssagent.com/img/a12.png"
+    },
+    rating: null
+},
+{
     id: 7,
     car_id: 3,
-    start_date_time: '5/22/2021 7:00:00',
-    end_date_time: '5/22/2021 10:00:00',
-    spot : {
-      spot_id: 3,
-      street_address: '401 W Georgia St',
-      city: 'Vancouver',
-      province: 'BC',
-      country: 'Canada',
-      postal_code : 'V6B 5A1',
-      price: 2,
-      picture : 'https://pr.sssagent.com/img/parkingspot3.png',
+    renter_id: 7,
+    start_date_time: "2021-05-22T07:00:00.000Z",
+    end_date_time: "2021-05-22T10:00:00.000Z",
+    spot: {
+    spot_id: 3,
+    street_address: "401 W Georgia St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6B 5A1",
+    price: 2,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
     },
-    spot_rating: null
+    owner: {
+    user_id: 5,
+    first_name: "Beth",
+    last_name: "Betilda",
+    owner_email: "bethy@gmail.com",
+    avatar: "ttps://pr.sssagent.com/img/a5.png"
+    },
+    rating: null
   },
+  {
+    id: 8,
+    car_id: 5,
+    renter_id: 2,
+    start_date_time: "2021-05-24T16:00:00.000Z",
+    end_date_time: "2021-05-24T18:00:00.000Z",
+    spot: {
+    spot_id: 4,
+    street_address: "385 Robson St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6B 0H3",
+    price: 2,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 8,
+    first_name: "Hilda",
+    last_name: "Sprockets",
+    owner_email: "ideehilda@gmail.com",
+    avatar: "https://pr.sssagent.com/img/a8.png"
+    },
+    rating: null
+  },
+  {
+    id: 9,
+    car_id: 1,
+    renter_id: 1,
+    start_date_time: "2021-05-24T17:00:00.000Z",
+    end_date_time: "2021-05-24T20:00:00.000Z",
+    spot: {
+    spot_id: 9,
+    street_address: "1850 Comox St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6G 2P4",
+    price: 5,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 14,
+    first_name: "Marie",
+    last_name: "Barker",
+    owner_email: "mariebarker22@gamil.com",
+    avatar: "https://pr.sssagent.com/img/a14.png"
+    },
+    rating: "3.0000000000000000"
+  },
+  {
+    id: 10,
+    car_id: 2,
+    renter_id: 6,
+    start_date_time: "2021-06-01T13:00:00.000Z",
+    end_date_time: "2021-06-01T14:00:00.000Z",
+    spot: {
+    spot_id: 9,
+    street_address: "1850 Comox St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6G 2P4",
+    price: 5,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 14,
+    first_name: "Marie",
+    last_name: "Barker",
+    owner_email: "mariebarker22@gamil.com",
+    avatar: "https://pr.sssagent.com/img/a14.png"
+    },
+    rating: "3.0000000000000000"
+  },
+  {
+    id: 11,
+    car_id: 2,
+    renter_id: 6,
+    start_date_time: "2021-06-01T14:00:00.000Z",
+    end_date_time: "2021-06-01T17:00:00.000Z",
+    spot: {
+    spot_id: 8,
+    street_address: "11255 Bidwell St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6G 2K8",
+    price: 4,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 13,
+    first_name: "Amy",
+    last_name: "Schindler",
+    owner_email: "aamys@hey.com",
+    avatar: "https://pr.sssagent.com/img/a13.png"
+    },
+    rating: null
+  },
+  {
+    id: 12,
+    car_id: 5,
+    renter_id: 2,
+    start_date_time: "2021-06-04T13:00:00.000Z",
+    end_date_time: "2021-06-04T15:00:00.000Z",
+    spot: {
+    spot_id: 4,
+    street_address: "385 Robson St",
+    city: "Vancouver",
+    province: "BC",
+    postal_code: "V6B 0H3",
+    price: 2,
+    picture: "https://pr.sssagent.com/img/parkingspot1.png"
+    },
+    owner: {
+    user_id: 8,
+    first_name: "Hilda",
+    last_name: "Sprockets",
+    owner_email: "ideehilda@gmail.com",
+    avatar: "https://pr.sssagent.com/img/a8.png"
+    },
+    rating: null
+  }
+    
 ]
   
 
