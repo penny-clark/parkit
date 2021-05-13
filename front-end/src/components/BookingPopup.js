@@ -7,16 +7,18 @@ import DateTimePicker from '@material-ui/lab/DateTimePicker';
 
 export default function BookingPopup(props) {
 
-  const [startTime, setStartTime] = useState(new Date());
-  const [endTime, setEndTime] = useState(new Date());
+  const [startTime, setStartTime] = useState("Select date and time");
+  const [endTime, setEndTime] = useState("Select date and time");
+  const [totalCost, setTotalCost] = useState("Please select you booking times")
 
   const handleCheckout = () => {
     props.setChecked((prev) => !prev);
   };
 
   function save() {
-    props.bookSpot(props.spot.id, props.user.car_id, startTime, endTime)
+    props.bookSpot(props.user.car_id, props.spot.id, startTime, endTime)
   }
+
 
   return (
     <div>
@@ -40,11 +42,14 @@ export default function BookingPopup(props) {
             value={endTime}
             onChange={(newValue) => {
             setEndTime(newValue);
+            console.log(endTime, "is end time updated right away")
+            setTotalCost(`Total: ${(newValue - startTime) * (props.spot.cost / 60)}`)
           }}
         />
         </Grid>
       </LocalizationProvider>
       </Grid>
+      <p>{totalCost} </p>
      <Button variant="contained" onClick={save} color="secondary">Confirm & Pay</Button> 
      <Button variant="contained" onClick={handleCheckout} >Close</Button>
     </div>

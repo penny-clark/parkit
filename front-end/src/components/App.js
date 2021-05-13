@@ -15,11 +15,11 @@ import RenterD_myCars from './RenterD_myCars';
 
 export default function App(props)  {
 
-  function bookSpot(spotId, carId, startTime, endTime) {
+  function bookSpot(carId, spotId, startTime, endTime) {
     return axios
     .post('/api/bookings', {
-      spot_id: spotId,
       car_id: carId,
+      spot_id: spotId,
       start_datetime: startTime,
       end_datetime: endTime
     })
