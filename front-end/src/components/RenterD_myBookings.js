@@ -39,14 +39,16 @@ export default function RenterD_myBookings(props) {
 
   const displayBookings = () => {
     const print = [];
-    console.log(thisUserBookings)
+  //  console.log(thisUserBookings)
+    
     for (const bookObj of thisUserBookings) {
       const num = thisUserBookings.indexOf(bookObj)+1;
-      const title = bookObj.spot.street_address;
+ 
+
       print.push(
         <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">{title}</Typography>
+          <Typography variant="h6">{bookObj.spot.street_address}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

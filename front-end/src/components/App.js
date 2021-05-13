@@ -29,19 +29,10 @@ export default function App(props)  {
     .catch(err => console.log(err))
   }
 
-  const user = {
-    id: 1,
-    first_name: "Eggert",
-    last_name: "Eggerson",
-    email: "egg@egg.com",
-    avatar: "https://pr.sssagent.com/img/a1.png",
-    spot_id: 1,
-    car_id: 1
-  }
 
   const [state, setState] = useState({
     spots: [],
-    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
   });
 
   useEffect( () => {
@@ -59,8 +50,7 @@ export default function App(props)  {
 
       <div className="main">
 
-          <TopBar user={user}/>
-
+          <TopBar user={state.user}/>
          
     < Router>
       <Switch>
@@ -69,9 +59,9 @@ export default function App(props)  {
           user={state.user}
           bookSpot={makeNewBooking}
           /></Route>
-        <Route exact path="/mybookings"> <RenterD_myBookings user={user}/> </Route>
+        <Route exact path="/mybookings"> <RenterD_myBookings user={state.user}/> </Route>
         <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-        <Route exact path="/mycars"><RenterD_myCars user={user}/></Route>
+        <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
         <Route exact path="/addnewcar">Add a Car : ID</Route>
       </Switch>
     </Router>
