@@ -9,6 +9,7 @@ import RenterD_myCars from './RenterD_myCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import SpotListSearch from './SpotListSearch';
 import RenterD_RegisterCars from './RenterD_RegisterCars';
+import OwnerD_RegisterSpots from './OwnerD_RegisterSpots';
 import { CollectionsOutlined } from '@material-ui/icons';
 
 
@@ -124,7 +125,7 @@ export default function App(props)  {
               <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots} cancelBooking={cancelBooking}/>
             </Route>
             <Route exact path="/myspots">My spots</Route>
-            <Route exact path="/addnewspot">Add a Spot : ID</Route>
+            <Route exact path="/addnewspot"><OwnerD_RegisterSpots user={state.user}/></Route>
           </Switch>
       
       </div>
