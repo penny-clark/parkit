@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
 import './SpotListItem.scss';
 import { Button, Typography, Grid, TextField } from '@material-ui/core';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
@@ -15,8 +17,15 @@ export default function BookingPopup(props) {
     props.setChecked((prev) => !prev);
   };
 
+  const redirectToPayment = () => {
+    window.location = "http://localhost:3000/payment_complete"
+  }
+
   function save() {
     props.bookSpot(props.user.car_id, props.spot.id, startTime, endTime)
+    handleCheckout();
+    redirectToPayment();
+
   }
 
 
