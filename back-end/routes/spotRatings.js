@@ -5,6 +5,20 @@ const router = express.Router();
 module.exports = (db) => {
 //for Renter
 
+router.get("/", (request, response) => {
+  return db.query(
+     `
+     SELECT
+       id, user_id, spot_id, rating
+       FROM spot_ratings
+   `
+   ).then(({ rows: spotratings }) => {
+     response.json(
+       spotratings
+     );
+   });
+ });
+
 //post a new spot rating
 
   router.post("/", (req, res) => {
