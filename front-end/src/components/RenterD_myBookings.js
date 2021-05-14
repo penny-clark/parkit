@@ -50,8 +50,8 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button >Contact Owner</Button>
-          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
+          <Button variant="contained">Contact Owner</Button>
+          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
             Cancel This Booking
           </Button>
         </AccordionActions>
@@ -84,10 +84,8 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button >Contact Owner</Button>
-          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
-            Cancel This Booking
-          </Button>
+          <Button variant="contained" >Bookmark</Button>
+          <Button variant="contained" color="secondary" >Rate this spot</Button>
         </AccordionActions>
       </Accordion>
       )

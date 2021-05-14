@@ -55,8 +55,8 @@ export default function OwnerD_BookedSchedule(props) {
           </Typography>
         </AccordionDetails>
         <AccordionActions>
-          <Button >Contact Renter</Button>
-          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
+          <Button variant="contained">Contact Renter</Button>
+          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
             Cancel This Booking
           </Button>
         </AccordionActions>
