@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-
+import { Link } from 'react-router-dom';
 import './RegisterForm.scss';
 import {Button, Typography, Grid } from '@material-ui/core';
 import { FilledInput } from '@material-ui/core';
@@ -124,8 +124,9 @@ export default function OwnerD_RegisterSpots(props) {
           labelWidth={7}
         />
       </FormControl>
-
+      <Link to="/myspots" >
       <Button variant="contained" onClick={submitSpot} color="secondary">Submit</Button> 
+      </Link>
     </div>
     </Fragment>
   );

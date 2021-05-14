@@ -1,5 +1,5 @@
 import React, {useState, Fragment} from 'react';
-
+import { Link } from 'react-router-dom';
 import './RegisterForm.scss';
 import {Button, SliderValueLabel, Typography } from '@material-ui/core';
 import { FilledInput } from '@material-ui/core';
@@ -78,8 +78,9 @@ export default function RenterD_RegisterCars(props) {
           labelWidth={7}
         />
       </FormControl>
-
+      <Link to="/mycars" >
       <Button variant="contained" onClick={submitCar} color="secondary">Submit</Button> 
+      </Link>
     </div>
     </Fragment>
   );
