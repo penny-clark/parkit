@@ -44,7 +44,7 @@ export default function App(props)  {
     
       })
       .catch()
-    }, []);
+    }, [state]);
 
 
   // MAKE A NEW BOOKING
@@ -68,7 +68,7 @@ export default function App(props)  {
       const ownerBookings = all[1].data
       const newRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
       const newOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
-      setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
+      setState(prev => ({ ...prev, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]}))
     })
     .catch(err => console.log(err))
   }
@@ -80,12 +80,12 @@ export default function App(props)  {
     return axios
     .delete(`/api/bookings/${id}`, {})
     .then(res => {
-      setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
+      setState(prev => ({ ...prev, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]}))
     })
     .catch(err => console.log(err))
   }
 
-  //ADD A NEW CAR - fix needed: says setState is not a function... 
+  //ADD A NEW CAR
 
   function addCar(userid, make, model, colour, plate_number){
     const newCarObj = {
@@ -105,10 +105,9 @@ export default function App(props)  {
       plate_number: plate_number
     })
     .then(res => { 
-      console.log("WHY")
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
-      setState({ ...state, cars: newCarArr})
+      setState(prev => ({ ...prev, cars: newCarArr}))
     })
     .catch(err => console.log(err))
   }
@@ -120,7 +119,7 @@ export default function App(props)  {
     return axios
     .delete(`/api/cars/${id}`, {})
     .then(res => {
-      setState({ ...state, cars: [ ...newCars]})
+      setState(prev => ({ ...prev, cars: [ ...newCars]}))
     })
     .catch(err => console.log(err))
   }
@@ -128,6 +127,20 @@ export default function App(props)  {
   //ADD A NEW SPOT - fix needed: same issue as adding new car
   
   function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
+    console.log(state.spots, "before")
+    const newSpotObj = {
+      id: (state.spots[state.spots.length -1].id +1),
+      owner: {userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
+      street_address,
+      city,
+      province,
+      country,
+      postal_code,
+      picture,
+      price,
+      rating: null
+    }
+    
     return axios
       .post('/api/spots', {
         id: userid,
@@ -139,14 +152,14 @@ export default function App(props)  {
         picture,
         price
       })
-      .then(res => {
-        axios.get("/api/spots")
-      })
       .then(res => { 
+        console.log(res)
+        const newSpotArr = [ ...state.spots]
+        newSpotArr.push(newSpotObj)
+        setState(prev => ({ ...prev, spots: newSpotArr}))
+        console.log(newSpotArr, "new spot arr")
         console.log("Do it make it to this stage of addSpot")
-        const spots = res.data
-        const newSpots = Object.keys(spots).map(key => {return spots[key]})
-        setState({ ...state, spots: [ ...newSpots]})
+        console.log(state.spots, "after")
       })
       .catch(err => console.log(err))
     }
@@ -158,7 +171,8 @@ export default function App(props)  {
       return axios
       .delete(`/api/cars/${id}`, {})
       .then(res => {
-        setState({ ...state, spots: [ ...newSpots]})
+  
+        setState(prev => ({ ...prev, spots: [ ...newSpots]}))
       })
       .catch(err => console.log(err))
     }
@@ -166,7 +180,6 @@ export default function App(props)  {
     // BOOKMARK A SPOT (renter dashboard) - fix needed: get route is weird
 
     function bookmarkSpot (userid, spotid){
-      console.log(spotid, "is spot id making it to the app?")
       return axios
         .post('/api/bookmarks', {
           user_id: userid,

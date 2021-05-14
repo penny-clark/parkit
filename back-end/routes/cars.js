@@ -27,7 +27,6 @@ router.post("/", (req, res) => {
   VALUES ($1, $2, $3, $4, $5);
   `, [req.body.id, req.body.make, req.body.model, req.body.colour, req.body.plate_number])
     .then(car => {
-      console.log(car, "car in the response")
       res.json({ car });
     })
     .catch(err => {
