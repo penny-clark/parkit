@@ -104,7 +104,6 @@ export default function App(props)  {
       plate_number: plate_number
     })
     .then(res => { 
-      console.log("WHY")
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
       setState({ ...state, cars: newCarArr})
@@ -127,9 +126,22 @@ export default function App(props)  {
   //ADD A NEW SPOT - fix needed: same issue as adding new car
   
   function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
+    const newSpotObj = {
+      id: (state.spots[state.spots.length -1].id +1),
+      owner: {userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
+      street_address,
+      city,
+      province,
+      country,
+      postal_code,
+      picture,
+      price,
+      rating: null
+    }
+    console.log(state.spots, "before")
     return axios
       .post('/api/spots', {
-        id: userid,
+        user_id: userid,
         street_address,
         city,
         province,
@@ -138,14 +150,12 @@ export default function App(props)  {
         picture,
         price
       })
-      .then(res => {
-        axios.get("/api/spots")
-      })
       .then(res => { 
         console.log("Do it make it to this stage of addSpot")
-        const spots = res.data
-        const newSpots = Object.keys(spots).map(key => {return spots[key]})
-        setState({ ...state, spots: [ ...newSpots]})
+        const newSpotArr = [ ...state.spots]
+        newSpotArr.push(newSpotObj)
+        setState({ ...state, spots: newSpotArr})
+        console.log(state.spots, "after")
       })
       .catch(err => console.log(err))
     }

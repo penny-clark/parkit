@@ -76,7 +76,7 @@ export default function OwnerD_RegisterSpots(props) {
           <InputLabel htmlFor="postal_code">Postal Code</InputLabel>
             <FilledInput
               className="input_register"
-              id="city"
+              id="postal_code"
               value={postalCode}
               onChange={(event) => setPostalCode(event.target.value)}
               labelWidth={7}
