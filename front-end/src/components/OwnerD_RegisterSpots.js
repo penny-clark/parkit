@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import './RegisterForm.scss';
 import {Button, Typography, Grid } from '@material-ui/core';
@@ -12,8 +12,16 @@ import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 export default function OwnerD_RegisterSpots(props) {
 
   function submitSpot() {
-   
+    props.addSpot(props.user.id, streetAddress, city, province, country, postalCode, picture, price) 
   }
+
+  const [streetAddress, setStreetAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [picture, setPicture] = useState("");
+  const [price, setPrice] = useState("");
 
   return (
     <Fragment>
@@ -30,9 +38,9 @@ export default function OwnerD_RegisterSpots(props) {
             <FilledInput
               className="input_register_left"
               id="street_address"
-              value={props.keyword}
+              value={streetAddress}
               placeholder={"example: 123 Robson St"}
-              onChange={(event) => props.setKeyword(event.target.value)}
+              onChange={(event) => setStreetAddress(event.target.value)}
               labelWidth={7}
             />
           </FormControl>
@@ -43,8 +51,8 @@ export default function OwnerD_RegisterSpots(props) {
             <FilledInput
               className="input_register"
               id="city"
-              value={props.keyword}
-              onChange={(event) => props.setKeyword(event.target.value)}
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
               labelWidth={7}
             />
           </FormControl>
@@ -57,8 +65,8 @@ export default function OwnerD_RegisterSpots(props) {
             <FilledInput
               className="input_register_left"
               id="Province"
-              value={props.keyword}
-              onChange={(event) => props.setKeyword(event.target.value)}
+              value={province}
+              onChange={(event) => setProvince(event.target.value)}
               labelWidth={7}
             />
           </FormControl>
@@ -69,8 +77,8 @@ export default function OwnerD_RegisterSpots(props) {
             <FilledInput
               className="input_register"
               id="city"
-              value={props.keyword}
-              onChange={(event) => props.setKeyword(event.target.value)}
+              value={postalCode}
+              onChange={(event) => setPostalCode(event.target.value)}
               labelWidth={7}
             />
           </FormControl>
@@ -84,8 +92,8 @@ export default function OwnerD_RegisterSpots(props) {
             <FilledInput
               className="input_register_left"
               id="Country"
-              value={props.keyword}
-              onChange={(event) => props.setKeyword(event.target.value)}
+              value={country}
+              onChange={(event) => setCountry(event.target.value)}
               labelWidth={7}
             />
           </FormControl>
@@ -96,9 +104,9 @@ export default function OwnerD_RegisterSpots(props) {
         <FilledInput
           className="input_register"
           id="spot_price"
-          value={props.keyword}
+          value={price}
           placeholder={"Enter your spot's price per hour"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          onChange={(event) => setPrice(event.target.value)}
           startAdornment={<InputAdornment position="start"><MonetizationOnIcon /></InputAdornment>}
           labelWidth={7}
         />
@@ -109,9 +117,9 @@ export default function OwnerD_RegisterSpots(props) {
         <FilledInput
           className="input_register"
           id="spot_picture"
-          value={props.keyword}
+          value={picture}
           placeholder={"Enter your spot image url"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          onChange={(event) => setPicture(event.target.value)}
           startAdornment={<InputAdornment position="start"><ImageRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />

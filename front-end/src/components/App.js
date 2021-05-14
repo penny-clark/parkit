@@ -82,10 +82,18 @@ export default function App(props)  {
     .catch(err => console.log(err))
   }
 
-  //ADD A NEW CAR - fix needed: promise not working so not updating state
+  //ADD A NEW CAR - fix needed: says setState is not a function... 
 
   function addCar(userid, make, model, colour, plate_number){
-  return axios
+    const newCarObj = {
+      id: (state.cars[state.cars.length -1].id +1),
+      user_id: state.user.id,
+      make: make,
+      model: model,
+      colour: colour,
+      plate_number: plate_number
+    }
+    return axios
     .post('/api/cars', {
       id: userid,
       make: make,
@@ -93,16 +101,10 @@ export default function App(props)  {
       colour: colour,
       plate_number: plate_number
     })
-    .then(res => {
-      Promise.all([
-        axios.get("/api/cars")
-      ])
-    })
-    .then(all => { 
-      console.log("made it to setState! addCar")
-      const cars = all[0].data
-      const newCars = Object.keys(cars).map(key => {return cars[key]})
-      setState({ ...state, cars: [ ...newCars]})
+    .then(res => { 
+      const newCarArr = [ ...state.cars]
+      newCarArr.push(newCarObj)
+      setState({ ...state, cars: newCarArr})
     })
     .catch(err => console.log(err))
   }
@@ -119,13 +121,14 @@ export default function App(props)  {
     .catch(err => console.log(err))
   }
 
-  //ADD A NEW SPOT - fix: hook up form values to state controllers
-  function addSpot (userid, street_address, city, country, postal_code, picture, price){
+  //ADD A NEW SPOT - fix needed: same issue as adding new car
+  function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
     return axios
       .post('/api/spots', {
         id: userid,
         street_address,
         city,
+        province,
         country,
         postal_code,
         picture,

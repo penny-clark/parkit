@@ -2,6 +2,7 @@ INSERT INTO spots (
   user_id,
   street_address,
   city,
+  province,
   country,
   postal_code,
   picture,
