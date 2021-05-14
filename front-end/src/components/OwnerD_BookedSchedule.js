@@ -83,7 +83,7 @@ export default function OwnerD_BookedSchedule(props) {
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <UserNameDisplay user={bookObj.renter}/>
           <ListItem>
-          <Typography variant="body1">Spot:</Typography>
+          <Typography variant="body1">{findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
           </ListItem>
         </AccordionSummary>
         <AccordionDetails>
