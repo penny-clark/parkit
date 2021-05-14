@@ -11,6 +11,7 @@ import RenterD_RegisterCars from './RenterD_RegisterCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import OwnerD_RegisterSpots from './OwnerD_RegisterSpots';
 import OwnerD_mySpots from './OwnerD_mySpots';
+import PaymentComplete from './PaymentComplete';
 
 export default function App(props)  {
 
@@ -232,6 +233,8 @@ export default function App(props)  {
               user={state.user} 
               addSpot={addSpot}/>
             </Route>
+
+            <Route exact path="/payment_complete"> <PaymentComplete /> </Route>
           </Switch>
       
       </div>
