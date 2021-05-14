@@ -16,7 +16,8 @@ export default function OwnerD_BookedSchedule(props) {
 
   //get this owner's booked schedule list from helper function
   const thisUserBookings = getOwnerBookings(props.user.id, props.bookingsO)
-  //get this owner's spot's address array to display
+
+  //get this owner's spot's obj to get spot address for display
   const thisUserSpots = getOwnerSpots(props.user.id, props.spots)
   
   //list open-close working with this - from the hook
@@ -43,7 +44,7 @@ export default function OwnerD_BookedSchedule(props) {
           <UserNameDisplay user={bookObj.renter}/>
  
         <ListItem>
-        <Typography variant="body1">Spot:{thisUserSpots[0]}</Typography>
+        <Typography variant="body1">Spot:{thisUserSpots[0].street_address}</Typography>
         </ListItem>
           
         </AccordionSummary>

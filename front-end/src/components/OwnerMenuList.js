@@ -8,7 +8,7 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 export default function OwnerMenuList(props) {
   return (
     <List>
-      <Link to="/myspotbooking" >
+      <Link to="/mybookedschedule" >
         <ListItem button>
           <ListItemIcon>
             <ListItemText>Booked Schedule</ListItemText>

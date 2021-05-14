@@ -15,7 +15,7 @@ import { getRenterBookings } from '../helpers/selector';
 export default function RenterD_myBookings(props) {
 
   //get this owner's booked schedule list from helper function
-  const thisUserBookings = getRenterBookings(props.user.car_id, props.bookingsR)
+  const thisUserBookings = getRenterBookings(props.user.id, props.bookingsR)
 
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
@@ -24,7 +24,7 @@ export default function RenterD_myBookings(props) {
     props.cancelBooking(bookingId)
   }
 
-  // iterate each booking
+  //iterate each booking
   const displayBookings = () => {
     const print = [];
     

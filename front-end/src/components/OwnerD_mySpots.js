@@ -9,11 +9,12 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
-import { getRenterCars } from '../helpers/selector';
+import useDisplayAction from "../hooks/useDisplayAction"
+import { getOwnerSpots } from '../helpers/selector';
 
-export default function RenterD_myCars(props) {
+export default function OwnerD_mySpots(props) {
 
-  const thisUserCars = getRenterCars(props.user.id, props.cars);
+  const thisUserSpots = getOwnerSpots(props.user.id, props.spots);
   
   const [expanded, setExpanded] = useState('panel1');
 
@@ -27,26 +28,26 @@ export default function RenterD_myCars(props) {
   };
 
 
-  // iterate each car
-  const displayCars = () => {
+  // iterate each spot
+  const displaySpots = () => {
     const print = [];
  
-    for (const carObj of thisUserCars) {
-      const num = thisUserCars.indexOf(carObj)+1;
+    for (const spotObj of thisUserSpots) {
+      const num = thisUserSpots.indexOf(spotObj)+1;
    
       print.push(
         <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">My Car {num} : {carObj.plate_number}</Typography>
+          <Typography variant="h6">My Spot {num} : {spotObj.street_address}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="subtitle1">Make : {carObj.make}</Typography><br />
-          <Typography variant="subtitle1">Model : {carObj.model}</Typography><br />
-          <Typography variant="subtitle1">Colour : {carObj.colour}</Typography>
+          <Typography variant="subtitle1">{spotObj.city}, {spotObj.province}, {spotObj.postal_code}, {spotObj.country}</Typography><br />
+          <Typography variant="subtitle1">Price per hour : {spotObj.price}</Typography><br />
+          <img src={spotObj.picture} height="300px"/>
         </AccordionDetails>
         <AccordionActions>
-          <Button color="secondary" onClick={() => cancel(carObj.id)}>
-            Delete this car
+          <Button color="secondary" onClick={() => cancel(spotObj.id)}>
+            Delete this spot
           </Button>
         </AccordionActions>
       </Accordion>
@@ -59,10 +60,10 @@ export default function RenterD_myCars(props) {
   return (
     <div>
       <Typography variant="body1">
-      This is "Renter Dashboard - My cars" of user : {props.user.first_name} 
+      This is "Owner's Dashboard - My spots" of user : {props.user.first_name} 
       </Typography>
    
-      {displayCars()}
+      {displaySpots()}
     
     </div>
   );

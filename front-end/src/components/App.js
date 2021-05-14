@@ -4,14 +4,13 @@ import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-
 
 import './App.scss';
 import TopBar from './TopBar';
+import SpotListSearch from './SpotListSearch';
 import RenterD_myBookings from './RenterD_myBookings';
 import RenterD_myCars from './RenterD_myCars';
-import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
-import SpotListSearch from './SpotListSearch';
 import RenterD_RegisterCars from './RenterD_RegisterCars';
+import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import OwnerD_RegisterSpots from './OwnerD_RegisterSpots';
-import { CollectionsOutlined } from '@material-ui/icons';
-
+import OwnerD_mySpots from './OwnerD_mySpots';
 
 export default function App(props)  {
 
@@ -20,7 +19,7 @@ export default function App(props)  {
     cars: [],
     renterbookings: [],
     ownerbookings: [],
-    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
   });
 
   function bookSpot(carId, spotId, startTime, endTime) {
@@ -95,7 +94,8 @@ export default function App(props)  {
         const setCars = Object.keys(cars).map(key => {return cars[key]})
         const setRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
         const setOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
-        setState(prev => ({ ...prev, spots: setSpots, cars: setCars, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings}))
+        setState(prev => ({ ...prev, spots: setSpots, cars: setCars[0], renterbookings: setRenterBookings, ownerbookings: setOwnerBookings}))
+    
       })
       .catch()
     }, []);
@@ -115,17 +115,38 @@ export default function App(props)  {
               />
             </Route>
             <Route exact path="/mybookings"> 
-              <RenterD_myBookings user={state.user} bookingsR={state.renterbookings} cancelBooking={cancelBooking}/> 
+              <RenterD_myBookings 
+                user={state.user} 
+                bookingsR={state.renterbookings} 
+                cancelBooking={cancelBooking}/> 
             </Route>
-            <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
-            <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
-            <Route exact path="/addnewcar"><RenterD_RegisterCars user={state.user} addCar={addCar} /></Route>
+            <Route exact path="/mybookmarks">
+              My Bookmarks : ID
+            </Route>
+            <Route exact path="/mycars">
+              <RenterD_myCars 
+                user={state.user}
+                cars={state.cars}/>
+            </Route>
+            <Route exact path="/addnewcar">
+              <RenterD_RegisterCars user={state.user} addCar={addCar} />
+            </Route>
 
-            <Route exact path="/myspotbooking">
-              <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots} cancelBooking={cancelBooking}/>
+            <Route exact path="/mybookedschedule">
+              <OwnerD_BookedSchedule 
+                user={state.user} 
+                bookingsO={state.ownerbookings} 
+                spots={state.spots} 
+                cancelBooking={cancelBooking}/>
             </Route>
-            <Route exact path="/myspots">My spots</Route>
-            <Route exact path="/addnewspot"><OwnerD_RegisterSpots user={state.user}/></Route>
+            <Route exact path="/myspots">
+              <OwnerD_mySpots 
+              user={state.user} 
+              spots={state.spots}/>
+            </Route>
+            <Route exact path="/addnewspot">
+              <OwnerD_RegisterSpots user={state.user}/>
+            </Route>
           </Switch>
       
       </div>
