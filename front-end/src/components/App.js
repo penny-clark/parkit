@@ -121,7 +121,7 @@ export default function App(props)  {
             <Route exact path="/addnewcar"><RenterD_RegisterCars user={state.user} addCar={addCar} /></Route>
 
             <Route exact path="/myspotbooking">
-              <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots}/>
+              <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots} cancelBooking={cancelBooking}/>
             </Route>
             <Route exact path="/myspots">My spots</Route>
             <Route exact path="/addnewspot">Add a Spot : ID</Route>

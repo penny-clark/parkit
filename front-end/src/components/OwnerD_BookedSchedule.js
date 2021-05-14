@@ -22,13 +22,20 @@ export default function OwnerD_BookedSchedule(props) {
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
 
+  function cancel (bookingId) {
+    props.cancelBooking(bookingId)
+  }
+
   // iterate each booking
   const displayBookings = () => {
     const print = [];
     
     for (const bookObj of thisUserBookings) {
       const num = thisUserBookings.indexOf(bookObj)+1;
- 
+
+      const startDateArr = bookObj.start_date_time.split("T")
+      const endDateArr = bookObj.end_date_time.split("T")
+
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
@@ -42,14 +49,14 @@ export default function OwnerD_BookedSchedule(props) {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-         Start : {bookObj.start_date_time} <br />
-         End : {bookObj.end_date_time}
+         Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)} <br />
+         End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}
           </Typography>
         </AccordionDetails>
         <AccordionActions>
           <Button >Contact Renter</Button>
-          <Button color="secondary">
-            Cancel
+          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
+            Cancel This Booking
           </Button>
         </AccordionActions>
       </Accordion>

@@ -21,7 +21,6 @@ export default function RenterD_myBookings(props) {
   const { expanded, setExpanded, handleChange} = useDisplayAction();
 
   function cancel (bookingId) {
-    console.log("clicked cancel button, this is bookingId", bookingId)
     props.cancelBooking(bookingId)
   }
 
@@ -31,6 +30,9 @@ export default function RenterD_myBookings(props) {
     
     for (const bookObj of thisUserBookings) {
       const num = thisUserBookings.indexOf(bookObj)+1;
+
+      const startDateArr = bookObj.start_date_time.split("T")
+      const endDateArr = bookObj.end_date_time.split("T")
  
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
@@ -38,8 +40,8 @@ export default function RenterD_myBookings(props) {
           <Typography variant="h6">{bookObj.spot.street_address}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start : {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End : {bookObj.end_date_time}</ListItemText>
+          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           

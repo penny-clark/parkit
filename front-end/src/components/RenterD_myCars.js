@@ -75,7 +75,7 @@ export default function RenterD_myCars(props) {
   return (
     <div>
       <Typography variant="body1">
-      This is "Renter Dashbard - My booking list" of user : {user.first_name} 
+      This is "Renter Dashboard - My booking list" of user : {user.first_name} 
       </Typography>
    
       {displayBookings()}
