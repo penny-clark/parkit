@@ -9,6 +9,7 @@ import RenterD_myCars from './RenterD_myCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import SpotListSearch from './SpotListSearch';
 import RenterD_RegisterCars from './RenterD_RegisterCars';
+import { CollectionsOutlined } from '@material-ui/icons';
 
 
 export default function App(props)  {
@@ -29,7 +30,19 @@ export default function App(props)  {
       end_datetime: endTime
     })
     .then(res => {
-      console.log(res)
+      console.log("stage 2")
+      Promise.all([
+      axios.get("/api/bookings/renter"),
+      axios.get("/api/bookings/owner")
+      ])
+    })
+    .then(all => { 
+      console.log("stage 3")
+      const renterBookings = all[0].data
+      const ownerBookings = all[1].data
+      const newRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
+      const newOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
+      setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
     })
     .catch(err => console.log(err))
 
@@ -45,7 +58,6 @@ export default function App(props)  {
     return axios
     .delete(`/api/bookings/${id}`, {})
     .then(res => {
-      console.log(res, "hello I did get here")
       setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
     })
     .catch(err => console.log(err))

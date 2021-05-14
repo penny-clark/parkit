@@ -9,7 +9,7 @@ export default function BookingPopup(props) {
 
   const [startTime, setStartTime] = useState("Select date and time");
   const [endTime, setEndTime] = useState("Select date and time");
-  const [totalCost, setTotalCost] = useState("Please select you booking times")
+  const [totalCost, setTotalCost] = useState("Please select your booking times")
 
   const handleCheckout = () => {
     props.setChecked((prev) => !prev);
