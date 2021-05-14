@@ -19,7 +19,7 @@ export default function App(props)  {
     cars: [],
     renterbookings: [],
     ownerbookings: [],
-    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id:1}
   });
 
   //SETS INITIAL DATA FROM DATABASE
