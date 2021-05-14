@@ -35,6 +35,25 @@ export function getRenterBookings(userID, bookingsData) {
   return thisUserBookings;
 }
 
+export function getHistory(UserBookings) { 
+
+  //get current date
+  const currentDate = new Date();
+  const reformatDate = currentDate.toISOString();
+
+  const history = [];
+  const active = []
+
+  for (const obj of UserBookings) {
+    if (obj.end_date_time < reformatDate) {
+      history.push(obj)
+    } else {
+      active.push(obj)
+    }
+  }
+  return [ active, history]
+}
+
 
 //get renter's Cars(obj) as Array by user's car ID
 export function getRenterCars(userID, carsData) {

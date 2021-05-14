@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 
 import './RegisterForm.scss';
 import {Button, SliderValueLabel, Typography } from '@material-ui/core';
@@ -23,6 +23,9 @@ export default function RenterD_RegisterCars(props) {
 
 
   return (
+    <Fragment>
+      <Typography variant="h5" className="page_title">Register New Car</Typography>
+    
     <div className="wrap_registerCar">
       <Typography variant="h6" >Make</Typography>
        <FormControl fullWidth variant="filled" size="medium" >
@@ -78,6 +81,7 @@ export default function RenterD_RegisterCars(props) {
 
       <Button variant="contained" onClick={submitCar} color="secondary">Submit</Button> 
     </div>
+    </Fragment>
   );
 }
 

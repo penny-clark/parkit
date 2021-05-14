@@ -1,14 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 
 import './SearchBar.scss';
 import { Grid, TextField } from '@material-ui/core';
 import AddLocationRoundedIcon from '@material-ui/icons/AddLocationRounded';
-
 import { FilledInput } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
-
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DateTimePicker from '@material-ui/lab/DateTimePicker';

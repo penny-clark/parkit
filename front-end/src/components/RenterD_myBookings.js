@@ -10,12 +10,15 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
-import { getRenterBookings } from '../helpers/selector';
+import { getRenterBookings, getHistory } from '../helpers/selector';
 
 export default function RenterD_myBookings(props) {
 
   //get this owner's booked schedule list from helper function
   const thisUserBookings = getRenterBookings(props.user.id, props.bookingsR)
+  const dividedBooking = getHistory(thisUserBookings)
+  const activeBooking = dividedBooking[0]
+  const historyBooking = dividedBooking[1]
 
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
@@ -24,12 +27,46 @@ export default function RenterD_myBookings(props) {
     props.cancelBooking(bookingId)
   }
 
-  //iterate each booking
-  const displayBookings = () => {
+  //iterate each active booking
+  const displayActiveBookings = () => {
     const print = [];
     
-    for (const bookObj of thisUserBookings) {
-      const num = thisUserBookings.indexOf(bookObj)+1;
+    for (const bookObj of activeBooking) {
+      const num = activeBooking.indexOf(bookObj)+1;
+
+      const startDateArr = bookObj.start_date_time.split("T")
+      const endDateArr = bookObj.end_date_time.split("T")
+ 
+      print.push(
+        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+        <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
+          <Typography variant="h6">{bookObj.spot.street_address}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>Spot Owner:</ListItemText>
+          <UserNameDisplay user={bookObj.owner}/>
+          
+        </AccordionDetails>
+        <AccordionActions>
+          <Button >Contact Owner</Button>
+          <Button color="secondary" onClick={() => cancel(bookObj.id)}>
+            Cancel This Booking
+          </Button>
+        </AccordionActions>
+      </Accordion>
+      )
+    }
+    return print;
+  };
+
+  //iterate each active booking
+  const displayHistoryBookings = () => {
+    const print = [];
+    const reversedHistory = historyBooking.reverse()
+    for (const bookObj of reversedHistory) {
+      const num = activeBooking.length + reversedHistory.indexOf(bookObj)+1;
 
       const startDateArr = bookObj.start_date_time.split("T")
       const endDateArr = bookObj.end_date_time.split("T")
@@ -59,13 +96,20 @@ export default function RenterD_myBookings(props) {
   };
 
 
+
   return (
     <div className="wrap_dashboard">
       <Typography variant="body1">
-      This is "Renter Dashboard - My booking list" of user : {props.user.first_name} 
+        Renter Dashboard - My booking list
       </Typography>
-   
-      {displayBookings()}
+
+      <Typography variant="h5" className="page_title">Active Booking</Typography>
+      {displayActiveBookings()}
+
+      <Divider />
+
+      <Typography variant="h5" className="page_title">History</Typography>
+      {displayHistoryBookings()}
     
     </div>
   );
