@@ -29,7 +29,7 @@ export default function App(props)  {
       axios.get("/api/spots"),
       axios.get("/api/cars"),
       axios.get("/api/bookings/renter"),
-      axios.get("/api/bookings/owner")
+      axios.get("/api/bookings/owner"),
     ]).then((all) => {
         const spots = all[0].data
         const cars = all[1].data
@@ -45,7 +45,8 @@ export default function App(props)  {
       .catch()
     }, []);
 
-  //BOOK MAKE A NEW BOOKING
+  // MAKE A NEW BOOKING
+
   function bookSpot(carId, spotId, startTime, endTime) {
     return axios
     .post('/api/bookings', {
@@ -104,7 +105,7 @@ export default function App(props)  {
     .then(res => { 
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
-      setState({ ...state, cars: newCarArr})
+      setState({ ...state, cars: [ ...newCarArr]})
     })
     .catch(err => console.log(err))
   }
@@ -122,6 +123,7 @@ export default function App(props)  {
   }
 
   //ADD A NEW SPOT - fix needed: same issue as adding new car
+  
   function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
     return axios
       .post('/api/spots', {
@@ -146,7 +148,7 @@ export default function App(props)  {
       .catch(err => console.log(err))
     }
 
-    //DELETE SPOT 
+    // DELETE A SPOT (owner dashboard)
 
     function deleteSpot(id) {
       const newSpots = state.spots.filter(spot => spot.id !== id)
@@ -157,6 +159,21 @@ export default function App(props)  {
       })
       .catch(err => console.log(err))
     }
+
+    // BOOKMARK A SPOT (renter dashboard) - fix needed: get route is weird
+
+    function bookmarkSpot (userid, spotid){
+      console.log(spotid, "is spot id making it to the app?")
+      return axios
+        .post('/api/bookmarks', {
+          user_id: userid,
+          spot_id: spotid
+        })
+        .then(res => {
+          console.log("bookmark success!")
+        })
+        .catch(err => console.log(err))
+      }
 
   return (
 
@@ -176,7 +193,9 @@ export default function App(props)  {
               <RenterD_myBookings 
                 user={state.user} 
                 bookingsR={state.renterbookings} 
-                cancelBooking={cancelBooking}/> 
+                cancelBooking={cancelBooking}
+                bookmarkSpot={bookmarkSpot}
+                /> 
             </Route>
             <Route exact path="/mybookmarks">
               My Bookmarks : ID
