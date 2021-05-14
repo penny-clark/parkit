@@ -29,14 +29,10 @@ module.exports = (db) => {
        LEFT JOIN users ON users.id = spots.user_id
        LEFT OUTER JOIN spot_ratings ON spot_ratings.spot_id = spots.id
        GROUP BY bookmarked_spots.id, spots.id, users.id
-       ORDER BY bookmarked_spots.id
      `
      ).then(({ rows: bookmarks }) => {
        response.json(
-         bookmarks.reduce(
-           (previous, current) => ({ ...previous, [current.id]: current }),
-           {}
-         )
+         bookmarks
        );
      });
    });
