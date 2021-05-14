@@ -45,7 +45,7 @@ export default function App(props)  {
     return axios
     .delete(`/api/bookings/${id}`, {})
     .then(res => {
-      console.log(res)
+      console.log(res, "hello I did get here")
       setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
     })
     .catch(err => console.log(err))

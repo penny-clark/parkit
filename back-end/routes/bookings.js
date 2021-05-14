@@ -88,6 +88,7 @@ router.post("/", (req, res) => {
   `, [req.body.car_id, req.body.spot_id, req.body.start_datetime, req.body.end_datetime])
     .then(booking => {
       console.log(booking, "booking in the response")
+      res.json({ booking });
     })
     .catch(err => {
       console.log(err)
@@ -109,6 +110,7 @@ router.delete("/:id", (req, res) => {
   `, [req.params.id])
     .then( booking => {
       console.log(booking, "cancelled ya!")
+        res.json({ booking });
     })
     .catch(err => {
       console.log(err)
