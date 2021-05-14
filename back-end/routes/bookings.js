@@ -61,7 +61,7 @@ router.get("/owner", (req, res) => {
     FROM bookings
     LEFT JOIN cars ON cars.id = bookings.car_id
     LEFT JOIN users ON users.id = cars.user_id
-    LEFT JOIN spots ON bookings.spot_id = spots.id	
+    LEFT JOIN spots ON bookings.spot_id = spots.id
     LEFT OUTER JOIN renter_ratings ON renter_ratings.renter_id = users.id
     GROUP BY bookings.id, cars.id, spots.id, users.id
     ORDER BY bookings.start_date_time

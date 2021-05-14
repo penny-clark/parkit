@@ -12,3 +12,14 @@
     background-color: #eee;
    }
 }
+
+.bookedlist_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-around;
+}
+
+.width200Text {
+  width: 200px;
+}

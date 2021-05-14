@@ -1,29 +1,5 @@
 
-  //get owner's bookings as Array by user ID
-export function getOwnerBookings(userID, bookingsData) {
-  const thisUserBookings = [];
-
-  for (const item of bookingsData) {
-    if(item.owner_id === userID) {
-      thisUserBookings.push(item)
-    }
-  }
-  return thisUserBookings;
-}
-
- //get owner's spot obj as Array by user ID
-export function getOwnerSpots(userID, spotsData) {
-  const thisUserSpots = [];
-
-  for (const item of spotsData) {
-    if(item.owner.user_id === userID) {
-      thisUserSpots.push(item)
-    }
-  }
-  return thisUserSpots;
-}
-
-//get renter's bookings as Array by user ID
+//get renter's bookings (obj) as Array by user ID
 export function getRenterBookings(userID, bookingsData) {
   const thisUserBookings = [];
 
@@ -35,6 +11,19 @@ export function getRenterBookings(userID, bookingsData) {
   return thisUserBookings;
 }
 
+//get owner's booked schedule (obj) as Array by user ID
+export function getOwnerBookings(userID, bookingsData) {
+  const thisUserBookings = [];
+
+  for (const item of bookingsData) {
+    if(item.owner_id === userID) {
+      thisUserBookings.push(item)
+    }
+  }
+  return thisUserBookings;
+}
+
+//separate bookings : active, history
 export function getHistory(UserBookings) { 
 
   //get current date
@@ -55,6 +44,7 @@ export function getHistory(UserBookings) {
 }
 
 
+
 //get renter's Cars(obj) as Array by user's car ID
 export function getRenterCars(userID, carsData) {
   const thisUserCars = [];
@@ -66,4 +56,26 @@ export function getRenterCars(userID, carsData) {
   }
 
   return thisUserCars;
+}
+
+ //get owner's spots (obj) as Array by user ID
+ export function getOwnerSpots(userID, spotsData) {
+  const thisUserSpots = [];
+
+  for (const item of spotsData) {
+    if(item.owner.user_id === userID) {
+      thisUserSpots.push(item)
+    }
+  }
+  return thisUserSpots;
+}
+
+//find spot_address id in owner's spots - to display which spot booked when the owner has 2 or more spots.
+export function findSpotAddress(spotIDfromBooking, ownerSpots) {
+
+  for (const item of ownerSpots) {
+    if(item.id === spotIDfromBooking) {
+      return item.street_address
+    }
+  }
 }
