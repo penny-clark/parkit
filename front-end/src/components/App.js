@@ -39,6 +39,7 @@ export default function App(props)  {
         const cars = all[1].data
         const renterBookings = all[2].data
         const ownerBookings = all[3].data
+        const bookmarks = all[4].data
         const setSpots = Object.keys(spots).map(key => {return spots[key]})
         const setCars = Object.keys(cars).map(key => {return cars[key]})
         const setRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
