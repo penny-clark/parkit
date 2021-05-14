@@ -11,6 +11,7 @@ import RenterD_RegisterCars from './RenterD_RegisterCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import OwnerD_RegisterSpots from './OwnerD_RegisterSpots';
 import OwnerD_mySpots from './OwnerD_mySpots';
+import PaymentComplete from './PaymentComplete';
 
 export default function App(props)  {
 
@@ -19,7 +20,7 @@ export default function App(props)  {
     cars: [],
     renterbookings: [],
     ownerbookings: [],
-    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png"}
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id:1}
   });
 
   //SETS INITIAL DATA FROM DATABASE
@@ -177,6 +178,7 @@ export default function App(props)  {
         .catch(err => console.log(err))
       }
 
+
   return (
 
       <div className="main">
@@ -232,6 +234,8 @@ export default function App(props)  {
               user={state.user} 
               addSpot={addSpot}/>
             </Route>
+
+            <Route exact path="/payment_complete"> <PaymentComplete /> </Route>
           </Switch>
       
       </div>
