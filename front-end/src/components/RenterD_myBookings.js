@@ -62,7 +62,7 @@ export default function RenterD_myBookings(props) {
   return (
     <div className="wrap_dashboard">
       <Typography variant="body1">
-      This is "Renter Dashbard - My booking list" of user : {props.user.first_name} 
+      This is "Renter Dashboard - My booking list" of user : {props.user.first_name} 
       </Typography>
    
       {displayBookings()}
