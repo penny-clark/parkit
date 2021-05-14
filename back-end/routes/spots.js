@@ -78,7 +78,7 @@ router.post("/:id", (req, res) => {
 });
 
 //delete a spot
-//where should this route to? 
+
 router.delete("/:id", (req, res) => {
   return db.query(`
   DELETE FROM spots where spot_id = $1;

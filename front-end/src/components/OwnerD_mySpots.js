@@ -18,9 +18,8 @@ export default function OwnerD_mySpots(props) {
   
   const [expanded, setExpanded] = useState('panel1');
 
-  function cancel (bookingId) {
-    console.log("clicked cancel button, this is bookingId", bookingId)
-    props.cancelBooking(bookingId)
+  function remove(id) {
+    props.deleteSpot(id)
   }
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -46,7 +45,7 @@ export default function OwnerD_mySpots(props) {
           <img src={spotObj.picture} height="300px"/>
         </AccordionDetails>
         <AccordionActions>
-          <Button color="secondary" onClick={() => cancel(spotObj.id)}>
+          <Button color="secondary" onClick={() => remove(spotObj.id)}>
             Delete this spot
           </Button>
         </AccordionActions>

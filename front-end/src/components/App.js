@@ -146,6 +146,18 @@ export default function App(props)  {
       .catch(err => console.log(err))
     }
 
+    //DELETE SPOT 
+
+    function deleteSpot(id) {
+      const newSpots = state.spots.filter(spot => spot.id !== id)
+      return axios
+      .delete(`/api/cars/${id}`, {})
+      .then(res => {
+        setState({ ...state, spots: [ ...newSpots]})
+      })
+      .catch(err => console.log(err))
+    }
+
   return (
 
       <div className="main">
@@ -191,7 +203,8 @@ export default function App(props)  {
             <Route exact path="/myspots">
               <OwnerD_mySpots 
               user={state.user} 
-              spots={state.spots}/>
+              spots={state.spots}
+              deleteSpot={deleteSpot}/>
             </Route>
             <Route exact path="/addnewspot">
               <OwnerD_RegisterSpots 
