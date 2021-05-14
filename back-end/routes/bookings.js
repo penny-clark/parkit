@@ -50,6 +50,7 @@ router.get("/owner", (req, res) => {
     SELECT
       bookings.id,
       bookings.car_id,
+      spots.id as spot_id,
       spots.user_id as owner_id,
       bookings.start_date_time,
       bookings.end_date_time,

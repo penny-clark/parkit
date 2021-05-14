@@ -14,7 +14,7 @@ import { getRenterCars } from '../helpers/selector';
 export default function RenterD_myCars(props) {
 
   const thisUserCars = getRenterCars(props.user.id, props.cars);
-  
+  console.log(props.cars, "show me cars!")
   const [expanded, setExpanded] = useState('panel1');
 
   function remove(id) {

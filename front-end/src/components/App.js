@@ -45,6 +45,7 @@ export default function App(props)  {
       .catch()
     }, []);
 
+
   // MAKE A NEW BOOKING
 
   function bookSpot(carId, spotId, startTime, endTime) {
@@ -103,9 +104,10 @@ export default function App(props)  {
       plate_number: plate_number
     })
     .then(res => { 
+      console.log("WHY")
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
-      setState({ ...state, cars: [ ...newCarArr]})
+      setState({ ...state, cars: newCarArr})
     })
     .catch(err => console.log(err))
   }
