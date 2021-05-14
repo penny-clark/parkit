@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-
 
 import './App.scss';
 import TopBar from './TopBar';
-import SearchBar from './SearchBar';
-import SearchResult from './SearchResult';
-import SpotList from './SpotList';
 import RenterD_myBookings from './RenterD_myBookings';
 import RenterD_myCars from './RenterD_myCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
@@ -14,6 +11,13 @@ import SpotListSearch from './SpotListSearch';
 
 
 export default function App(props)  {
+
+  const [state, setState] = useState({
+    spots: [],
+    renterbookings: [],
+    ownerbookings: [],
+    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
+  });
 
   function bookSpot(carId, spotId, startTime, endTime) {
     return axios
@@ -27,38 +31,41 @@ export default function App(props)  {
       console.log(res)
     })
     .catch(err => console.log(err))
+
+
   }
 
   function cancelBooking(id) {
     console.log("made it to App")
+    console.log(state.renterbookings, "current renter bookings")
+    const newRenterBookings = state.renterbookings.filter(booking => booking.id !== id)
+    const newOwnerBookings = state.ownerbookings.filter(booking => booking.id !== id)
+    console.log(newRenterBookings, "NEW RENTERBOOKINGS")
     return axios
     .delete(`/api/bookings/${id}`, {})
     .then(res => {
       console.log(res)
+      setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
     })
     .catch(err => console.log(err))
   }
 
-  const [state, setState] = useState({
-    spots: [],
-    renterbookings: [],
-    ownerbookings: [],
-    user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
-  });
-
   useEffect(() => {
     Promise.all([
       axios.get("/api/spots"),
-      axios.get("api/bookings/renter"),
-      axios.get("api/bookings/owner")
+      axios.get("/api/cars"),
+      axios.get("/api/bookings/renter"),
+      axios.get("/api/bookings/owner")
     ]).then((all) => {
         const spots = all[0].data
-        const renterBookings = all[1].data
-        const ownerBookings = all[2].data
+        const cars = all[1].data
+        const renterBookings = all[2].data
+        const ownerBookings = all[3].data
         const setSpots = Object.keys(spots).map(key => {return spots[key]})
+        const setCars = Object.keys(cars).map(key => {return cars[key]})
         const setRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
         const setOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
-        setState(prev => ({ ...prev, spots: setSpots, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings}))
+        setState(prev => ({ ...prev, spots: setSpots, cars: setCars, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings}))
       })
       .catch()
     }, []);
@@ -78,7 +85,7 @@ export default function App(props)  {
               />
             </Route>
             <Route exact path="/mybookings"> 
-              <RenterD_myBookings user={state.user} bookingsR={state.renterbookings}/> 
+              <RenterD_myBookings user={state.user} bookingsR={state.renterbookings} cancelBooking={cancelBooking}/> 
             </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
