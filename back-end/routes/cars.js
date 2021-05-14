@@ -22,14 +22,17 @@ router.get("/", (req, res) => {
 
 // adds a new car
 router.post("/", (req, res) => {
+  console.log(req.body, "REQ BODY FROM CAR POST")
   return db.query(`
   INSERT INTO cars (user_id, make, model, colour, plate_number)
-  VALUES ($1, $2, $3, $4);
-  `, [req.params.id, req.params.make, req.params.model, req.params.colour, req.params.plate_number])
+  VALUES ($1, $2, $3, $4, $5);
+  `, [req.body.id, req.body.make, req.body.model, req.body.colour, req.body.plate_number])
     .then(car => {
+      console.log(res, "what happned?")
       res.json({ car });
     })
     .catch(err => {
+      console.log(err)
       res
         .status(500)
         .json({ error: err.message });
@@ -38,7 +41,7 @@ router.post("/", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   return db.query(`
-  DELETE FROM cars where booking_id = $1;
+  DELETE FROM cars where id = $1;
   `, [req.params.id])
     .then( car => {
       res.json({ car });

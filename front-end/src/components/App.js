@@ -16,6 +16,7 @@ export default function App(props)  {
 
   const [state, setState] = useState({
     spots: [],
+    cars: [],
     renterbookings: [],
     ownerbookings: [],
     user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id: 1, spot_id: 1}
@@ -30,14 +31,12 @@ export default function App(props)  {
       end_datetime: endTime
     })
     .then(res => {
-      console.log("stage 2")
       Promise.all([
       axios.get("/api/bookings/renter"),
       axios.get("/api/bookings/owner")
       ])
     })
     .then(all => { 
-      console.log("stage 3")
       const renterBookings = all[0].data
       const ownerBookings = all[1].data
       const newRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
@@ -50,15 +49,32 @@ export default function App(props)  {
   }
 
   function cancelBooking(id) {
-    console.log("made it to App")
-    console.log(state.renterbookings, "current renter bookings")
     const newRenterBookings = state.renterbookings.filter(booking => booking.id !== id)
     const newOwnerBookings = state.ownerbookings.filter(booking => booking.id !== id)
-    console.log(newRenterBookings, "NEW RENTERBOOKINGS")
     return axios
     .delete(`/api/bookings/${id}`, {})
     .then(res => {
       setState({ ...state, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]})
+    })
+    .catch(err => console.log(err))
+  }
+
+  function addCar(userid, make, model, colour, plate_number){
+  return axios
+    .post('/api/cars', {
+      id: userid,
+      make: make,
+      model: model,
+      colour: colour,
+      plate_number: plate_number
+    })
+    .then(res => {
+      axios.get("/api/cars")
+    })
+    .then(res => { 
+      const cars = res.data
+      const newCars = Object.keys(cars).map(key => {return cars[key]})
+      setState({ ...state, cars: [ ...newCars]})
     })
     .catch(err => console.log(err))
   }
@@ -102,7 +118,7 @@ export default function App(props)  {
             </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
-            <Route exact path="/addnewcar"><RenterD_RegisterCars user={state.user}/></Route>
+            <Route exact path="/addnewcar"><RenterD_RegisterCars user={state.user} addCar={addCar} /></Route>
 
             <Route exact path="/myspotbooking">
               <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots}/>

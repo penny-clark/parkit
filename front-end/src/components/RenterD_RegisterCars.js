@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './RegisterForm.scss';
 import {Button, SliderValueLabel, Typography } from '@material-ui/core';
@@ -14,8 +14,13 @@ import MoreRoundedIcon from '@material-ui/icons/MoreRounded';
 export default function RenterD_RegisterCars(props) {
 
   function submitCar() {
-   
+   props.addCar(props.user.id, make, model, colour, plateNumber)
   }
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [colour, setColour] = useState("");
+  const [plateNumber, setPlateNumber] = useState("");
+
 
   return (
     <div className="wrap_registerCar">
@@ -24,9 +29,9 @@ export default function RenterD_RegisterCars(props) {
         <FilledInput
           className="input_register"
           id="car_make"
-          value={props.keyword}
+          value={make}
           placeholder={"Enter your car's make"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          onChange={(event) => setMake(event.target.value)}
           startAdornment={<InputAdornment position="start"><LocalOfferRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />
@@ -37,22 +42,22 @@ export default function RenterD_RegisterCars(props) {
         <FilledInput
           className="input_register"
           id="car_model"
-          value={props.keyword}
+          value={model}
           placeholder={"Enter your car's model"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          onChange={(event) => setModel(event.target.value)}
           startAdornment={<InputAdornment position="start"><DriveEtaRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />
     </FormControl>
 
-    <Typography variant="h6" >Color</Typography>
+    <Typography variant="h6" >Colour</Typography>
     <FormControl fullWidth variant="filled">
         <FilledInput
           className="input_register"
-          id="car_color"
-          value={props.keyword}
-          placeholder={"Enter your car's color"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          id="car_colour"
+          value={colour}
+          placeholder={"Enter your car's colour"}
+          onChange={(event) => setColour(event.target.value)}
           startAdornment={<InputAdornment position="start"><ColorLensRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />
@@ -63,9 +68,9 @@ export default function RenterD_RegisterCars(props) {
         <FilledInput
           className="input_register"
           id="car_plateNum"
-          value={props.keyword}
+          value={plateNumber}
           placeholder={"Enter your car's plate number"}
-          onChange={(event) => props.setKeyword(event.target.value)}
+          onChange={(event) => setPlateNumber(event.target.value)}
           startAdornment={<InputAdornment position="start"><MoreRoundedIcon /></InputAdornment>}
           labelWidth={7}
         />
