@@ -45,14 +45,16 @@ router.get("/", (request, response) => {
 //post a new spot
 
   router.post("/", (req, res) => {
+    console.log(req.body, "req body of new spot post route")
     return db.query(`
     INSERT INTO spots (user_id, streetaddress, city, province, country, postalcode, picture, price)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
-    `, [req.params.id, req.params.street_address, req.params.city, req.params.province, req.params.country, req.params.postal_code, req.params.picture, req.params.price])
+    `, [req.body.id, req.body.street_address, req.body.city, req.body.province, req.body.country, req.body.postal_code, req.body.picture, req.body.price])
       .then(spot => {
         res.json({ spot });
       })
       .catch(err => {
+        console.log("new spot post err:", err)
         res
           .status(500)
           .json({ error: err.message });

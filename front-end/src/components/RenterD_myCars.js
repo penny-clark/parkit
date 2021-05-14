@@ -17,9 +17,8 @@ export default function RenterD_myCars(props) {
   
   const [expanded, setExpanded] = useState('panel1');
 
-  function cancel (bookingId) {
-    console.log("clicked cancel button, this is bookingId", bookingId)
-    props.cancelBooking(bookingId)
+  function remove(id) {
+    props.deleteCar(id)
   }
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -45,7 +44,7 @@ export default function RenterD_myCars(props) {
           <Typography variant="subtitle1">Colour : {carObj.colour}</Typography>
         </AccordionDetails>
         <AccordionActions>
-          <Button color="secondary" onClick={() => cancel(carObj.id)}>
+          <Button color="secondary" onClick={() => remove(carObj.id)}>
             Delete this car
           </Button>
         </AccordionActions>
