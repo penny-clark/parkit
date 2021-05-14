@@ -8,6 +8,7 @@ import RenterD_myBookings from './RenterD_myBookings';
 import RenterD_myCars from './RenterD_myCars';
 import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import SpotListSearch from './SpotListSearch';
+import RenterD_RegisterCars from './RenterD_RegisterCars';
 
 
 export default function App(props)  {
@@ -89,7 +90,7 @@ export default function App(props)  {
             </Route>
             <Route exact path="/mybookmarks">My Bookmarks : ID</Route>
             <Route exact path="/mycars"><RenterD_myCars user={state.user}/></Route>
-            <Route exact path="/addnewcar">Add a Car : ID</Route>
+            <Route exact path="/addnewcar"><RenterD_RegisterCars user={state.user}/></Route>
 
             <Route exact path="/myspotbooking">
               <OwnerD_BookedSchedule user={state.user} bookingsO={state.ownerbookings} spots={state.spots}/>
