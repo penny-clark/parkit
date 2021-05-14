@@ -7,23 +7,18 @@ import { Button, Typography, Avatar, ListItem, ListItemAvatar, ListItemText } fr
 import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-
 //import components
 import UserNameDisplay from './UserNameDisplay';
 import OwnerMenuList from './OwnerMenuList';
 import RenterMenuList from './RenterMenuList';
+//hooks
+import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function TopBar(props) {
 
-  const [openDrawer, setOpenDrawer] = useState(false);
-
-  const [selectedTab, setSelectedTab] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setSelectedTab(newValue);
-  }
+  const { openDrawer, setOpenDrawer, drawerClose } = useDisplayAction();
+  const { selectedTab, handleTabs } = useDisplayAction();
   
-  const user = props.user
 
   return (
     <div>
@@ -48,17 +43,17 @@ export default function TopBar(props) {
     
     <Drawer variant="temporary" anchor="right" onClose={()=>{setOpenDrawer(false)}} open={openDrawer}>
       
-      <UserNameDisplay user={user}/>
+      <UserNameDisplay user={props.user}/>
 
       <AppBar position="static">
-      <Tabs value={selectedTab} onChange={handleChange} className="tab_dashboard">
+      <Tabs value={selectedTab} onChange={handleTabs} className="tab_dashboard">
         <Tab label="Renter" className="tab_item"/>
         <Tab label="Owner" className="tab_item"/>
       </Tabs>
       </AppBar> 
 
-        {selectedTab === 0 && <RenterMenuList />}
-        {selectedTab === 1 && <OwnerMenuList />}        
+        {selectedTab === 0 && <RenterMenuList setDrawer={drawerClose}/>}
+        {selectedTab === 1 && <OwnerMenuList  setDrawer={drawerClose}/>}        
 
     </Drawer>
 
