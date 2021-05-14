@@ -79,3 +79,16 @@ export function findSpotAddress(spotIDfromBooking, ownerSpots) {
     }
   }
 }
+
+//get renter's bookmark data (obj) as Array by userID
+export function getRenterBookmarks(userID, bookmarksData) {
+  const thisUserBookmarks = [];
+  
+  for (const item of bookmarksData) {
+    if (item.renter_id === userID) {
+      thisUserBookmarks.push(item)
+    }
+  }
+
+  return thisUserBookmarks;
+}
