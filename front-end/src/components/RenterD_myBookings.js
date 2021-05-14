@@ -56,7 +56,7 @@ export default function RenterD_myBookings(props) {
         </AccordionDetails>
         <AccordionActions>
           <Button variant="contained">Contact Owner</Button>
-          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.spot.id)}>
+          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
             Cancel This Booking
           </Button>
         </AccordionActions>
