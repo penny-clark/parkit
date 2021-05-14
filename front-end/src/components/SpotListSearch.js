@@ -11,6 +11,7 @@ export default function SpotListSearch(props) {
 
   console.log("THESE ARE MY FILTER SPOTS:", filterSpots)
   console.log("keyword in Spot list search", keyword)
+  
   return (
     <div>
     <SearchBar keyword={keyword} setKeyword={setKeyword} />
