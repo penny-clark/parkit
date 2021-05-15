@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import UserNameDisplay from './UserNameDisplay';
+import SpotRating from './SpotRating';
 //import style & material-ui 
 import './RenterDashboad.scss';
 import './Popup.scss';
@@ -42,7 +43,7 @@ export default function RenterD_myBookings(props) {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const [value, setValue] = useState(2);
+
 
   function cancel (bookingId) {
     props.cancelBooking(bookingId)
@@ -129,13 +130,8 @@ export default function RenterD_myBookings(props) {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
             transformOrigin={{ vertical: 'top', horizontal: 'center'}}
           >
-            <Rating
-              name={`rating${num}`}
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
-          />
+            <SpotRating id={bookObj.id}/>
+
           </Popover>
 
 
