@@ -22,6 +22,7 @@ export default function App(props)  {
     renterbookings: [],
     ownerbookings: [],
     bookmarks: [],
+    spotratings: [],
     user: {id: 1, first_name: "Eggert", last_name: "Eggerson", email: "egg@egg.com", avatar: "https://pr.sssagent.com/img/a1.png", car_id:1}
   });
 
@@ -34,18 +35,21 @@ export default function App(props)  {
       axios.get("/api/bookings/renter"),
       axios.get("/api/bookings/owner"),
       axios.get("/api/bookmarks"),
+      axios.get("/api/spotratings")
     ]).then((all) => {
         const spots = all[0].data
         const cars = all[1].data
         const renterBookings = all[2].data
         const ownerBookings = all[3].data
         const bookmarks = all[4].data
+        const spotRatings = all[5].data
         const setSpots = Object.keys(spots).map(key => {return spots[key]})
         const setCars = Object.keys(cars).map(key => {return cars[key]})
         const setRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
         const setOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
         const setBookmarks = Object.keys(bookmarks).map(key => {return bookmarks[key]})
-        setState(prev => ({ ...prev, spots: setSpots, cars: setCars, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings, bookmarks: setBookmarks}))
+        const setSpotRatings = Object.keys(spotRatings).map(key => {return spotRatings[key]})
+        setState(prev => ({ ...prev, spots: setSpots, cars: setCars, renterbookings: setRenterBookings, ownerbookings: setOwnerBookings, bookmarks: setBookmarks, spotratings: setSpotRatings}))
     
       })
       .catch()
@@ -79,6 +83,7 @@ export default function App(props)  {
   }
 
   //CANCEL A BOOKING
+
   function cancelBooking(id) {
     const newRenterBookings = state.renterbookings.filter(booking => booking.id !== id)
     const newOwnerBookings = state.ownerbookings.filter(booking => booking.id !== id)
@@ -182,7 +187,7 @@ export default function App(props)  {
 
     function bookmarkSpot (userid, spotid, ownerid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating){
       const newBM = {
-        bookmark_id: state.bookmarks.length,
+        bookmark_id: (state.spotratings[state.spotratings.length -1].bookmark_id +1),
         city: city,
         country: country,
         id: spotid,
@@ -195,20 +200,38 @@ export default function App(props)  {
         renter_id: userid,
         street_address: streetadd
       }
-      console.log(newBM, "new BM obj")
-      console.log(state.bookmarks, "state.Bm")
       return axios
         .post('/api/bookmarks', {
           user_id: userid,
           spot_id: spotid
         })
         .then(res => {
-          console.log("bookmark success!")
           const newBMArr = [ ...state.bookmarks]
           newBMArr.push(newBM)
-          console.log(newBMArr, "newBMARR")
           setState(prev => ({ ...prev, bookmarks: newBMArr}))
-          console.log(state.bookmarks)
+        })
+        .catch(err => console.log(err))
+      }
+
+      //SUBMIT A SPOT RATING
+
+      function rateSpot (user_id, spot_id, rating) {
+        const newRating = {
+        id: (state.spotratings[state.spotratings.length -1].id +1),
+        user_id,
+        spot_id,
+        rating
+        }
+        return axios
+        .post('api/spotratings', {
+          user_id,
+          spot_id,
+          rating
+        })
+        .then(res => {
+          const newRatingsArr = [ ...state.spotratings]
+          newRatingsArr.push(newRating)
+          setState(prev => ({ ...prev, spotratings: newRatingsArr}))
         })
         .catch(err => console.log(err))
       }
