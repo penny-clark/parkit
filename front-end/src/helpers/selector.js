@@ -89,6 +89,16 @@ export function getRenterBookmarks(userID, bookmarksData) {
       thisUserBookmarks.push(item)
     }
   }
-
   return thisUserBookmarks;
 }
+
+//check bookmarked spot in renter's booking-history list
+export function checkBookmarkedspot(spotID, userBookmarks) {
+
+  for (const item of userBookmarks) {
+    if (item.spot_id === spotID) {
+     return true;
+    }
+  }
+}
+

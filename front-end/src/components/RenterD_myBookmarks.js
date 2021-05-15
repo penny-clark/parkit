@@ -7,12 +7,9 @@ import { getRenterBookmarks } from '../helpers/selector';
 
 export default function RenterD_myBookmarks(props) {
 
-  //get this renter's bookmark list from helper function
-  const thisUserBookmarks = getRenterBookmarks(props.user.id, props.bookmarks)
-
   return (
     <div className="wrap_dashboard">
-      <SpotList spots={thisUserBookmarks} user={props.user} bookSpot={props.bookSpot}/>    
+      <SpotList spots={props.bookmarks} user={props.user} bookSpot={props.bookSpot}/>    
     </div>
   );
 }

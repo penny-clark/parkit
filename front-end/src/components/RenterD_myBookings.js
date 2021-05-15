@@ -10,7 +10,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
-import { getRenterBookings, getHistory } from '../helpers/selector';
+import { getRenterBookings, getHistory, checkBookmarkedspot } from '../helpers/selector';
 
 export default function RenterD_myBookings(props) {
 
@@ -89,7 +89,9 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id)}>Bookmark</Button>
+         {console.log(checkBookmarkedspot(bookObj.spot_id, props.bookmarks))}
+          <Button className="bookmarkBT" variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id)}>Bookmark</Button>
+          
           <Button variant="contained" color="secondary" >Rate this spot</Button>
         </AccordionActions>
       </Accordion>

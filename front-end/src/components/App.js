@@ -13,6 +13,7 @@ import OwnerD_BookedSchedule from './OwnerD_BookedSchedule';
 import OwnerD_RegisterSpots from './OwnerD_RegisterSpots';
 import OwnerD_mySpots from './OwnerD_mySpots';
 import PaymentComplete from './PaymentComplete';
+import { getRenterBookmarks } from '../helpers/selector';
 
 export default function App(props)  {
 
@@ -196,6 +197,10 @@ export default function App(props)  {
         .catch(err => console.log(err))
       }
 
+  //get this user's bookmark list from helper function
+  const thisUserBookmarks = getRenterBookmarks(state.user.id, state.bookmarks)
+
+
 
   return (
 
@@ -217,12 +222,13 @@ export default function App(props)  {
                 bookingsR={state.renterbookings} 
                 cancelBooking={cancelBooking}
                 bookmarkSpot={bookmarkSpot}
+                bookmarks={thisUserBookmarks}
                 /> 
             </Route>
             <Route exact path="/mybookmarks">
               <RenterD_myBookmarks 
                   user={state.user} 
-                  bookmarks={state.bookmarks}
+                  bookmarks={thisUserBookmarks}
                   bookSpot={bookSpot}
                 />
             </Route>
