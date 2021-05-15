@@ -21,7 +21,6 @@ export default function SpotList(props) {
 
   console.log(props.spots, "spots from user bookmarks")
 
-
   const spotsmap = props.spots.map(spot => {
 
     const num = props.spots.indexOf(spot) + 1;
@@ -41,7 +40,7 @@ export default function SpotList(props) {
           <Typography variant="body1"> / hour</Typography>
         </ListItem>
         <ListItem edge="end">  
-          <Rating name="read-only" value={spot.rating} readOnly/>
+          <Rating name="read-only" value={spot.rating} readOnly size="large" />
         </ListItem>
       </AccordionSummary>
 
