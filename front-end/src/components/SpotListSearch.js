@@ -11,9 +11,6 @@ export default function SpotListSearch(props) {
   console.log(props.spots, "Spots in spotlist search")
   const searchTerm = keyword.substring(0,2)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
-
-  console.log("THESE ARE MY FILTER SPOTS:", filterSpots)
-  console.log("keyword in Spot list search", keyword)
   
   const { selectedTab, setSelectedTab, handleTabs } = useDisplayAction();
 
@@ -28,7 +25,7 @@ export default function SpotListSearch(props) {
     </Tabs>
 
 
-    {selectedTab === 0 && <MapView />}
+    {selectedTab === 0 && <MapView spots={filterSpots}/>}
     {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} keyword={keyword}/>}   
 
     
