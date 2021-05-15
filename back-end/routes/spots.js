@@ -17,6 +17,8 @@ router.get("/", (request, response) => {
       spots.city,
       spots.province,
       spots.country,
+      spots.lat,
+      spots.lon,
       spots.price,
       spots.picture,
       spots.postal_code,
@@ -47,8 +49,8 @@ router.get("/", (request, response) => {
   router.post("/", (req, res) => {
     console.log(req.body, "req body of new spot post route")
     return db.query(`
-    INSERT INTO spots (user_id, street_address, city, province, country, postal_code, picture, price)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+    INSERT INTO spots (user_id, street_address, city, province, country, postal_code, lat, lon, picture, price)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
     `, [req.body.id, req.body.street_address, req.body.city, req.body.province, req.body.country, req.body.postal_code, req.body.picture, req.body.price])
       .then(spot => {
         res.json({ spot });
@@ -65,8 +67,8 @@ router.get("/", (request, response) => {
 
 router.post("/:id", (req, res) => {
   return db.query`
-  UPDATE spots SET user_id = $1, streetaddress = $2, city = $3, province = $4, country = $5, postal_code = $6, picture = $7 WHERE id = $8
-  `, [req.params.user_id, req.params.street_address, req.params.city, req.params.province, req.params.country, req.params.postal_code, req.params.picture, req.params.price, req.params.id]
+  UPDATE spots SET user_id = $1, streetaddress = $2, city = $3, province = $4, country = $5, postal_code = $6, lat = $7, lon = $8, picture = $10 WHERE id = $8
+  `, [req.params.user_id, req.params.street_address, req.params.city, req.params.province, req.params.country, req.params.postal_code, req.params.lat, req.params.lon, req.params.picture, req.params.price, req.params.id]
     .then(spot => {
       res.json({ spot });
     })
