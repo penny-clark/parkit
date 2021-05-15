@@ -1,5 +1,15 @@
 .spotlist_wrap {
-  width: 90% 
+  width: 90% ;
+
+}
+
+.spotlist_wrap .MuiAccordion-root {
+  margin-top: 1rem;
+}
+
+.spotlist_wrap .MuiAccordionSummary-root {
+  background-color: rgb(66, 107, 189);
+  color: #fff;
 }
 
 .spotlist_box {

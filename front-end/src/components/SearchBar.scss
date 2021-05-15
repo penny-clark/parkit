@@ -1,15 +1,43 @@
+.home_wrap {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .searchbox {
   width: 100%;
-  max-width: 550px;
+  max-width: 600px;
   height: 200px;
   background-color: #fff;
   padding: .7rem;
   
 
   .timepicker {
-    width: 90%;
+    width: 100%;
     margin: 1rem;
 
   }
 
+}
+
+.tab_homeview {
+
+  .tab_item {
+
+  }
+  .tab_item.Mui-selected {
+
+  }
+}
+
+.tab_homeview.MuiTabs-root{
+  flex-grow: 1;
+}
+
+.mapBox {
+  background-color: #333;
+  width: 90vw;
+  height: 50vh;
 }
