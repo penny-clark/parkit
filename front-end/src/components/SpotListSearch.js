@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import SearchBar from "./SearchBar";
 import SpotList from "./SpotList";
-import MapView from "./MapView";
+import MapView from "./MapView.jsx";
 import { Tabs, Tab, AppBar } from '@material-ui/core';
 //hooks
 import useDisplayAction from "../hooks/useDisplayAction"
