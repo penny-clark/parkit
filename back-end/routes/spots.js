@@ -17,8 +17,8 @@ router.get("/", (request, response) => {
       spots.city,
       spots.province,
       spots.country,
-      spots.lat,
-      spots.lon,
+      spots.latitude,
+      spots.longitude,
       spots.price,
       spots.picture,
       spots.postal_code,
@@ -49,7 +49,7 @@ router.get("/", (request, response) => {
   router.post("/", (req, res) => {
     console.log(req.body, "req body of new spot post route")
     return db.query(`
-    INSERT INTO spots (user_id, street_address, city, province, country, postal_code, lat, lon, picture, price)
+    INSERT INTO spots (user_id, street_address, city, province, country, postal_code, latitude, longitude, picture, price)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
     `, [req.body.id, req.body.street_address, req.body.city, req.body.province, req.body.country, req.body.postal_code, req.body.picture, req.body.price])
       .then(spot => {

@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
   table.string('province').notNullable();
   table.string('country').notNullable();
   table.string('postal_code').notNullable();
-  table.int('lat');
-  table.int('lon');
+  table.decimal('latitude', null);
+  table.decimal('longitude', null);
   table.string('picture').defaultTo('https://pr.sssagent.com/img/parkingspot1.png');
   table.integer('price').notNullable();
   table.timestamp('created_at').defaultTo(knex.fn.now());
