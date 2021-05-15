@@ -31,8 +31,8 @@ export default function RenterD_myBookings(props) {
     props.cancelBooking(bookingId)
   }
 
-  function setBookmark(spotId, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating) {
-    props.bookmarkSpot(props.user.id, spotId, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating)
+  function setBookmark(spotId, ownerid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating) {
+    props.bookmarkSpot(props.user.id, spotId, ownerid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating)
   }
 
   //iterate each active booking
@@ -98,7 +98,7 @@ export default function RenterD_myBookings(props) {
         {bookmarked === true && 
           <Button variant="contained" disabled >Bookmarked</Button>}
         {bookmarked === false &&  
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.street_address, bookObj.city, bookObj.province, bookObj.country, bookObj.price, bookObj.picture, bookObj.postal_code, bookObj.rating)}>Bookmark</Button> } 
+          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
         
           
           <Button variant="contained" color="secondary" >Rate this spot</Button>

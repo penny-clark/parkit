@@ -180,21 +180,23 @@ export default function App(props)  {
 
     // BOOKMARK A SPOT (renter dashboard) - fix needed: get route is weird
 
-    function bookmarkSpot (userid, spotid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating){
+    function bookmarkSpot (userid, spotid, ownerid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating){
       const newBM = {
         bookmark_id: state.bookmarks.length,
-        renter_id: userid,
-        spot_id: spotid,
-        owner: {first_name: ownerfn, last_name: ownerln, owner_email: ownerem, avatar: avatar},
-        street_address: streetadd,
         city: city,
-        province: province,
         country: country,
-        price: price,
+        id: spotid,
+        owner: {user_id: ownerid, first_name: ownerfn, last_name: ownerln, owner_email: ownerem, avatar: avatar},
         picture: picture,
         postal_code: postal_code,
-        rating: rating
+        price: price,
+        province: province,
+        rating: rating,
+        renter_id: userid,
+        street_address: streetadd
       }
+      console.log(newBM, "new BM obj")
+      console.log(state.bookmarks, "state.Bm")
       return axios
         .post('/api/bookmarks', {
           user_id: userid,
@@ -204,7 +206,9 @@ export default function App(props)  {
           console.log("bookmark success!")
           const newBMArr = [ ...state.bookmarks]
           newBMArr.push(newBM)
+          console.log(newBMArr, "newBMARR")
           setState(prev => ({ ...prev, bookmarks: newBMArr}))
+          console.log(state.bookmarks)
         })
         .catch(err => console.log(err))
       }
