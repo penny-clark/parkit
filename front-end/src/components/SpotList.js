@@ -23,7 +23,7 @@ export default function SpotList(props) {
   const handleCheckout = () => {
     setChecked((prev) => !prev);
   };
-
+  console.log(props.spots, "spots from user bookmarks")
 
   const spotsmap = props.spots.map(spot => {
 

@@ -49,7 +49,7 @@ export default function App(props)  {
     
       })
       .catch()
-    }, [state]);
+    }, []);
 
 
   // MAKE A NEW BOOKING
@@ -158,13 +158,9 @@ export default function App(props)  {
         price
       })
       .then(res => { 
-        console.log(res)
         const newSpotArr = [ ...state.spots]
         newSpotArr.push(newSpotObj)
         setState(prev => ({ ...prev, spots: newSpotArr}))
-        console.log(newSpotArr, "new spot arr")
-        console.log("Do it make it to this stage of addSpot")
-        console.log(state.spots, "after")
       })
       .catch(err => console.log(err))
     }
@@ -184,7 +180,21 @@ export default function App(props)  {
 
     // BOOKMARK A SPOT (renter dashboard) - fix needed: get route is weird
 
-    function bookmarkSpot (userid, spotid){
+    function bookmarkSpot (userid, spotid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating){
+      const newBM = {
+        bookmark_id: state.bookmarks.length,
+        renter_id: userid,
+        spot_id: spotid,
+        owner: {first_name: ownerfn, last_name: ownerln, owner_email: ownerem, avatar: avatar},
+        street_address: streetadd,
+        city: city,
+        province: province,
+        country: country,
+        price: price,
+        picture: picture,
+        postal_code: postal_code,
+        rating: rating
+      }
       return axios
         .post('/api/bookmarks', {
           user_id: userid,
@@ -192,6 +202,9 @@ export default function App(props)  {
         })
         .then(res => {
           console.log("bookmark success!")
+          const newBMArr = [ ...state.bookmarks]
+          newBMArr.push(newBM)
+          setState(prev => ({ ...prev, bookmarks: newBMArr}))
         })
         .catch(err => console.log(err))
       }

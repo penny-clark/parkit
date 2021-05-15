@@ -10,7 +10,7 @@ module.exports = (db) => {
        SELECT
          bookmarked_spots.id as bookmark_id,
          bookmarked_spots.user_id as renter_id,
-         spots.id as spot_id,
+         spots.id as id,
          json_build_object('user_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'owner_email', users.email, 'avatar', users.avatar) 
          AS owner,
          spots.street_address,

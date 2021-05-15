@@ -27,9 +27,8 @@ export default function RenterD_myBookings(props) {
     props.cancelBooking(bookingId)
   }
 
-  function setBookmark(spotId) {
-    console.log(spotId, "spot id from renter my bookings")
-    props.bookmarkSpot(props.user.id, spotId)
+  function setBookmark(spotId, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating) {
+    props.bookmarkSpot(props.user.id, spotId, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating)
   }
 
   //iterate each active booking
@@ -89,7 +88,7 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id)}>Bookmark</Button>
+          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.street_address, bookObj.city, bookObj.province, bookObj.country, bookObj.price, bookObj.picture, bookObj.postal_code, bookObj.rating)}>Bookmark</Button>
           <Button variant="contained" color="secondary" >Rate this spot</Button>
         </AccordionActions>
       </Accordion>
