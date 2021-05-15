@@ -200,6 +200,7 @@ export default function App(props)  {
         renter_id: userid,
         street_address: streetadd
       }
+      console.log(newBM.id, "is this 9....")
       return axios
         .post('/api/bookmarks', {
           user_id: userid,
@@ -222,8 +223,9 @@ export default function App(props)  {
         spot_id,
         rating
         }
+        console.log(newRating, "what did I get in app.js?")
         return axios
-        .post('api/spotratings', {
+        .post('/api/spotratings', {
           user_id,
           spot_id,
           rating
@@ -258,6 +260,7 @@ export default function App(props)  {
                 cancelBooking={cancelBooking}
                 bookmarkSpot={bookmarkSpot}
                 bookmarks={state.bookmarks}
+                rateSpot={rateSpot}
                 /> 
             </Route>
             <Route exact path="/mybookmarks">

@@ -22,7 +22,7 @@ const spotsRoutes = require("./routes/spots");
 const bookingsRoutes = require("./routes/bookings");
 const carsRoutes = require("./routes/cars");
 const usersRoutes = require("./routes/users");
-const spotRatingRoutes = require("./routes/spotRatings");
+const spotRatingRoutes = require("./routes/spotratings");
 const renterRatingRoutes = require("./routes/renterratings");
 const bookmarksRoutes = require("./routes/bookmarks");
 

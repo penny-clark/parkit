@@ -36,6 +36,7 @@ export default function RenterD_myBookings(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -44,7 +45,7 @@ export default function RenterD_myBookings(props) {
   const id = open ? 'simple-popover' : undefined;
 
 
-
+//axios functions
   function cancel (bookingId) {
     props.cancelBooking(bookingId)
   }
@@ -130,7 +131,7 @@ export default function RenterD_myBookings(props) {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
             transformOrigin={{ vertical: 'top', horizontal: 'center'}}
           >
-            <SpotRating id={bookObj.id}/>
+            <SpotRating id={bookObj.id} bookObj={bookObj} rateSpot={props.rateSpot} user={props.user}/>
 
           </Popover>
 
