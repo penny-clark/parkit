@@ -15,7 +15,6 @@ import { getOwnerSpots } from '../helpers/selector';
 export default function OwnerD_mySpots(props) {
 
   const thisUserSpots = getOwnerSpots(props.user.id, props.spots);
-  
   const [expanded, setExpanded] = useState('panel1');
 
   function remove(id) {
@@ -35,7 +34,7 @@ export default function OwnerD_mySpots(props) {
       const num = thisUserSpots.indexOf(spotObj)+1;
    
       print.push(
-        <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
           <Typography variant="h6">My Spot {num} : {spotObj.street_address}</Typography>
         </AccordionSummary>

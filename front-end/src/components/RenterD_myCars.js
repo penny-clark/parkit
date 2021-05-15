@@ -14,7 +14,6 @@ import { getRenterCars } from '../helpers/selector';
 export default function RenterD_myCars(props) {
 
   const thisUserCars = getRenterCars(props.user.id, props.cars);
-  console.log(props.cars, "show me cars!")
   const [expanded, setExpanded] = useState('panel1');
 
   function remove(id) {
@@ -34,7 +33,7 @@ export default function RenterD_myCars(props) {
       const num = thisUserCars.indexOf(carObj)+1;
    
       print.push(
-        <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
           <Typography variant="h6">My Car {num} : {carObj.plate_number}</Typography>
         </AccordionSummary>

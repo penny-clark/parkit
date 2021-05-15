@@ -55,10 +55,65 @@ export default function App(props)  {
       .catch()
     }, []);
 
+    function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
+      const newSpotObj = {
+        id: (state.spots[state.spots.length -1].id +1),
+        owner: {user_id: userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
+        street_address,
+        city,
+        province,
+        country,
+        postal_code,
+        picture,
+        price,
+        rating: null
+      }
+      
+      return axios
+        .post('/api/spots', {
+          id: userid,
+          street_address,
+          city,
+          province,
+          country,
+          postal_code,
+          picture,
+          price
+        })
+        .then(res => { 
+          const newSpotArr = [ ...state.spots]
+          newSpotArr.push(newSpotObj)
+          console.log(newSpotArr, "new spot arr")
+          setState(prev => ({ ...prev, spots: newSpotArr}))
+        })
+        .catch(err => console.log(err))
+      }
 
   // MAKE A NEW BOOKING
 
-  function bookSpot(carId, spotId, startTime, endTime) {
+  function bookSpot(carId, spotId, startTime, endTime, addr, city, province, pcode, price, pic, ownerid, ownerfn, ownerln, ownerem, owneravatar, spotrating) {
+    const newRenterBookingObj = {
+      id: (state.renterbookings[state.renterbookings.length -1].id +1),
+      car_id: carId,
+      renter_id: state.user.id,
+      start_date_time: startTime,
+      end_date_time: endTime,
+      spot: {spot_id: spotId, street_address: addr, city: city, province: province, postal_code: pcode, price: price, picture: pic},
+      owner: {user_id: ownerid, first_name: ownerfn, last_name: ownerln, owner_email: ownerem, avatar: owneravatar},
+      rating: spotrating
+    }
+    
+    const newOwnerBookingObj = {
+      id: (state.ownerbookings[state.ownerbookings.length -1].id +1),
+      car_id: carId,
+      spot_id: spotId,
+      owner_id: ownerid,
+      start_date_time: startTime,
+      end_date_time: endTime,
+      car: {car_id: carId, car_make: "Ford", model: "Prius", colour: "Red", plate_number: "AAAAAA", rating: 3}, 
+      renter: {renter_id: state.user.id, first_name: state.user.first_name, last_name: state.user.last_name, renter_email: state.user.email, avatar: state.user.avatar}
+    }
+
     return axios
     .post('/api/bookings', {
       car_id: carId,
@@ -67,17 +122,13 @@ export default function App(props)  {
       end_datetime: endTime
     })
     .then(res => {
-      Promise.all([
-      axios.get("/api/bookings/renter"),
-      axios.get("/api/bookings/owner")
-      ])
-    })
-    .then(all => { 
-      const renterBookings = all[0].data
-      const ownerBookings = all[1].data
-      const newRenterBookings = Object.keys(renterBookings).map(key => {return renterBookings[key]})
-      const newOwnerBookings = Object.keys(ownerBookings).map(key => {return ownerBookings[key]})
-      setState(prev => ({ ...prev, renterbookings: [ ...newRenterBookings], ownerbookings: [ ...newOwnerBookings]}))
+      const newOwnerBookingsArr = [ ...state.ownerbookings]
+      const newRenterBookingsArr = [ ...state.renterbookings]
+      newOwnerBookingsArr.push(newOwnerBookingObj)
+      newRenterBookingsArr.push(newRenterBookingObj)
+      setState(prev => ({ ...prev, renterbookings: newRenterBookingsArr, ownerbookings: newOwnerBookingsArr}))
+      console.log(newRenterBookingsArr, "new renterbooking arr")
+      console(newOwnerBookingsArr, "new owner booking Arr")
     })
     .catch(err => console.log(err))
   }
@@ -118,6 +169,7 @@ export default function App(props)  {
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
       setState(prev => ({ ...prev, cars: newCarArr}))
+      console.log(newCarArr, "new car arr")
     })
     .catch(err => console.log(err))
   }
@@ -136,39 +188,6 @@ export default function App(props)  {
 
   //ADD A NEW SPOT - fix needed: same issue as adding new car
   
-  function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
-    console.log(state.spots, "before")
-    const newSpotObj = {
-      id: (state.spots[state.spots.length -1].id +1),
-      owner: {userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
-      street_address,
-      city,
-      province,
-      country,
-      postal_code,
-      picture,
-      price,
-      rating: null
-    }
-    
-    return axios
-      .post('/api/spots', {
-        id: userid,
-        street_address,
-        city,
-        province,
-        country,
-        postal_code,
-        picture,
-        price
-      })
-      .then(res => { 
-        const newSpotArr = [ ...state.spots]
-        newSpotArr.push(newSpotObj)
-        setState(prev => ({ ...prev, spots: newSpotArr}))
-      })
-      .catch(err => console.log(err))
-    }
 
     // DELETE A SPOT (owner dashboard)
 

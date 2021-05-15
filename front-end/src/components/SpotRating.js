@@ -7,9 +7,6 @@ import { Button, Typography } from '@material-ui/core';
 export default function SpotRating(props) {
   const [value, setValue] = useState(0);
 
-  console.log(props.bookObj.spot.spot_id, "spot id")
-  console.log(value, "is this stable?")
-
   function placeReadOnly() {
     props.handleCheckout()
   }
