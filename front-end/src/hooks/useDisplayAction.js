@@ -27,11 +27,12 @@ export default function useDisplayAction() {
   const handleCheckout = () => {
     setChecked((prev) => !prev);
   };
+ 
 
   return { 
     expanded, setExpanded, handleChange, 
     openDrawer, setOpenDrawer, drawerClose, 
     selectedTab, setSelectedTab, handleTabs,
-    checked, setChecked, handleCheckout 
+    checked, setChecked, handleCheckout
   }
 }

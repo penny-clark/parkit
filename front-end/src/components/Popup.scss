@@ -26,3 +26,14 @@
   width: auto;
   height: auto;
 }
+
+.ratingBox {
+  display: none;
+  position: absolute;
+  text-align: center;
+  padding: 1rem;
+  right: 1rem;
+  bottom: 4rem;
+  width: 200;
+  height: 70;
+}

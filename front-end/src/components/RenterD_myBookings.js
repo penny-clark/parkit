@@ -12,6 +12,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 import Rating from '@material-ui/lab/Rating';
 import Popover from '@material-ui/core/Popover';
+import Paper from '@material-ui/core/Paper';
+import Collapse from '@material-ui/core/Collapse';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
 import { getRenterBookings, getHistory, getRenterBookmarks, checkBookmarkedspot } from '../helpers/selector';
@@ -29,20 +31,13 @@ export default function RenterD_myBookings(props) {
   //get this renter's bookmared list from helper function
   const thisUserBookmarks = getRenterBookmarks(props.user.id, props.bookmarks)
 
-  //list open-close working with this - from the hook
-  const { expanded, setExpanded, handleChange} = useDisplayAction();
+  //list open-close & pop up working with this - from the hook
+  const { expanded, setExpanded, handleChange, checked, setChecked, handleCheckout } = useDisplayAction();
 
-  //rating popup control
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  //rating popup submit
+  function submitRating() {
+    handleCheckout()
+  }
 
 
 //axios functions
@@ -99,6 +94,7 @@ export default function RenterD_myBookings(props) {
       const endDateArr = bookObj.end_date_time.split("T")
 
       const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
+
       
 
       print.push(
@@ -120,21 +116,15 @@ export default function RenterD_myBookings(props) {
         {bookmarked === false &&  
           <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
 
-          <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+          <Button variant="contained" color="primary" onClick={submitRating}>
             Rate this Spot
           </Button>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-            transformOrigin={{ vertical: 'top', horizontal: 'center'}}
-          >
-            <SpotRating id={bookObj.id} bookObj={bookObj} rateSpot={props.rateSpot} user={props.user}/>
-
-          </Popover>
-
+                
+         <Collapse in={checked}>
+          <Paper className="popup_rating">
+            <SpotRating id={bookObj.id} bookObj={bookObj} rateSpot={props.rateSpot} user={props.user}  handleCheckout={handleCheckout}/>
+          </Paper>
+        </Collapse>
 
         </AccordionActions>
       </Accordion>

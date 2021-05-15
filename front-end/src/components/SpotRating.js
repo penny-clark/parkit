@@ -2,14 +2,21 @@ import React, { useState, useEffect } from 'react';
 
 import './Popup.scss';
 import Rating from '@material-ui/lab/Rating';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 
 export default function SpotRating(props) {
   const [value, setValue] = useState(0);
+
   console.log(props.bookObj.spot.spot_id, "spot id")
-  console.log(props.id, "is this stable?")
+  console.log(value, "is this stable?")
+
+  function placeReadOnly() {
+    props.handleCheckout()
+  }
+
   return(
     <div>
+      <Typography>My Rating</Typography>
     <Rating
       key={props.id}
       name={`rating${props.id}`}
@@ -18,7 +25,8 @@ export default function SpotRating(props) {
       setValue(newValue);
     }}
      />
-     <Button onClick={() => props.rateSpot(props.user.id, props.bookObj.spot.spot_id, value)}> Submit </Button>
+     <Button onClick={placeReadOnly}> Submit </Button>
      </div>
+               
   )
 }
