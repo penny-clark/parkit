@@ -1,5 +1,6 @@
 import React, {useState}from "react";
 import './SpotListItem.scss';
+import './Popup.scss';
 import BookingPopup from "./BookingPopup";
 import useDisplayAction from "../hooks/useDisplayAction"
 import { Button, Typography, Grid, ListItem, List, Box} from '@material-ui/core';
@@ -15,15 +16,11 @@ import Collapse from '@material-ui/core/Collapse';
 
 export default function SpotList(props) {
 
+  const { expanded, setExpanded, handleChange } = useDisplayAction();
+  const { checked, setChecked, handleCheckout } = useDisplayAction();
 
-  const { expanded, setExpanded, handleChange} = useDisplayAction();
-
-  const [checked, setChecked] = useState(false);
-
-  const handleCheckout = () => {
-    setChecked((prev) => !prev);
-  };
   console.log(props.spots, "spots from user bookmarks")
+
 
   const spotsmap = props.spots.map(spot => {
 
@@ -61,7 +58,7 @@ export default function SpotList(props) {
       </Button>
       
       <Collapse in={checked}>
-          <Paper className="popup">
+          <Paper className="popup_checkout">
             <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user}/>
           </Paper>
       </Collapse>

@@ -3,14 +3,19 @@ import React, { useState, useEffect } from 'react';
 import UserNameDisplay from './UserNameDisplay';
 //import style & material-ui 
 import './RenterDashboad.scss';
+import './Popup.scss';
 import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
+import Rating from '@material-ui/lab/Rating';
+import Popover from '@material-ui/core/Popover';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
 import { getRenterBookings, getHistory, getRenterBookmarks, checkBookmarkedspot } from '../helpers/selector';
+
+
 
 export default function RenterD_myBookings(props) {
 
@@ -22,10 +27,22 @@ export default function RenterD_myBookings(props) {
 
   //get this renter's bookmared list from helper function
   const thisUserBookmarks = getRenterBookmarks(props.user.id, props.bookmarks)
-  console.log(thisUserBookmarks)
 
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
+
+  //rating popup control
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  const [value, setValue] = useState(2);
 
   function cancel (bookingId) {
     props.cancelBooking(bookingId)
@@ -60,7 +77,7 @@ export default function RenterD_myBookings(props) {
         <AccordionActions>
           <Button variant="contained">Contact Owner</Button>
           <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
-            Cancel This Booking
+            Cancel
           </Button>
         </AccordionActions>
       </Accordion>
@@ -80,7 +97,8 @@ export default function RenterD_myBookings(props) {
       const endDateArr = bookObj.end_date_time.split("T")
 
       const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
- 
+      
+
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
@@ -99,11 +117,31 @@ export default function RenterD_myBookings(props) {
           <Button variant="contained" disabled >Bookmarked</Button>}
         {bookmarked === false &&  
           <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
-        
-          
-          <Button variant="contained" color="secondary" >Rate this spot</Button>
+
+          <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            Rate this Spot
+          </Button>
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
+            transformOrigin={{ vertical: 'top', horizontal: 'center'}}
+          >
+            <Rating
+              name={`rating${num}`}
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+            }}
+          />
+          </Popover>
+
+
         </AccordionActions>
       </Accordion>
+
       )
     }
     return print;
@@ -124,6 +162,8 @@ export default function RenterD_myBookings(props) {
 
       <Typography variant="h5" className="page_title">History</Typography>
       {displayHistoryBookings()}
+
+      
     
     </div>
   );

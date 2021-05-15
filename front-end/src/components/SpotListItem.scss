@@ -1,7 +1,5 @@
 .spotlist_wrap {
-  width: 90%
-
- 
+  width: 90% 
 }
 
 .spotlist_box {
@@ -25,21 +23,3 @@
 }
 
 
-
-.popup.MuiPaper-root{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  text-align: center;
-  width: 400px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.popup_time {
-  justify-self: center;
-}

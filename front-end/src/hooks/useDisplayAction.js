@@ -21,9 +21,17 @@ export default function useDisplayAction() {
     setSelectedTab(newValue);
   }
 
+  //Popup control
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckout = () => {
+    setChecked((prev) => !prev);
+  };
+
   return { 
     expanded, setExpanded, handleChange, 
     openDrawer, setOpenDrawer, drawerClose, 
-    selectedTab, setSelectedTab, handleTabs 
+    selectedTab, setSelectedTab, handleTabs,
+    checked, setChecked, handleCheckout 
   }
 }
