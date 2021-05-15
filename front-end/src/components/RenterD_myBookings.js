@@ -96,7 +96,7 @@ export default function RenterD_myBookings(props) {
         <AccordionActions>
 
         {bookmarked === true && 
-          <Button variant="contained" disabled >Bookmark</Button>}
+          <Button variant="contained" disabled >Bookmarked</Button>}
         {bookmarked === false &&  
           <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.street_address, bookObj.city, bookObj.province, bookObj.country, bookObj.price, bookObj.picture, bookObj.postal_code, bookObj.rating)}>Bookmark</Button> } 
         
