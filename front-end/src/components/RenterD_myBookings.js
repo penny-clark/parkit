@@ -10,15 +10,19 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
-import { getRenterBookings, getHistory } from '../helpers/selector';
+import { getRenterBookings, getHistory, getRenterBookmarks, checkBookmarkedspot } from '../helpers/selector';
 
 export default function RenterD_myBookings(props) {
 
-  //get this owner's booked schedule list from helper function
+  //get this renter's booking list from helper function
   const thisUserBookings = getRenterBookings(props.user.id, props.bookingsR)
   const dividedBooking = getHistory(thisUserBookings)
   const activeBooking = dividedBooking[0]
   const historyBooking = dividedBooking[1]
+
+  //get this renter's bookmared list from helper function
+  const thisUserBookmarks = getRenterBookmarks(props.user.id, props.bookmarks)
+  console.log(thisUserBookmarks)
 
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
@@ -74,6 +78,8 @@ export default function RenterD_myBookings(props) {
 
       const startDateArr = bookObj.start_date_time.split("T")
       const endDateArr = bookObj.end_date_time.split("T")
+
+      const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
  
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
@@ -88,7 +94,13 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.street_address, bookObj.city, bookObj.province, bookObj.country, bookObj.price, bookObj.picture, bookObj.postal_code, bookObj.rating)}>Bookmark</Button>
+
+        {bookmarked === true && 
+          <Button variant="contained" disabled >Bookmark</Button>}
+        {bookmarked === false &&  
+          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.street_address, bookObj.city, bookObj.province, bookObj.country, bookObj.price, bookObj.picture, bookObj.postal_code, bookObj.rating)}>Bookmark</Button> } 
+        
+          
           <Button variant="contained" color="secondary" >Rate this spot</Button>
         </AccordionActions>
       </Accordion>

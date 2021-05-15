@@ -230,6 +230,7 @@ export default function App(props)  {
                 bookingsR={state.renterbookings} 
                 cancelBooking={cancelBooking}
                 bookmarkSpot={bookmarkSpot}
+                bookmarks={state.bookmarks}
                 /> 
             </Route>
             <Route exact path="/mybookmarks">
