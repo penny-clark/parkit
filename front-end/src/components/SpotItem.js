@@ -9,10 +9,10 @@ import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import useDisplayAction from "../hooks/useDisplayAction"
+import  { openEmail } from '../helpers/helper'
 
 export default function SpotItem(props) {
 
-  console.log(props.spots, "do you have spots?")
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
     return(
@@ -35,7 +35,7 @@ export default function SpotItem(props) {
        Owner: {props.spot.owner.first_name} {props.spot.owner.last_name}
       </Typography>
       <div class="flexline">
-      <Button variant="contained" size="small">Contact Owner</Button>
+      <Button variant="contained" size="small" onClick={()=> openEmail(props.spot.owner.email)}>Contact Owner</Button>
       <Button variant="contained" size="small" color="secondary" onClick={handleCheckout}>
         Book this Spot
       </Button>

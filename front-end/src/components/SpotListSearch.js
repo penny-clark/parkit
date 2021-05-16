@@ -6,6 +6,7 @@ import { Tabs, Tab } from '@material-ui/core';
 //hooks
 import useDisplayAction from "../hooks/useDisplayAction"
 
+
 export default function SpotListSearch(props) {
   const [keyword, setKeyword] = useState("")
   console.log(props.spots, "Spots in spotlist search")

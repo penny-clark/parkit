@@ -13,13 +13,13 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
+import  { openEmail } from '../helpers/helper'
 
 export default function SpotList(props) {
 
   const { expanded, setExpanded, handleChange } = useDisplayAction();
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
-  console.log(props.spots, "spots from user bookmarks")
 
   const spotsmap = props.spots.map(spot => {
 
@@ -51,14 +51,14 @@ export default function SpotList(props) {
       </Typography>
     </AccordionDetails>
     <AccordionActions>
-      <Button variant="contained">Contact Owner</Button>
+      <Button variant="contained" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
       <Button variant="contained" color="secondary" onClick={handleCheckout}>
         Book this spot
       </Button>
       
       <Collapse in={checked}>
           <Paper className="popup_checkout">
-            <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user}/>
+          <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
           </Paper>
       </Collapse>
 

@@ -10,12 +10,12 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
-import Popover from '@material-ui/core/Popover';
+
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
-import Rating from '@material-ui/lab/Rating';
+import  { openEmail } from '../helpers/helper'
 import { getRenterBookings, getHistory, getRenterBookmarks, checkBookmarkedspot } from '../helpers/selector';
 
 
@@ -37,12 +37,6 @@ export default function RenterD_myBookings(props) {
   //rating popup submit
   function submitRating() {
     handleCheckout()
-  }
-  const [value, setValue] = useState(0);
-
-  function placeReadOnly(spotid) {
-    handleCheckout()
-    props.rateSpot(props.user.id, spotid, value)
   }
 
 //axios functions
@@ -77,7 +71,7 @@ export default function RenterD_myBookings(props) {
           
         </AccordionDetails>
         <AccordionActions>
-          <Button variant="contained">Contact Owner</Button>
+          <Button variant="contained" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
           <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
             Cancel
           </Button>
@@ -127,18 +121,7 @@ export default function RenterD_myBookings(props) {
                 
          <Collapse in={checked}>
           <Paper className="popup_rating">
-            <div>
-              <Typography>My Rating</Typography>
-            <Rating
-              key={props.id}
-              name={`rating${props.id}`}
-              value={value}
-              onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-            />
-            <Button onClick={() => placeReadOnly(bookObj.spot.spot_id)}> Submit </Button>
-            </div>
+          <SpotRating id={bookObj.id} bookObj={bookObj} rateSpot={props.rateSpot} user={props.user}  handleCheckout={handleCheckout}/>
           </Paper>
         </Collapse>
 
