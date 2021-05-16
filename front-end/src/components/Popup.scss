@@ -27,13 +27,63 @@
   height: auto;
 }
 
-.ratingBox {
-  display: none;
+
+/* for map popup */
+
+.leaflet-popup {
+
+  height: auto;
+
+  
+}
+
+.leaflet-popup-content-wrapper {
+  width: 290px;
+
+  // background: none;
+  // box-shadow: none;
+}
+
+.leaflet-popup-content {
+
+  height: 100%;
+  background-color: #fff;
+  padding: 0;
+}
+
+.map_popup_wrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.flexline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.inlineIcon {
+  display: inline-flex;
+
+}
+
+.popup_checkout_map{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   text-align: center;
-  padding: 1rem;
-  right: 1rem;
-  bottom: 4rem;
-  width: 200;
-  height: 70;
+  width: 260px;
+  height: 400px;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: .4rem;
+  transform: translate(105%, 0%);
 }
