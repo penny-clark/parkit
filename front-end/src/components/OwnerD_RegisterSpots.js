@@ -12,7 +12,7 @@ import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 export default function OwnerD_RegisterSpots(props) {
 
   function submitSpot() {
-    props.addSpot(props.user.id, streetAddress, city, province, country, postalCode, picture, price) 
+    props.addSpot(props.user.id, streetAddress, city, province, country, postalCode, latitude, longitude, picture, price) 
   }
 
   const [streetAddress, setStreetAddress] = useState("");
@@ -20,6 +20,8 @@ export default function OwnerD_RegisterSpots(props) {
   const [province, setProvince] = useState("");
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [picture, setPicture] = useState("");
   const [price, setPrice] = useState("");
 
@@ -97,6 +99,36 @@ export default function OwnerD_RegisterSpots(props) {
               labelWidth={7}
             />
           </FormControl>
+        </Grid>
+
+    <Typography variant="h6" className="form_title">Latitude & Longitude</Typography>
+    <p>This helps us show your listing on our map! <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en>Instruc">Tips for finding the latitutude and longitude of an address</a></p>
+      <Grid container>
+          <Grid item xs={6}>
+            <FormControl fullWidth variant="filled" size="medium" >
+            <InputLabel htmlFor="latitude">Latitude</InputLabel>
+              <FilledInput
+                className="input_register_left"
+                id="latitude"
+                value={latitude}
+                placeholder={"Enter latitude"}
+                onChange={(event) => setLatitude(event.target.value)}
+                labelWidth={7}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl fullWidth variant="filled" size="medium" >
+            <InputLabel htmlFor="longitude">Longitude</InputLabel>
+              <FilledInput
+                className="input_register"
+                id="longitude"
+                value={longitude}
+                onChange={(event) => setLongitude(event.target.value)}
+                labelWidth={7}
+              />
+            </FormControl>
+          </Grid>
         </Grid>
 
     <Typography variant="h6" className="form_title">Price per hour</Typography>

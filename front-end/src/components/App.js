@@ -55,7 +55,7 @@ export default function App(props)  {
       .catch()
     }, []);
 
-    function addSpot (userid, street_address, city, province, country, postal_code, picture, price){
+    function addSpot (userid, street_address, city, province, country, postal_code, latitude, longitude, picture, price){
       const newSpotObj = {
         id: (state.spots[state.spots.length -1].id +1),
         owner: {user_id: userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
@@ -64,6 +64,8 @@ export default function App(props)  {
         province,
         country,
         postal_code,
+        latitude,
+        longitude,
         picture,
         price,
         rating: null
@@ -77,14 +79,16 @@ export default function App(props)  {
           province,
           country,
           postal_code,
+          latitude,
+          longitude,
           picture,
           price
         })
         .then(res => { 
           const newSpotArr = [ ...state.spots]
           newSpotArr.push(newSpotObj)
-          console.log(newSpotArr, "new spot arr")
           setState(prev => ({ ...prev, spots: newSpotArr}))
+          console.log(newSpotArr, "new spot arr")
         })
         .catch(err => console.log(err))
       }

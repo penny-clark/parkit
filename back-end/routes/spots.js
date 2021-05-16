@@ -51,7 +51,7 @@ router.get("/", (request, response) => {
     return db.query(`
     INSERT INTO spots (user_id, street_address, city, province, country, postal_code, latitude, longitude, picture, price)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
-    `, [req.body.id, req.body.street_address, req.body.city, req.body.province, req.body.country, req.body.postal_code, req.body.picture, req.body.price])
+    `, [req.body.id, req.body.street_address, req.body.city, req.body.province, req.body.country, req.body.postal_code, req.body.latitude, req.body.longitude, req.body.picture, req.body.price])
       .then(spot => {
         res.json({ spot });
       })
