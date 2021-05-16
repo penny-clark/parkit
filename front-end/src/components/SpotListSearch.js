@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import SearchBar from "./SearchBar";
 import SpotList from "./SpotList";
 import MapView from "./MapView.jsx";
-import { Tabs, Tab, AppBar } from '@material-ui/core';
+import { Tabs, Tab } from '@material-ui/core';
 //hooks
 import useDisplayAction from "../hooks/useDisplayAction"
 
@@ -25,7 +25,7 @@ export default function SpotListSearch(props) {
     </Tabs>
 
 
-    {selectedTab === 0 && <MapView spots={filterSpots}/>}
+    {selectedTab === 0 && <MapView spots={filterSpots}  user={props.user} bookSpot={props.bookSpot}/>}
     {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} keyword={keyword}/>}   
 
     
