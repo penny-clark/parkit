@@ -18,8 +18,13 @@ export default function SpotList(props) {
 
   const { expanded, setExpanded, handleChange } = useDisplayAction();
   const { checked, setChecked, handleCheckout } = useDisplayAction();
-
-  console.log(props.spots, "spots from user bookmarks")
+  
+  function selectSpot(price) {
+    handleCheckout()
+    if(!isNaN(props.endTime - props.startTime)) {
+    props.setTotalCost(`Total: $${(((props.endTime - props.startTime) / 60000) * (price / 60)).toFixed(2)}`)
+    }
+  }
 
   const spotsmap = props.spots.map(spot => {
 
@@ -52,13 +57,13 @@ export default function SpotList(props) {
     </AccordionDetails>
     <AccordionActions>
       <Button variant="contained">Contact Owner</Button>
-      <Button variant="contained" color="secondary" onClick={handleCheckout}>
+      <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
         Book this spot
       </Button>
       
       <Collapse in={checked}>
           <Paper className="popup_checkout">
-            <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user}/>
+            <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
           </Paper>
       </Collapse>
 

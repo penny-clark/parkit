@@ -8,7 +8,9 @@ import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function SpotListSearch(props) {
   const [keyword, setKeyword] = useState("")
-  console.log(props.spots, "Spots in spotlist search")
+  const [startTime, setStartTime] = useState("Select date and time");
+  const [endTime, setEndTime] = useState("Select date and time");
+  const [totalCost, setTotalCost] = useState("Please select your booking times")
   const searchTerm = keyword.substring(0,2)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
@@ -16,7 +18,14 @@ export default function SpotListSearch(props) {
 
   return (
     <div className="home_wrap">
-    <SearchBar keyword={keyword} setKeyword={setKeyword} />
+    <SearchBar 
+    keyword={keyword} 
+    setKeyword={setKeyword}
+    startTime={startTime}
+    endTime={endTime}
+    setStartTime={setStartTime}
+    setEndTime={setEndTime} 
+    />
 
  
     <Tabs value={selectedTab} onChange={handleTabs} className="tab_homeview" centered>
@@ -25,8 +34,8 @@ export default function SpotListSearch(props) {
     </Tabs>
 
 
-    {selectedTab === 0 && <MapView spots={filterSpots}  user={props.user} bookSpot={props.bookSpot}/>}
-    {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} keyword={keyword}/>}   
+    {selectedTab === 0 && <MapView spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}
+    {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}   
 
     
     </div>

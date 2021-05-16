@@ -12,8 +12,14 @@ import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function SpotItem(props) {
 
-  console.log(props.spots, "do you have spots?")
   const { checked, setChecked, handleCheckout } = useDisplayAction();
+
+  function selectSpot(price) {
+    handleCheckout()
+    if(!isNaN(props.endTime - props.startTime)) {
+    props.setTotalCost(`Total: $${(((props.endTime - props.startTime) / 60000) * (price / 60)).toFixed(2)}`)
+    }
+  }
 
     return(
     <div>
@@ -36,13 +42,13 @@ export default function SpotItem(props) {
       </Typography>
       <div class="flexline">
       <Button variant="contained" size="small">Contact Owner</Button>
-      <Button variant="contained" size="small" color="secondary" onClick={handleCheckout}>
+      <Button variant="contained" size="small" color="secondary" onClick={() => {selectSpot(props.spot.price)}}>
         Book this Spot
       </Button>
       </div>
       <Collapse in={checked}>
           <Paper className="popup_checkout_map">
-            <BookingPopup spot={props.spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user}/>
+            <BookingPopup spot={props.spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
           </Paper>
       </Collapse>
 
