@@ -55,44 +55,6 @@ export default function App(props)  {
       .catch()
     }, []);
 
-    function addSpot (userid, street_address, city, province, country, postal_code, latitude, longitude, picture, price){
-      const newSpotObj = {
-        id: (state.spots[state.spots.length -1].id +1),
-        owner: {user_id: userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
-        street_address,
-        city,
-        province,
-        country,
-        postal_code,
-        latitude,
-        longitude,
-        picture,
-        price,
-        rating: null
-      }
-      
-      return axios
-        .post('/api/spots', {
-          id: userid,
-          street_address,
-          city,
-          province,
-          country,
-          postal_code,
-          latitude,
-          longitude,
-          picture,
-          price
-        })
-        .then(res => { 
-          const newSpotArr = [ ...state.spots]
-          newSpotArr.push(newSpotObj)
-          setState(prev => ({ ...prev, spots: newSpotArr}))
-          console.log(newSpotArr, "new spot arr")
-        })
-        .catch(err => console.log(err))
-      }
-
   // MAKE A NEW BOOKING
 
   function bookSpot(carId, spotId, startTime, endTime, addr, city, province, pcode, price, pic, ownerid, ownerfn, ownerln, ownerem, owneravatar, spotrating) {
@@ -131,8 +93,6 @@ export default function App(props)  {
       newOwnerBookingsArr.push(newOwnerBookingObj)
       newRenterBookingsArr.push(newRenterBookingObj)
       setState(prev => ({ ...prev, renterbookings: newRenterBookingsArr, ownerbookings: newOwnerBookingsArr}))
-      console.log(newRenterBookingsArr, "new renterbooking arr")
-      console(newOwnerBookingsArr, "new owner booking Arr")
     })
     .catch(err => console.log(err))
   }
@@ -190,8 +150,52 @@ export default function App(props)  {
     .catch(err => console.log(err))
   }
 
-  //ADD A NEW SPOT - fix needed: same issue as adding new car
-  
+  //SET DEFAULT CAR
+
+  function setDefaultCar(carid) {
+    const newUser = { ...state.user, car_id: carid}
+    setState(prev => ({ ...prev, user: newUser}))
+  }
+
+  //ADD A NEW SPOT
+
+  function addSpot (userid, street_address, city, province, country, postal_code, latitude, longitude, picture, price){
+    const newSpotObj = {
+      id: (state.spots[state.spots.length -1].id +1),
+      owner: {user_id: userid, first_name: state.user.first_name, last_name: state.user.last_name, owner_email: state.user.email, avatar: state.user.avatar},
+      street_address,
+      city,
+      province,
+      country,
+      postal_code,
+      latitude,
+      longitude,
+      picture,
+      price,
+      rating: null
+    }
+    
+    return axios
+      .post('/api/spots', {
+        id: userid,
+        street_address,
+        city,
+        province,
+        country,
+        postal_code,
+        latitude,
+        longitude,
+        picture,
+        price
+      })
+      .then(res => { 
+        const newSpotArr = [ ...state.spots]
+        newSpotArr.push(newSpotObj)
+        setState(prev => ({ ...prev, spots: newSpotArr}))
+        console.log(newSpotArr, "new spot arr")
+      })
+      .catch(err => console.log(err))
+    }
 
     // DELETE A SPOT (owner dashboard)
 
@@ -297,7 +301,8 @@ export default function App(props)  {
               <RenterD_myCars 
                 user={state.user}
                 cars={state.cars}
-                deleteCar={deleteCar}/>
+                deleteCar={deleteCar}
+                setDefaultCar={setDefaultCar}/>
             </Route>
             <Route exact path="/addnewcar">
               <RenterD_RegisterCars 
