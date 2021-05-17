@@ -9,8 +9,8 @@ import useDisplayAction from "../hooks/useDisplayAction"
 
 export default function SpotListSearch(props) {
   const [keyword, setKeyword] = useState("")
-  const [startTime, setStartTime] = useState("Select date and time");
-  const [endTime, setEndTime] = useState("Select date and time");
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
   const [totalCost, setTotalCost] = useState("Please select your booking times")
   const searchTerm = keyword.substring(0,2)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
