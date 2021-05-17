@@ -54,6 +54,13 @@ export default function OwnerD_BookedSchedule(props) {
         <AccordionDetails>
         <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
           <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
+          <br></br>
+          <ListItemText>Renter Car Info</ListItemText>
+          <ListItemText>Make: {bookObj.car.car_make}</ListItemText>
+          <ListItemText>Model: {bookObj.car.model}</ListItemText>
+          <ListItemText>Colour: {bookObj.car.colour}</ListItemText>
+          <ListItemText>License plate: {bookObj.car.plate_number}</ListItemText>
+
         </AccordionDetails>
         <AccordionActions>
           <Button variant="contained">Contact Renter</Button>
@@ -91,9 +98,6 @@ export default function OwnerD_BookedSchedule(props) {
           <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
         </AccordionDetails>
         <AccordionActions>
-          <Button variant="contained" color="secondary">
-            Review this Renter
-          </Button>
         </AccordionActions>
       </Accordion>
       )
