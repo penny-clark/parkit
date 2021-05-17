@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 //import style & material-ui 
-import './RenterDashboad.scss';
+import './Dashboad.scss';
 import { Button, Typography, Divider} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
