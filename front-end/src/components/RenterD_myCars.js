@@ -23,7 +23,14 @@ export default function RenterD_myCars(props) {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+  function checkDefaultCar(carId) {
+    if (carId === props.user.car_id) return true
+    return false
+  }
 
+  function setDefaultCar(carid) {
+    props.setDefaultCar(carid)
+  }
 
   // iterate each car
   const displayCars = () => {
@@ -31,7 +38,7 @@ export default function RenterD_myCars(props) {
  
     for (const carObj of thisUserCars) {
       const num = thisUserCars.indexOf(carObj)+1;
-   
+      const defaultCar = checkDefaultCar(carObj.id);
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
@@ -43,6 +50,10 @@ export default function RenterD_myCars(props) {
           <Typography variant="subtitle1">Colour : {carObj.colour}</Typography>
         </AccordionDetails>
         <AccordionActions>
+          {defaultCar === true &&
+          <Button disabled >Default Car</Button>}
+          {defaultCar === false && 
+          <Button variant="contained" onClick={() => setDefaultCar(carObj.id)}> Set Default </Button>}
           <Button color="secondary" onClick={() => remove(carObj.id)}>
             Delete this car
           </Button>
