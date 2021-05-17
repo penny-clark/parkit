@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import UserNameDisplay from './UserNameDisplay';
 import SpotRating from './SpotRating';
 //import style & material-ui 
-import './RenterDashboad.scss';
+import './Dashboad.scss';
 import './Popup.scss';
 import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
