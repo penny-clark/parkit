@@ -33,6 +33,9 @@ export default function RenterD_myBookings(props) {
 
   //list open-close & pop up working with this - from the hook
   const { expanded, setExpanded, handleChange, checked, setChecked, handleCheckout } = useDisplayAction();
+  
+  //Controls state for cancel booking confirmation message
+  const [confirm, setConfirm] = useState(false)
 
   //rating popup submit
   function submitRating() {
@@ -42,6 +45,7 @@ export default function RenterD_myBookings(props) {
 //axios functions
   function cancel (bookingId) {
     props.cancelBooking(bookingId)
+    setConfirm(false)
   }
 
   function setBookmark(spotId, ownerid, ownerfn, ownerln, ownerem, avatar, streetadd, city, province, country, price, picture, postal_code, rating) {
@@ -70,12 +74,20 @@ export default function RenterD_myBookings(props) {
           <UserNameDisplay user={bookObj.owner}/>
           
         </AccordionDetails>
-        <AccordionActions>
+          {!confirm &&
+          <AccordionActions>
           <Button variant="contained" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
-          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
+          <Button variant="contained" color="secondary" onClick={() => setConfirm(true)}>
             Cancel
           </Button>
-        </AccordionActions>
+          </AccordionActions>
+          }
+          {confirm && 
+          <AccordionActions>
+          <Button variant="contained" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
+          <Button variant="contained" color="secondary" onClick={() => setConfirm(false)}>Back</Button>
+          </AccordionActions>
+          }
       </Accordion>
       )
     }

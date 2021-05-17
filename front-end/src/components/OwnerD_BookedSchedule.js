@@ -10,6 +10,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction";
+import  { openEmail } from '../helpers/helper'
 import { getOwnerBookings, getOwnerSpots, getHistory, findSpotAddress} from '../helpers/selector';
 
 export default function OwnerD_BookedSchedule(props) {
@@ -27,8 +28,12 @@ export default function OwnerD_BookedSchedule(props) {
   //list open-close working with this - from the hook
   const { expanded, setExpanded, handleChange} = useDisplayAction();
 
+   //Controls state for cancel booking confirmation message
+   const [confirm, setConfirm] = useState(false)
+
   function cancel (bookingId) {
     props.cancelBooking(bookingId)
+    setConfirm(false)
   }
 
   // iterate each active booking
@@ -62,12 +67,20 @@ export default function OwnerD_BookedSchedule(props) {
           <ListItemText>License plate: {bookObj.car.plate_number}</ListItemText>
 
         </AccordionDetails>
-        <AccordionActions>
-          <Button variant="contained">Contact Renter</Button>
-          <Button variant="contained" color="secondary" onClick={() => cancel(bookObj.id)}>
-            Cancel This Booking
+        {!confirm &&
+          <AccordionActions>
+          <Button variant="contained" onClick={()=> openEmail(bookObj.renter.renter_email)}>Contact Renter</Button>
+          <Button variant="contained" color="secondary" onClick={() => setConfirm(true)}>
+            Cancel
           </Button>
-        </AccordionActions>
+          </AccordionActions>
+          }
+          {confirm && 
+          <AccordionActions>
+          <Button variant="contained" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
+          <Button variant="contained" color="secondary" onClick={() => setConfirm(false)}>Back</Button>
+          </AccordionActions>
+          }
       </Accordion>
       )
     }
