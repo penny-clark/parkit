@@ -9,10 +9,6 @@ import DateTimePicker from '@material-ui/lab/DateTimePicker';
 
 export default function BookingPopup(props) {
 
-  const [startTime, setStartTime] = useState("Select date and time");
-  const [endTime, setEndTime] = useState("Select date and time");
-  const [totalCost, setTotalCost] = useState("Please select your booking times")
-
   const handleCheckout = () => {
     props.setChecked((prev) => !prev);
   };
@@ -22,7 +18,7 @@ export default function BookingPopup(props) {
   }
 
   function save() {
-    props.bookSpot(props.user.car_id, props.spot.id, startTime, endTime, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating)
+    props.bookSpot(props.user.car_id, props.spot.id, props.startTime, props.endTime, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating)
     handleCheckout();
     redirectToPayment();
 
@@ -38,9 +34,9 @@ export default function BookingPopup(props) {
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="Start Time"
-            value={startTime}
+            value={props.startTime}
             onChange={(newValue) => {
-              setStartTime(newValue);
+              props.setStartTime(newValue);
             }}
           />
         </Grid>
@@ -48,16 +44,16 @@ export default function BookingPopup(props) {
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="End Time"
-            value={endTime}
+            value={props.endTime}
             onChange={(newValue) => {
-            setEndTime(newValue);
-            setTotalCost(`Total: $${(((endTime - startTime) / 60000) * (props.spot.price / 60)).toFixed(2)}`)
+            props.setEndTime(newValue);
+            props.setTotalCost(`Total: $${(((props.endTime - props.startTime) / 60000) * (props.spot.price / 60)).toFixed(2)}`)
           }}
         />
         </Grid>
       </LocalizationProvider>
       </Grid>
-      <p>{totalCost} </p>
+      <p>{props.totalCost} </p>
      <Button variant="contained" onClick={save} color="secondary">Confirm & Pay</Button> 
      <Button variant="contained" onClick={handleCheckout} >Close</Button>
     </div>

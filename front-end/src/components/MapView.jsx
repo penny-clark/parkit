@@ -20,7 +20,15 @@ export default function MapView(props) {
       <Marker key={spot.id} position={[spot.latitude, spot.longitude]}>
           <Popup position={[spot.latitude, spot.longitude]}>
            <div className="map_popup_wrap">
-            <SpotItem spot={spot} user={props.user} bookSpot={props.bookSpot} />
+            <SpotItem spot={spot} 
+            user={props.user} 
+            bookSpot={props.bookSpot} 
+            startTime={props.startTime} 
+            endTime={props.endTime} 
+            setStartTime={props.setStartTime} 
+            setEndTime={props.setEndTime} 
+            totalCost={props.totalCost} 
+            setTotalCost={props.setTotalCost}/>
            </div>
           </Popup>
         </Marker>
