@@ -9,8 +9,8 @@ import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 //import components
 import UserNameDisplay from './UserNameDisplay';
-import OwnerMenuList from './OwnerMenuList';
-import RenterMenuList from './RenterMenuList';
+import MenuList_owner from './MenuList_owner';
+import MenuList_renter from './MenuList_renter';
 //hooks
 import useDisplayAction from "../hooks/useDisplayAction"
 
@@ -52,8 +52,8 @@ export default function TopBar(props) {
       </Tabs>
       </AppBar> 
 
-        {selectedTab === 0 && <RenterMenuList setDrawer={drawerClose}/>}
-        {selectedTab === 1 && <OwnerMenuList  setDrawer={drawerClose}/>}        
+        {selectedTab === 0 && <MenuList_renter setDrawer={drawerClose}/>}
+        {selectedTab === 1 && <MenuList_owner  setDrawer={drawerClose}/>}        
 
     </Drawer>
 
