@@ -78,7 +78,7 @@ export default function MapView(props) {
         </Typography>
         <div className="flexline">
           <Button variant="contained" size="small" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
-          <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id)} >Detail </Button>
+          <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id, spot.postal_code)} >Detail </Button>
         </div>
       </div>
           </Popup>

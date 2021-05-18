@@ -84,10 +84,21 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
         Book this spot
       </Button>
+      <Button onClick={()=> props.closelayer()}>Return to Map Search</Button>
 
       <Collapse in={checked}>
           <Paper className="popup_checkout">
-            <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
+            <BookingPopup spot={spot} 
+            checked={checked} 
+            setChecked={setChecked} 
+            bookSpot={props.bookSpot} 
+            user={props.user} 
+            startTime={props.startTime} 
+            endTime={props.endTime} 
+            setStartTime={props.setStartTime} 
+            setEndTime={props.setEndTime} 
+            totalCost={props.totalCost} 
+            setTotalCost={props.setTotalCost}/>
           </Paper>
       </Collapse>
 

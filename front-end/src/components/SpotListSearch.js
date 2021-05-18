@@ -12,7 +12,7 @@ export default function SpotListSearch(props) {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [totalCost, setTotalCost] = useState("Please select your booking times")
-  const searchTerm = keyword.substring(0,2)
+  const searchTerm = keyword.substring(0,4)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
   // const { selectedTab, setSelectedTab, handleTabs } = useDisplayAction();
@@ -26,15 +26,25 @@ export default function SpotListSearch(props) {
 
   const itemEls = useRef({})
 
-  function openlayer(id) {
+  function openlayer(id, postalcode) {
     setSelectedTab(1)
     setExpanded(`panel${id}`)
     window.location = `http://localhost:3000#spot${id}`
     searchHandle(false)
+    setKeyword(postalcode)
    // document.getElementsByClassName('.spotlist_wrap').style.visibility = 'hidden'
     //document.querySelector(`.searchbox`).style.display = "none";
     //document.getElementById(`spot${id}`).style.display = "absolute";
 
+   }
+
+   function closelayer() {
+     setSelectedTab(0)
+     setExpanded(null)
+     window.location = `http://localhost:3000#`
+     searchHandle(true)
+     setKeyword("")
+     
    }
 
    function searchHandle(s) {
@@ -75,8 +85,26 @@ export default function SpotListSearch(props) {
     </Tabs>
 
 
-    {selectedTab === 0 &&  <MapView spots={filterSpots} user={props.user} openlayer={openlayer}/>}
-    {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} expanded={expanded} setExpanded={setExpanded} itemEls={itemEls} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}     
+    {selectedTab === 0 &&  <MapView 
+    spots={filterSpots} 
+    user={props.user} 
+    openlayer={openlayer} 
+    />}
+
+    {selectedTab === 1 && <SpotList 
+    spots={filterSpots} 
+    user={props.user} 
+    expanded={expanded} 
+    setExpanded={setExpanded} 
+    itemEls={itemEls} 
+    bookSpot={props.bookSpot} 
+    startTime={startTime} 
+    endTime={endTime} 
+    setStartTime={setStartTime} 
+    setEndTime={setEndTime} 
+    totalCost={totalCost} 
+    setTotalCost={setTotalCost} 
+    closelayer={closelayer}/>}     
 
 
     </div>
