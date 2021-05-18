@@ -75,7 +75,7 @@ export default function SpotListSearch(props) {
     </Tabs>
 
 
-    {selectedTab === 0 &&  <MapView spots={props.spots} user={props.user} openlayer={openlayer}/>}
+    {selectedTab === 0 &&  <MapView spots={filterSpots} user={props.user} openlayer={openlayer}/>}
     {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} expanded={expanded} setExpanded={setExpanded} itemEls={itemEls} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}     
 
 
