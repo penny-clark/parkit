@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
 
 // adds a new car
 router.post("/", (req, res) => {
-  console.log(req.body, "req body from add new car")
   return db.query(`
   INSERT INTO cars (user_id, make, model, colour, plate_number)
   VALUES ($1, $2, $3, $4, $5);

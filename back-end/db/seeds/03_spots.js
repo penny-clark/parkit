@@ -14,6 +14,10 @@ exports.seed = function(knex) {
         {user_id: 12, street_address: '1133 Barclay St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6E 1G8', latitude: 49.28434298, longitude: -123.1279346, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 3},
         {user_id: 13, street_address: '11255 Bidwell St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6G 2K8', latitude: 49.28623826, longitude: -123.1418023, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 4},
         {user_id: 14, street_address: '1850 Comox St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6G 2P4', latitude: 49.28909357, longitude: -123.140778, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 5},
+        {user_id: 4, street_address: '88 W Pender St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6B 6N9', latitude: 49.28053936, longitude: -123.1069607, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 5},
+        {user_id: 6, street_address: '228 Abbott St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6B 1C8', latitude: 49.28335136, longitude: -123.1063997, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 5},
+        {user_id: 7, street_address: '101 E Cordova St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6A 4J1', latitude: 49.28267156, longitude: -123.1017607, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 5},
+        {user_id: 3, street_address: '337 W Hastings St', city: 'Vancouver', province: 'BC', country: 'Canada', postal_code: 'V6B 1H6', latitude: 49.28339596, longitude: -123.1102348, picture: 'https://pr.sssagent.com/img/parkingspot1.png', price: 5},
       ]);
     });
 };

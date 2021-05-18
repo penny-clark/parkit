@@ -79,7 +79,6 @@ module.exports = (db) => {
     });
 
     router.get("/owner/:id", (req, res) => {
-      (console.log (req.params.id))
       return db.query(
         `
         SELECT

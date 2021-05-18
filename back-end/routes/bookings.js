@@ -82,13 +82,11 @@ router.get("/owner", (req, res) => {
 //post a new booking (for renters)
 
 router.post("/", (req, res) => {
-  console.log(req.body, "REQ BODY FROM BOOKING REQUEST")
   return db.query(`
   INSERT INTO bookings (car_id, spot_id, start_date_time, end_date_time)
   VALUES ($1, $2, $3, $4);
   `, [req.body.car_id, req.body.spot_id, req.body.start_datetime, req.body.end_datetime])
     .then(booking => {
-      console.log(booking, "booking in the response")
       res.json({ booking });
     })
     .catch(err => {
@@ -105,12 +103,10 @@ router.post("/", (req, res) => {
 // delete booking - by booking ids
 
 router.delete("/:id", (req, res) => {
-  console.log(req.params, "REQ PARAMS FROM DELETE REQUEST")
   return db.query(`
   DELETE FROM bookings where id = $1;
   `, [req.params.id])
     .then( booking => {
-      console.log(booking, "cancelled ya!")
         res.json({ booking });
     })
     .catch(err => {

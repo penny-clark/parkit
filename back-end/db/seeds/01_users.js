@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert([
         {first_name: 'Eggert', last_name: 'Eggerson', email: 'egg@egg.com', avatar: 'https://pr.sssagent.com/img/a1.png'},
         {first_name: 'Tilda', last_name: 'Tildy', email: 'tildy@gmail.com', avatar: 'https://pr.sssagent.com/img/a2.png'},
-        {first_name: 'Bob', last_name: 'Boberson', email: 'bob@bob.com', avatar: 'https://pr.sssagent.com/img/a3.png'},
+        {first_name: 'Brett', last_name: 'Bretterson', email: 'bb@bb.com', avatar: 'https://pr.sssagent.com/img/a3.png'},
         {first_name: 'Frank', last_name: 'Faststuff', email: 'franky@frank.com', avatar: 'https://pr.sssagent.com/img/a4.png'},
         {first_name: 'Beth', last_name: 'Betilda', email: 'bethy@gmail.com', avatar: 'https://pr.sssagent.com/img/a5.png'},
         {first_name: 'Esther', last_name: 'Catchemall', email: 'essie@gmail.com', avatar: 'https://pr.sssagent.com/img/a6.png'},

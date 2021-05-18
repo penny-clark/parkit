@@ -47,7 +47,6 @@ router.get("/", (request, response) => {
 //post a new spot
 
   router.post("/", (req, res) => {
-    console.log(req.body, "req body of new spot post route")
     return db.query(`
     INSERT INTO spots (user_id, street_address, city, province, country, postal_code, latitude, longitude, picture, price)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
@@ -56,7 +55,7 @@ router.get("/", (request, response) => {
         res.json({ spot });
       })
       .catch(err => {
-        console.log("new spot post err:", err)
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });

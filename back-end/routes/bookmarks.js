@@ -39,7 +39,6 @@ module.exports = (db) => {
 
   //for renter to bookmark a favourite spot
   router.post("/", (req, res) => {
-    console.log(req.body, "add bookmark in route")
     return db.query(`
       INSERT INTO bookmarked_spots (user_id, spot_id)
       VALUES ($1, $2);
@@ -48,7 +47,7 @@ module.exports = (db) => {
         res.json({ bookmark });
       })
       .catch(err => {
-        console.log(err, "add new bookmark")
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });

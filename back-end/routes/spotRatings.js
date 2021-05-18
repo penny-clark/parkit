@@ -22,7 +22,6 @@ router.get("/", (request, response) => {
 //post a new spot rating
 
   router.post("/", (req, res) => {
-    console.log(req.body, "newspotrating info")
     return db.query(`
       INSERT INTO spot_ratings (user_id, spot_id, rating)
       VALUES ($1, $2, $3);
@@ -31,7 +30,7 @@ router.get("/", (request, response) => {
         res.json({ rating });
       })
       .catch(err => {
-        console.log(err, "spot ratings error")
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });
