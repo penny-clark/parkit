@@ -4,15 +4,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
-.searchbox {
+.size_control_w600 {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#searchbox {
   width: 100%;
-  max-width: 600px;
-  height: 200px;
+  height: 170px;
   background-color: #fff;
   padding: .7rem;
+  transition: height 1s ease-in-out;
+  border-bottom: 1px solid #ccc;
+  padding-top: 3rem;
   
+  .s_close {
+    height: 0px;
+  }
 
   .timepicker {
     width: 100%;
@@ -22,7 +33,30 @@
 
 }
 
+.BT_st1 {
+  padding: .4rem;
+  border-radius: 0 0 .2rem .2rem;
+  border: 1px solid rgb(175, 205, 233);
+  background-color: rgb(212, 228, 243);
+  margin-right: .5rem;
+  cursor: pointer;
+}
+
+.BT_st2 {
+  padding: .4rem;
+  border-radius: 0 0 .2rem .2rem;
+  border: 1px solid rgb(175, 205, 233);
+  background-color: rgb(212, 228, 243);
+  margin-right: .5rem;
+  cursor: pointer;
+}
+
+.MuiFormControl-root {
+  background-color: #ffffff50;
+}
+
 .tab_homeview {
+  margin-top: 2rem;
 
   .tab_item {
 

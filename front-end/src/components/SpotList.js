@@ -1,4 +1,6 @@
 import React, {useState}from "react";
+import { Link, Route } from 'react-router-dom';
+
 import './SpotListItem.scss';
 import './Popup.scss';
 import BookingPopup from "./BookingPopup";
@@ -21,7 +23,6 @@ export default function SpotList(props) {
   //const { expanded, setExpanded, handleChange } = useDisplayAction();
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
-  const [expanded, setExpanded] = useState(null);
   
   function selectSpot(price) {
     handleCheckout()
@@ -32,18 +33,20 @@ export default function SpotList(props) {
 
 
     const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+    props.setExpanded(newExpanded ? panel : false);
     console.log(panel)
+   
   };
+ 
 
-  function openlayer(id) {
-    // document.querySelector(`#spot3 .MuiPaper-root div.MuiButtonBase-root`).style.ariaExpaned = "true";
-    setExpanded(`panel${id}`)
-    //  console.log(id, "are you working?")
-    window.location = `http://localhost:3000/#spot${id}`
-    //document.querySelector(`#spot${id} .MuiAccordionSummary-root`).style.backgroundColor = '#000'
-    document.querySelector(`.mapBox`).style.height = "0px";
-   }
+  // function openlayer(id) {
+  //   // document.querySelector(`#spot3 .MuiPaper-root div.MuiButtonBase-root`).style.ariaExpaned = "true";
+  //   setExpanded(`panel${id}`)
+  //   //  console.log(id, "are you working?")
+  //   window.location = `http://localhost:3000/#spot${id}`
+  //   //document.querySelector(`#spot${id} .MuiAccordionSummary-root`).style.backgroundColor = '#000'
+  //   document.querySelector(`.mapBox`).style.height = "0px";
+  //  }
 
   const spotsmap = () => {
 
@@ -54,9 +57,10 @@ export default function SpotList(props) {
     const num = props.spots.indexOf(spot) + 1;
 
     print.push(
-    < div key={num} id={`spot${spot.id}`} className="spotlist_wrap" >
-        
-      <Accordion square={false} expanded={expanded === `panel${spot.id}`} onChange={handleChange(`panel${spot.id}`)} className="Accbox">
+      
+    < div key={num} className="spotlist_wrap" id={`spot${spot.id}`} >
+       
+      <Accordion square={false} expanded={props.expanded === `panel${spot.id}`} onChange={handleChange(`panel${spot.id}`)} className="Accbox">
       <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <div className="flexline">
           <LocationOnIcon />
@@ -81,7 +85,7 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
         Book this spot
       </Button>
-      
+
       <Collapse in={checked}>
           <Paper className="popup_checkout">
             <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
@@ -90,8 +94,9 @@ export default function SpotList(props) {
 
     </AccordionActions>
   </Accordion>
-  </div>
     
+  </div>
+
   )}
     
   return print ;
@@ -99,8 +104,8 @@ export default function SpotList(props) {
   
 
   return (
-    <div>
-      <MapView spots={props.spots} user={props.user} openlayer={openlayer}/>
+    <div class="listview_wrap">
+      {/* <MapView spots={props.spots} user={props.user} openlayer={openlayer}/> */}
     {spotsmap()} 
     </div>
   )
