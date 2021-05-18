@@ -32,7 +32,7 @@ export default function SpotList(props) {
     const num = props.spots.indexOf(spot) + 1;
 
     return(
-    < div key={num} className="spotlist_wrap" >
+    < div key={num} id={`spot${num}`} className="spotlist_wrap" >
         
       <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
       <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>

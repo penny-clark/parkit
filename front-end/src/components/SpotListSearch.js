@@ -16,6 +16,21 @@ export default function SpotListSearch(props) {
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
   const { selectedTab, setSelectedTab, handleTabs } = useDisplayAction();
+ 
+  const [expanded, setExpanded] = useState(null);
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+    console.log(panel)
+  };
+
+  function openlayer(id) {
+   // document.querySelector(`#spot3 .MuiPaper-root div.MuiButtonBase-root`).style.ariaExpaned = "true";
+    handleChange(`panel${id}`)
+    console.log(id, "are you working?")
+
+    //handleChange(`panel${id}`) 
+   //window.location = `http://localhost:3000/#spot${id}`
+  }
 
   return (
     <div className="home_wrap">
@@ -28,7 +43,11 @@ export default function SpotListSearch(props) {
     setEndTime={setEndTime} 
     />
 
- 
+<MapView spots={filterSpots} user={props.user} bookSpot={props.bookSpot}  handleChange={handleChange}/>
+<SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />
+
+
+{/*  
     <Tabs value={selectedTab} onChange={handleTabs} className="tab_homeview" centered>
       <Tab label="MapView" className="tab_item"/>
       <Tab label="ListView" className="tab_item"/>
@@ -36,7 +55,7 @@ export default function SpotListSearch(props) {
 
 
     {selectedTab === 0 && <MapView spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}
-    {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}   
+    {selectedTab === 1 && <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot} startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} />}     */}
 
     
     </div>
