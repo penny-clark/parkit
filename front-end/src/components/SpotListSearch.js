@@ -3,9 +3,7 @@ import SearchBar from "./SearchBar";
 import SpotList from "./SpotList";
 import MapView from "./MapView.jsx";
 import { Tabs, Tab, Button } from '@material-ui/core';
-//hooks
-import useDisplayAction from "../hooks/useDisplayAction"
-import { BrowserRouter as Router, HashRouter, Switch } from 'react-router-dom';
+
 
 export default function SpotListSearch(props) {
   const [keyword, setKeyword] = useState("")
@@ -15,8 +13,7 @@ export default function SpotListSearch(props) {
   const searchTerm = keyword.substring(0,4)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
-  // const { selectedTab, setSelectedTab, handleTabs } = useDisplayAction();
-
+  
   const [expanded, setExpanded] = useState(null);
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -32,9 +29,6 @@ export default function SpotListSearch(props) {
     window.location = `http://localhost:3000#spot${id}`
     searchHandle(false)
     setKeyword(postalcode)
-   // document.getElementsByClassName('.spotlist_wrap').style.visibility = 'hidden'
-    //document.querySelector(`.searchbox`).style.display = "none";
-    //document.getElementById(`spot${id}`).style.display = "absolute";
 
    }
 
@@ -51,23 +45,21 @@ export default function SpotListSearch(props) {
      const searchDom = document.getElementById('searchbox')
     if (s === true ) {
       searchDom.style.display = "block";
-
     } 
     if (s === false ) {
       searchDom.style.display = "none";
-
     } 
    }
 
   return (
     <div className="home_wrap">
     <SearchBar 
-    keyword={keyword} 
-    setKeyword={setKeyword}
-    startTime={startTime}
-    endTime={endTime}
-    setStartTime={setStartTime}
-    setEndTime={setEndTime} 
+      keyword={keyword} 
+      setKeyword={setKeyword}
+      startTime={startTime}
+      endTime={endTime}
+      setStartTime={setStartTime}
+      setEndTime={setEndTime} 
     />
     <div className="flexline">
       <button className="BT_st1" onClick={()=>{searchHandle(true)}}>Open Search Bar</button>
@@ -86,25 +78,26 @@ export default function SpotListSearch(props) {
 
 
     {selectedTab === 0 &&  <MapView 
-    spots={filterSpots} 
-    user={props.user} 
-    openlayer={openlayer} 
-    />}
+      spots={filterSpots} 
+      user={props.user} 
+      openlayer={openlayer} 
+      />}
 
     {selectedTab === 1 && <SpotList 
-    spots={filterSpots} 
-    user={props.user} 
-    expanded={expanded} 
-    setExpanded={setExpanded} 
-    itemEls={itemEls} 
-    bookSpot={props.bookSpot} 
-    startTime={startTime} 
-    endTime={endTime} 
-    setStartTime={setStartTime} 
-    setEndTime={setEndTime} 
-    totalCost={totalCost} 
-    setTotalCost={setTotalCost} 
-    closelayer={closelayer}/>}     
+      spots={filterSpots} 
+      user={props.user} 
+      expanded={expanded} 
+      setExpanded={setExpanded} 
+      itemEls={itemEls} 
+      bookSpot={props.bookSpot} 
+      startTime={startTime} 
+      endTime={endTime} 
+      setStartTime={setStartTime} 
+      setEndTime={setEndTime} 
+      totalCost={totalCost} 
+      setTotalCost={setTotalCost} 
+      closelayer={closelayer}
+      />}     
 
 
     </div>

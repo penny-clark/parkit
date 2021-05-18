@@ -15,34 +15,6 @@ import  { openEmail } from '../helpers/helper'
 
 export default function MapView(props) {
 
-  function render_layer(spot, props) {
-
-    ReactDOM.render(
-      <div className="map_popup_wrap" id={`spot${spot.id}`}>
-      <div className="flexline">
-        <LocationOnIcon className="inlineIcon"/>
-        <Typography variant="body1">{spot.street_address}</Typography>
-        <MonetizationOnIcon />
-        <Typography variant="body1">{Math.floor(spot.price)}</Typography>
-        <Typography variant="body1"> / hour</Typography>
-      </div>
-    <div className="flexline">
-      <Rating name="read-only" value={spot.rating} readOnly />
-    </div>
-    <img src={spot.picture} height="150px"/>
-    
-    <Typography>
-    Owner: {spot.owner.first_name} {spot.owner.last_name}
-    </Typography>
-    <div className="flexline">
-      <Button variant="contained" size="small" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
-    </div>
-  </div>
-
-    , document.getElementById('map_spot_layer'))
-
-  }
-
   return(
     <Fragment>
     <div id="map" className="mapBox">
@@ -56,31 +28,25 @@ export default function MapView(props) {
         
       <Marker key={spot.id} position={[spot.latitude, spot.longitude]}>
           <Popup position={[spot.latitude, spot.longitude]} >
-          {/* <Typography variant="body1">{spot.street_address}</Typography>
-            <Button variant="contained" size="small" onClick={()=>{render_layer(spot,props)}}>Detail</Button>  */}
-           
-      <div className="map_popup_wrap" id={`spot${spot.id}`}>
+
+            <div className="map_popup_wrap" id={`spot${spot.id}`}>
      
-        <div className="flexline">
-          <LocationOnIcon className="inlineIcon"/>
-          <Typography variant="body1">{spot.street_address}</Typography>
-          <MonetizationOnIcon />
-          <Typography variant="body1">{Math.floor(spot.price)}</Typography>
-          <Typography variant="body1"> / hour</Typography>
-        </div>
-        <div className="flexline">
-          <Rating name="read-only" value={spot.rating} readOnly />
-        </div>
-        <img src={spot.picture} height="150px"/>
-        
-        <Typography>
-        Owner: {spot.owner.first_name} {spot.owner.last_name}
-        </Typography>
-        <div className="flexline">
-          <Button variant="contained" size="small" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
-          <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id, spot.postal_code)} >Detail </Button>
-        </div>
-      </div>
+              <div className="flexline">
+                <LocationOnIcon className="inlineIcon"/>
+                <Typography variant="body1">{spot.street_address}</Typography>
+              </div>
+              <div className="flexline">
+                <MonetizationOnIcon />
+                <Typography variant="body1">{Math.floor(spot.price)}</Typography>
+                <Typography variant="body1" className="text_ss"> &nbsp; / hr</Typography>
+              </div>
+              
+              <div className="flexline">
+                <Rating name="read-only" value={spot.rating} readOnly size="small" className="space_right"/>
+                <Button variant="contained" className="BT_right" size="small" onClick={()=> props.openlayer(spot.id, spot.postal_code)} >Detail </Button>
+              </div>
+
+            </div>
           </Popup>
         </Marker>
        

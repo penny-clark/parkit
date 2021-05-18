@@ -32,7 +32,7 @@
 .mapBox {
   background-color: #333;
   width: 100vw;
-  height: 70vh;
+  height: 80vh;
 }
 
 
@@ -41,8 +41,17 @@
   height: 100%;
 }
 
+.leaflet-popup-content p {
+  margin: 0.2rem 0;
+  color: #333;
+}
+
+.leaflet-popup-content p.text_ss {
+  font-size: .9rem;
+  color: #666;
+}
+
 #map_spot_layer {
-  width: 600px;
   height: auto;
   bottom: 0;
   left: 10px;
@@ -51,7 +60,6 @@
 }
 
 .map_popup_wrap {
-  width: 600px;
   height: auto;
   display: flex;
   flex-direction: column;

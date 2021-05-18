@@ -1,10 +1,15 @@
 .listview_wrap {
-  width: 90%;
+  width: 100%;
+ display: flex;
+ flex-direction: column;
+  
 }
 .spotlist_wrap {
   width: 90% ;
   padding-top: 1rem;
   visibility:visible;
+  align-self: center;
+
 }
 
 
@@ -13,7 +18,7 @@
   color: #fff;
   margin: 0px 0px;
   padding: 0px 0px;
-  min-height: 10px;
+  padding-left: 1rem;
 }
 
 .spotlist_wrap .MuiAccordionSummary-root.Mui-expanded {
@@ -21,6 +26,7 @@
   color: #fff;
   margin: 0px 0px;
   padding: 0px 0px;
+  padding-left: 1rem;
 }
 
 .MuiAccordionSummary-content {
@@ -35,8 +41,20 @@
   background-color: #fff;
 }
 
-.address {
-  width: 250px;
+.streetName_title_list {
+  width: 240px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.price_title_list {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 
 .bodytext_w_h6 {
