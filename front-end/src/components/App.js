@@ -288,6 +288,7 @@ export default function App(props)  {
                 bookmarkSpot={bookmarkSpot}
                 bookmarks={state.bookmarks}
                 rateSpot={rateSpot}
+                ratings={state.spotratings}
                 /> 
             </Route>
             <Route exact path="/mybookmarks">

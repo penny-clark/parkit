@@ -103,3 +103,18 @@ export function checkBookmarkedspot(spotID, userBookmarks) {
   }
   return bookmarked;
 }
+
+//check for if the user has already rated a spot
+export function spotRated(spotId, userId, ratingsData) {
+  for (const item of ratingsData) {
+    if (item.user_id === userId && item.spot_id === spotId) return true
+  }
+  return false
+}
+
+export function getRentersRatings(spotId, userId, ratingsData) {
+  for (const item of ratingsData) {
+    if (item.user_id === userId && item.spot_id === spotId) return item.rating
+  }
+  return false
+}
