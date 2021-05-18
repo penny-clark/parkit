@@ -26,12 +26,15 @@
 
 
 .tab_dashboard {
+
   .tab_item {
+    padding: 0 2rem;
     color : #fff;
     background-color: rgb(100, 96, 96);
     opacity: 1;
   }
   .tab_item.Mui-selected {
+    padding: 0 2rem;
     color : #fff;
     background-color: rgb(83, 177, 130);
   }

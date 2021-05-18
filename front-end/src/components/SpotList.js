@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import  { openEmail } from '../helpers/helper'
 import MapView from "./MapView.jsx";
+import UserNameDisplay from './UserNameDisplay';
 
 export default function SpotList(props) {
 
@@ -62,22 +63,24 @@ export default function SpotList(props) {
       <Accordion square={false} expanded={props.expanded === `panel${spot.id}`} onChange={handleChange(`panel${spot.id}`)} className="Accbox">
       <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <div className="flexline">
-          <LocationOnIcon />
-          <h6 className="title_text_h6">{spot.street_address}</h6>
+          <div className="streetName_title_list">
+            <LocationOnIcon />
+            <h6 className="title_text_h6">{spot.street_address}</h6>
+          </div>
+          <div className="price_title_list">
           <MonetizationOnIcon />
-          <h6 className="title_text_h6">{Math.floor(spot.price)}</h6>
-          <Typography variant="body1"> / hour</Typography>
-
+            <h6 className="title_text_h6">{Math.floor(spot.price)}</h6>
+            <Typography variant="body1"> / hour</Typography>
+          </div>
      
-          <Rating name="read-only" value={spot.rating} readOnly />
+          <Rating className="self_right" name="read-only" value={spot.rating} readOnly />
         </div> 
       </AccordionSummary>
 
       <AccordionDetails>
-      <img src={spot.picture} height="300px"/>
-      <Typography>
-       Owner: {spot.owner.first_name} {spot.owner.last_name}
-      </Typography>
+      <img src={spot.picture} className="spot_picture"/>
+      <Typography variant="body1">Spot Owner</Typography>
+      <UserNameDisplay user={spot.owner}/>
     </AccordionDetails>
     <AccordionActions>
       <Button variant="contained" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
