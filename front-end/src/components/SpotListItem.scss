@@ -57,6 +57,18 @@
 
 }
 
+.spot_picture {
+  display: inline-flex;
+  width: 550px;
+  justify-content: center;
+}
+
+.MuiAccordionDetails-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
 .bodytext_w_h6 {
   padding-top: .3rem;
   padding-left: 2rem;
