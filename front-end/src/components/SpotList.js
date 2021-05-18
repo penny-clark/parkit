@@ -14,11 +14,14 @@ import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import  { openEmail } from '../helpers/helper'
+import MapView from "./MapView.jsx";
 
 export default function SpotList(props) {
 
-  const { expanded, setExpanded, handleChange } = useDisplayAction();
+  //const { expanded, setExpanded, handleChange } = useDisplayAction();
   const { checked, setChecked, handleCheckout } = useDisplayAction();
+
+  const [expanded, setExpanded] = useState(null);
   
   function selectSpot(price) {
     handleCheckout()
@@ -27,14 +30,31 @@ export default function SpotList(props) {
     }
   }
 
-  const spotsmap = props.spots.map(spot => {
+
+    const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+    console.log(panel)
+  };
+
+  function openlayer(id) {
+    // document.querySelector(`#spot3 .MuiPaper-root div.MuiButtonBase-root`).style.ariaExpaned = "true";
+    setExpanded(`panel${id}`)
+    //  console.log(id, "are you working?")
+    window.location = `http://localhost:3000/#spot${id}`
+   }
+
+  const spotsmap = () => {
+
+    const print=[];
+
+    for (const spot of props.spots) {
 
     const num = props.spots.indexOf(spot) + 1;
 
-    return(
-    < div key={num} id={`spot${num}`} className="spotlist_wrap" >
+    print.push(
+    < div key={num} id={`spot${spot.id}`} className="spotlist_wrap" >
         
-      <Accordion square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+      <Accordion square={false} expanded={expanded === `panel${spot.id}`} onChange={handleChange(`panel${spot.id}`)} className="Accbox">
       <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <ListItem> 
           <LocationOnIcon />
@@ -71,10 +91,18 @@ export default function SpotList(props) {
     </AccordionActions>
   </Accordion>
   </div>
+    
+  )}
+    
+  return print ;
+    }
+  
+
+  return (
+    <div>
+      <MapView spots={props.spots} user={props.user} openlayer={openlayer}/>
+    {spotsmap()} 
+    </div>
   )
-
-  });
-  return spotsmap ;
-
 
 }
