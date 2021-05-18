@@ -17,8 +17,6 @@ export default function MapView(props) {
 
   function render_layer(spot, props) {
 
-    window.location = `http://localhost:3000/#spot${spot.id}`;
-
     ReactDOM.render(
       <div className="map_popup_wrap" id={`spot${spot.id}`}>
       <div className="flexline">
@@ -62,7 +60,7 @@ export default function MapView(props) {
             <Button variant="contained" size="small" onClick={()=>{render_layer(spot,props)}}>Detail</Button>  */}
            
       <div className="map_popup_wrap" id={`spot${spot.id}`}>
-      <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id)} >Detail </Button>
+     
         <div className="flexline">
           <LocationOnIcon className="inlineIcon"/>
           <Typography variant="body1">{spot.street_address}</Typography>
@@ -80,7 +78,7 @@ export default function MapView(props) {
         </Typography>
         <div className="flexline">
           <Button variant="contained" size="small" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
-          
+          <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id)} >Detail </Button>
         </div>
       </div>
           </Popup>

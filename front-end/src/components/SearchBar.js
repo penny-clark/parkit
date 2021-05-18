@@ -14,7 +14,8 @@ import DateTimePicker from '@material-ui/lab/DateTimePicker';
 export default function SearchBar(props) {
 
   return (
-    <div className="searchbox">
+    <div id="searchbox">
+      <div class="size_control_w600">
       <FormControl fullWidth variant="filled">
       <InputLabel htmlFor="outlined-adornment-amount">Search by Postal code</InputLabel>
         <FilledInput
@@ -51,6 +52,7 @@ export default function SearchBar(props) {
         </Grid>
       </LocalizationProvider>
       </Grid>
+      </div>
     </div>
   );
 }
