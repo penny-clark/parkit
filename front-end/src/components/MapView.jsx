@@ -17,8 +17,6 @@ export default function MapView(props) {
 
   function render_layer(spot, props) {
 
-    window.location = `http://localhost:3000/#spot${spot.id}`;
-
     ReactDOM.render(
       <div className="map_popup_wrap" id={`spot${spot.id}`}>
       <div className="flexline">

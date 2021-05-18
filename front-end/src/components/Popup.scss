@@ -32,7 +32,7 @@
 .mapBox {
   background-color: #333;
   width: 100vw;
-  height: 60vh;
+  height: 400px;
 }
 
 
@@ -58,16 +58,6 @@
   align-items: flex-start;
 }
 
-// .leaflet-popup {
-
-// }
-
-// .leaflet-popup-content-wrapper {
-
-//   // background: none;
-//   // box-shadow: none;
-// }
-
 .leaflet-popup-content {
 
   background-color: #fff;
@@ -78,12 +68,7 @@ h3.map_popup_title {
 
 }
 
-.flexline {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 
 .inlineIcon {

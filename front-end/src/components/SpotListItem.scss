@@ -1,21 +1,34 @@
 .spotlist_wrap {
   width: 90% ;
+  padding-top: 1rem;
 
 }
 
-.spotlist_wrap .MuiAccordion-root {
-  margin-top: 1rem;
-}
 
 .spotlist_wrap .MuiAccordionSummary-root {
-  background-color: rgb(66, 107, 189);
+  background-color: rgb(46, 107, 185);
   color: #fff;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  min-height: 10px;
+}
+
+.spotlist_wrap .MuiAccordionSummary-root.Mui-expanded {
+  background-color: rgb(189, 66, 72);
+  color: #fff;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+.MuiAccordionSummary-content {
+  margin: 0px 0px;
+  padding: 0px 0px;
+  min-height: 10px;
 }
 
 .spotlist_box {
   width: 90%;
   border: 1px solid #ccc;
-  margin : 1rem 1rem;
   background-color: #fff;
 }
 
@@ -26,6 +39,10 @@
 .bodytext_w_h6 {
   padding-top: .3rem;
   padding-left: 2rem;
+}
+
+.title_text_h6 {
+  font-size: 1.2rem;
 }
 
 .grid_fix_width {

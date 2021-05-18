@@ -41,6 +41,8 @@ export default function SpotList(props) {
     setExpanded(`panel${id}`)
     //  console.log(id, "are you working?")
     window.location = `http://localhost:3000/#spot${id}`
+    //document.querySelector(`#spot${id} .MuiAccordionSummary-root`).style.backgroundColor = '#000'
+    document.querySelector(`.mapBox`).style.height = "0px";
    }
 
   const spotsmap = () => {
@@ -56,18 +58,16 @@ export default function SpotList(props) {
         
       <Accordion square={false} expanded={expanded === `panel${spot.id}`} onChange={handleChange(`panel${spot.id}`)} className="Accbox">
       <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <ListItem> 
+        <div className="flexline">
           <LocationOnIcon />
-          <Typography variant="h6">{spot.street_address}</Typography>
-        </ListItem> 
-        <ListItem > 
+          <h6 className="title_text_h6">{spot.street_address}</h6>
           <MonetizationOnIcon />
-          <Typography variant="h6">{Math.floor(spot.price)}</Typography>
+          <h6 className="title_text_h6">{Math.floor(spot.price)}</h6>
           <Typography variant="body1"> / hour</Typography>
-        </ListItem>
-        <ListItem edge="end">  
-          <Rating name="read-only" value={spot.rating} readOnly size="large" />
-        </ListItem>
+
+     
+          <Rating name="read-only" value={spot.rating} readOnly />
+        </div> 
       </AccordionSummary>
 
       <AccordionDetails>
