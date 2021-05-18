@@ -8,8 +8,11 @@ export default function SpotRating(props) {
   const [value, setValue] = useState(0);
 
   function placeReadOnly() {
+    props.rateSpot(props.user.id, props.spot_id, value)
     props.handleCheckout()
   }
+
+
 
   return(
     <div>
