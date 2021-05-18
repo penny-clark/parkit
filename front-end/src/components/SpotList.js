@@ -22,6 +22,8 @@ export default function SpotList(props) {
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
   const [expanded, setExpanded] = useState(null);
+
+  const [showMap, setShowMap] = useState(true);
   
   function selectSpot(price) {
     handleCheckout()
@@ -40,7 +42,13 @@ export default function SpotList(props) {
     setExpanded(`panel${id}`)
     //  console.log(id, "are you working?")
     window.location = `http://localhost:3000/#spot${id}`
-   }
+  }
+
+
+  function back() {
+    props.setKeyword("")
+    setShowMap(true)
+  }
 
   const spotsmap = () => {
 
@@ -80,6 +88,7 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
         Book this spot
       </Button>
+      <Button variant="contained" onClick={() => back()}>Return to search</Button>
       
       <Collapse in={checked}>
           <Paper className="popup_checkout">
@@ -96,12 +105,13 @@ export default function SpotList(props) {
   return print ;
     }
   
-
-  return (
+    return (
     <div>
-      <MapView spots={props.spots} user={props.user} openlayer={openlayer}/>
+      {showMap &&
+      <MapView spots={props.spots} user={props.user} openlayer={openlayer} setKeyword={props.setKeyword} setShowMap={setShowMap}/>
+      }
     {spotsmap()} 
     </div>
-  )
+    )
 
 }

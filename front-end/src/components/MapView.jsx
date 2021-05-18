@@ -15,6 +15,12 @@ import  { openEmail } from '../helpers/helper'
 
 export default function MapView(props) {
 
+  function mapToSpot (spot_id, postal_code) {
+    props.openlayer(spot_id)
+    props.setKeyword(postal_code)
+    props.setShowMap(false)
+  }
+
   function render_layer(spot, props) {
 
     window.location = `http://localhost:3000/#spot${spot.id}`;
@@ -62,7 +68,7 @@ export default function MapView(props) {
             <Button variant="contained" size="small" onClick={()=>{render_layer(spot,props)}}>Detail</Button>  */}
            
       <div className="map_popup_wrap" id={`spot${spot.id}`}>
-      <Button variant="contained" size="small" onClick={()=> props.openlayer(spot.id)} >Detail </Button>
+      <Button variant="contained" size="small" onClick={()=> mapToSpot(spot.id, spot.postal_code)} >Detail </Button>
         <div className="flexline">
           <LocationOnIcon className="inlineIcon"/>
           <Typography variant="body1">{spot.street_address}</Typography>
