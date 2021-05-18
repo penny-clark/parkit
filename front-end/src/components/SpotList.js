@@ -22,8 +22,6 @@ export default function SpotList(props) {
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
   const [expanded, setExpanded] = useState(null);
-
-  const [showMap, setShowMap] = useState(true);
   
   function selectSpot(price) {
     handleCheckout()
@@ -47,7 +45,9 @@ export default function SpotList(props) {
 
   function back() {
     props.setKeyword("")
-    setShowMap(true)
+    props.setShowMap(true)
+    setExpanded(null)
+    window.location = `http://localhost:3000/#`
   }
 
   const spotsmap = () => {
@@ -88,11 +88,22 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
         Book this spot
       </Button>
-      <Button variant="contained" onClick={() => back()}>Return to search</Button>
-      
+      {props.showMap === false &&
+      <Button onClick={() => back()}>Return to map search</Button>
+      }
       <Collapse in={checked}>
           <Paper className="popup_checkout">
-            <BookingPopup spot={spot} checked={checked} setChecked={setChecked} bookSpot={props.bookSpot} user={props.user} startTime={props.startTime} endTime={props.endTime} setStartTime={props.setStartTime} setEndTime={props.setEndTime} totalCost={props.totalCost} setTotalCost={props.setTotalCost}/>
+            <BookingPopup spot={spot} 
+            checked={checked} 
+            setChecked={setChecked} 
+            bookSpot={props.bookSpot} 
+            user={props.user} 
+            startTime={props.startTime} 
+            endTime={props.endTime} 
+            setStartTime={props.setStartTime} 
+            setEndTime={props.setEndTime} 
+            totalCost={props.totalCost} 
+            setTotalCost={props.setTotalCost}/>
           </Paper>
       </Collapse>
 
@@ -107,8 +118,12 @@ export default function SpotList(props) {
   
     return (
     <div>
-      {showMap &&
-      <MapView spots={props.spots} user={props.user} openlayer={openlayer} setKeyword={props.setKeyword} setShowMap={setShowMap}/>
+      {props.showMap &&
+      <MapView spots={props.spots} 
+      user={props.user} 
+      openlayer={openlayer} 
+      setKeyword={props.setKeyword} 
+      setShowMap={props.setShowMap}/>
       }
     {spotsmap()} 
     </div>

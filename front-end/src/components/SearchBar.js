@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './SearchBar.scss';
 import { Grid, TextField } from '@material-ui/core';
 import AddLocationRoundedIcon from '@material-ui/icons/AddLocationRounded';
-import { FilledInput } from '@material-ui/core';
+import { Button, FilledInput } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
@@ -51,6 +51,12 @@ export default function SearchBar(props) {
         </Grid>
       </LocalizationProvider>
       </Grid>
+      {props.showMap === false &&
+      <Button variant="contained" onClick={()=> props.setShowMap(true)}>Show Map</Button>
+      }
+      {props.showMap === true &&
+      <Button variant="contained" onClick={()=> props.setShowMap(false)}>Hide Map</Button>
+      }
     </div>
   );
 }
