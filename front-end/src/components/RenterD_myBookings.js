@@ -36,9 +36,11 @@ export default function RenterD_myBookings(props) {
   
   //Controls state for cancel booking confirmation message
   const [confirm, setConfirm] = useState(false)
+  const [currentSpot, setCurrentSpot] = useState(null)
 
   //rating popup submit
-  function submitRating() {
+  function submitRating(spot_id) {
+    setCurrentSpot(spot_id)
     handleCheckout()
   }
 
@@ -105,7 +107,6 @@ export default function RenterD_myBookings(props) {
       const endDateArr = bookObj.end_date_time.split("T")
 
       const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
-
       
 
       print.push(
@@ -127,13 +128,13 @@ export default function RenterD_myBookings(props) {
         {bookmarked === false &&  
           <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
 
-          <Button variant="contained" color="primary" onClick={submitRating}>
+          <Button variant="contained" color="primary" onClick={() => submitRating(bookObj.spot.spot_id)}>
             Rate this Spot
           </Button>
                 
          <Collapse in={checked}>
           <Paper className="popup_rating">
-          <SpotRating id={bookObj.id} bookObj={bookObj} rateSpot={props.rateSpot} user={props.user}  handleCheckout={handleCheckout}/>
+          <SpotRating id={num} spot_id={currentSpot} rateSpot={props.rateSpot} user={props.user}  handleCheckout={handleCheckout}/>
           </Paper>
         </Collapse>
 
