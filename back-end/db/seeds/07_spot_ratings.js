@@ -13,7 +13,11 @@ exports.seed = function(knex) {
         {user_id: 10, spot_id: 6,rating: 5},
         {user_id: 7, spot_id: 7,rating: 4},
         {user_id: 10, spot_id: 8,rating: 1},
-        {user_id: 10, spot_id: 9,rating: 5}
+        {user_id: 10, spot_id: 9,rating: 5},
+        {user_id: 7, spot_id: 10,rating: 2},
+        {user_id: 2, spot_id: 11,rating: 4},
+        {user_id: 10, spot_id: 12,rating: 3},
+        {user_id: 7, spot_id: 13,rating: 4}
       ]);
     });
 };
