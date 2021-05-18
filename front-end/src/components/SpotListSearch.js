@@ -6,13 +6,15 @@ import { Tabs, Tab, Button } from '@material-ui/core';
 
 
 export default function SpotListSearch(props) {
-  const [keyword, setKeyword] = useState("")
+  // data controllers 
+  const [keyword, setKeyword] = useState("");
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const searchTerm = keyword.substring(0,4)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
-  
+  // page view controllers
+  const [searching, setSearching] = useState(false);
   const [expanded, setExpanded] = useState(null);
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -50,6 +52,16 @@ export default function SpotListSearch(props) {
     } 
    }
 
+   function startSearch(s) {
+     searchHandle(s)
+     setSearching(true)
+   }
+
+   function endSearch(s) {
+     searchHandle(s)
+     setSearching(false)
+   }
+
   return (
     <div className="home_wrap">
     <SearchBar 
@@ -61,14 +73,13 @@ export default function SpotListSearch(props) {
       setEndTime={setEndTime} 
     />
     <div className="flexline">
-      <button className="BT_st1" onClick={()=>{searchHandle(true)}}>Open Search Bar</button>
-      <button className="BT_st1"onClick={()=>{searchHandle(false)}}>Close Search Bar</button>
+    {searching === false &&
+      <button className="BT_st1" onClick={() => startSearch(false)}>Search</button>
+    }
+    {searching === true &&
+      <button className="BT_st1"onClick={() => endSearch(true)}>New Search</button>
+    }
     </div>
-  
-
-{/* <SpotList spots={filterSpots} user={props.user} bookSpot={props.bookSpot}  startTime={startTime} endTime={endTime} setStartTime={setStartTime} setEndTime={setEndTime} totalCost={totalCost} setTotalCost={setTotalCost} /> */}
-
-
 
     <Tabs value={selectedTab} onChange={handleTabs} className="tab_homeview" centered>
       <Tab label="MapView" className="tab_item"/>
