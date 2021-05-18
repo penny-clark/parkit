@@ -9,6 +9,9 @@ import DateTimePicker from '@material-ui/lab/DateTimePicker';
 
 export default function BookingPopup(props) {
 
+  const [affirmed, setAffirmed] = useState(false)
+  const [totalCost, setTotalCost] = useState("Please select your booking times")
+
   const handleCheckout = () => {
     props.setChecked((prev) => !prev);
   };
@@ -26,14 +29,21 @@ export default function BookingPopup(props) {
 
   function setTotal () {
     if(!isNaN(props.endTime - props.startTime) && (props.endTime - props.startTime) !== 0) {
-      props.setTotalCost(`Total: $${((Math.round(props.endTime - props.startTime) / 60000) / 15 * (props.spot.price.toFixed(2) / 4)).toFixed(2)}`)
+      setTotalCost(`Total + HST: $${(((Math.round(props.endTime - props.startTime) / 60000) / 15 * (props.spot.price.toFixed(2) / 4)) * 1.13).toFixed(2)}`)
       }
+  }
+
+  function verifyDetails() {
+    setAffirmed(true)
+    setTotal()
   }
 
 
   return (
     <div>
      <Typography variant="h6">{props.spot.street_address}</Typography>
+     {affirmed === false &&
+     <div>
      <Grid container spacing={1} justify="center" className="popup_time">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Grid item spacing={2} justify="center">
@@ -54,16 +64,24 @@ export default function BookingPopup(props) {
             value={props.endTime}
             onChange={(newValue) => {
             props.setEndTime(newValue);
-            setTotal()
           }}
           minDateTime={props.startTime}
         />
         </Grid>
       </LocalizationProvider>
       </Grid>
-      <p>{props.totalCost} </p>
-     <Button variant="contained" onClick={save} color="secondary">Confirm & Pay</Button> 
-     <Button variant="contained" onClick={handleCheckout} >Close</Button>
+      <Button variant="contained" onClick={() => verifyDetails()} color="secondary">Confirm Booking Details</Button> 
+      <Button variant="contained" onClick={handleCheckout} >Close</Button>
+      </div>
+      }
+      {affirmed === true &&
+      <div>
+      <p>{totalCost}</p>
+     <Button variant="contained" onClick={save}>Reserve & Pay</Button> 
+     <Button variant="contained" onClick={() => setAffirmed(false)} color="secondary">Edit booking</Button> 
+     </div>
+      }
+
     </div>
 
   )

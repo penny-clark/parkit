@@ -9,7 +9,6 @@ export default function SpotListSearch(props) {
   const [keyword, setKeyword] = useState("")
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
-  const [totalCost, setTotalCost] = useState("Please select your booking times")
   const searchTerm = keyword.substring(0,4)
   const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
   
@@ -94,8 +93,6 @@ export default function SpotListSearch(props) {
       endTime={endTime} 
       setStartTime={setStartTime} 
       setEndTime={setEndTime} 
-      totalCost={totalCost} 
-      setTotalCost={setTotalCost} 
       closelayer={closelayer}
       />}     
 

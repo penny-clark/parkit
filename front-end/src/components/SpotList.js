@@ -24,14 +24,6 @@ export default function SpotList(props) {
   //const { expanded, setExpanded, handleChange } = useDisplayAction();
   const { checked, setChecked, handleCheckout } = useDisplayAction();
 
-  
-  function selectSpot(price) {
-    handleCheckout()
-    if(!isNaN(props.endTime - props.startTime) && (props.endTime - props.startTime) !== 0) {
-    props.setTotalCost(`Total: $${((Math.round(props.endTime - props.startTime) / 60000) / 15 * (price.toFixed(2) / 4)).toFixed(2)}`)
-    }
-  }
-
     const handleChange = (panel) => (event, newExpanded) => {
     props.setExpanded(newExpanded ? panel : false);
     console.log(panel)
@@ -84,7 +76,7 @@ export default function SpotList(props) {
     </AccordionDetails>
     <AccordionActions>
       <Button variant="contained" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>
-      <Button variant="contained" color="secondary" onClick={() => selectSpot(spot.price)}>
+      <Button variant="contained" color="secondary" onClick={() => handleCheckout()}>
         Book this spot
       </Button>
       <Button onClick={()=> props.closelayer()}>Return to Map Search</Button>
@@ -100,8 +92,7 @@ export default function SpotList(props) {
             endTime={props.endTime} 
             setStartTime={props.setStartTime} 
             setEndTime={props.setEndTime} 
-            totalCost={props.totalCost} 
-            setTotalCost={props.setTotalCost}/>
+            />
           </Paper>
       </Collapse>
 
