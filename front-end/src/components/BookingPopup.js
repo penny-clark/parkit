@@ -24,6 +24,12 @@ export default function BookingPopup(props) {
 
   }
 
+  function setTotal () {
+    if(!isNaN(props.endTime - props.startTime) && (props.endTime - props.startTime) !== 0) {
+      props.setTotalCost(`Total: $${((Math.round(props.endTime - props.startTime) / 60000) / 15 * (props.spot.price.toFixed(2) / 4)).toFixed(2)}`)
+      }
+  }
+
 
   return (
     <div>
@@ -47,7 +53,7 @@ export default function BookingPopup(props) {
             value={props.endTime}
             onChange={(newValue) => {
             props.setEndTime(newValue);
-            props.setTotalCost(`Total: $${(((props.endTime - props.startTime) / 60000) * (props.spot.price / 60)).toFixed(2)}`)
+            setTotal()
           }}
         />
         </Grid>

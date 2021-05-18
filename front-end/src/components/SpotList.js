@@ -25,11 +25,10 @@ export default function SpotList(props) {
   
   function selectSpot(price) {
     handleCheckout()
-    if(!isNaN(props.endTime - props.startTime)) {
-    props.setTotalCost(`Total: $${(((props.endTime - props.startTime) / 60000) * (price / 60)).toFixed(2)}`)
+    if(!isNaN(props.endTime - props.startTime) && (props.endTime - props.startTime) !== 0) {
+    props.setTotalCost(`Total: $${((Math.round(props.endTime - props.startTime) / 60000) / 15 * (price.toFixed(2) / 4)).toFixed(2)}`)
     }
   }
-
 
     const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
