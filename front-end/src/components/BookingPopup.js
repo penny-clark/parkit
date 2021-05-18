@@ -44,6 +44,7 @@ export default function BookingPopup(props) {
             onChange={(newValue) => {
               props.setStartTime(newValue);
             }}
+            minDateTime={new Date()}
           />
         </Grid>
         <Grid item spacing={2} justify="center">
@@ -55,6 +56,7 @@ export default function BookingPopup(props) {
             props.setEndTime(newValue);
             setTotal()
           }}
+          minDateTime={props.startTime}
         />
         </Grid>
       </LocalizationProvider>

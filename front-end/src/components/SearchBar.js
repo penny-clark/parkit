@@ -38,6 +38,7 @@ export default function SearchBar(props) {
             onChange={(newValue) => {
               props.setStartTime(newValue);
             }}
+            minDateTime={new Date()}
           />
         </Grid>
         <Grid item spacing={2} justify="center">
@@ -48,6 +49,7 @@ export default function SearchBar(props) {
             onChange={(newValue) => {
             props.setEndTime(newValue);
           }}
+          minDateTime={props.startTime}
         />
         </Grid>
       </LocalizationProvider>
