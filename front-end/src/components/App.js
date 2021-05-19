@@ -274,6 +274,7 @@ export default function App(props)  {
                 spots={state.spots}
                 user={state.user}
                 bookSpot={bookSpot}
+                bookings={state.renterbookings}
               />
             </Route>
             <Route exact path="/mybookings"> 

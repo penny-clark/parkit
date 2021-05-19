@@ -118,3 +118,26 @@ export function getRentersRatings(spotId, userId, ratingsData) {
   }
   return false
 }
+
+//functions for preventing double booking
+
+//for date time changes at checkout
+export function checkBookingAvailable(spot, bookings, startTime, endTime) {
+  //filter bookings to a variable. include if spotid === spotid, startTime === start time, endTime ===endtime
+  //if arr.length > 0 return false
+  //else return true
+  const bookingUnavailable = bookings.filter(booking => booking.spot.spot_id === spot.id)
+  // const bookingUnavailable = bookings.filter(booking => booking.spot.spot_id === spot.id && booking.start_date_time <= startTime && booking.end_date_time >= endTime)
+  if (bookingUnavailable.length > 0) return false
+  return true
+}
+//for initial date search
+export function checkSpotAvailable(spots, bookings, startTime, endTime) {
+  const avaialbleSpots = spots.filter( spot => checkBookingAvailable(spot, bookings, startTime, endTime))
+  return avaialbleSpots
+  
+  //need to check each spot
+  //for each spot need to check each booking
+  //and if spot id = booking spot_id && booking.start_time === startTime && booking.end_time ===endTime
+  //NOT include spot to array
+}

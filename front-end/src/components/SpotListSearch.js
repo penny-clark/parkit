@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import SpotList from "./SpotList";
 import MapView from "./MapView.jsx";
 import { Tabs, Tab, Button } from '@material-ui/core';
+import { checkSpotAvailable, checkBookingAvailable } from '../helpers/selector';
 
 
 export default function SpotListSearch(props) {
@@ -11,7 +12,8 @@ export default function SpotListSearch(props) {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const searchTerm = keyword.substring(0,4)
-  const filterSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
+  const localSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filterSpots = checkSpotAvailable(localSpots, props.bookings, startTime, endTime)
   
   // page view controllers
   const [searching, setSearching] = useState(false);
