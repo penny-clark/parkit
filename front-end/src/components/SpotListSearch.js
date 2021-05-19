@@ -60,6 +60,7 @@ export default function SpotListSearch(props) {
    function endSearch(s) {
      searchHandle(s)
      setSearching(false)
+     window.location = `http://localhost:3000#`
    }
 
   return (

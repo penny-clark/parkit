@@ -37,6 +37,7 @@ export default function SearchBar(props) {
             value={props.startTime}
             onChange={(newValue) => {
               props.setStartTime(newValue);
+              props.setEndTime(newValue);
             }}
             minDateTime={new Date()}
           />

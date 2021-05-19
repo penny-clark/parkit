@@ -53,6 +53,7 @@ export default function BookingPopup(props) {
             value={props.startTime}
             onChange={(newValue) => {
               props.setStartTime(newValue);
+              props.setEndTime(newValue);
             }}
             minDateTime={new Date()}
           />
