@@ -66,13 +66,12 @@ export default function RenterD_myCars(props) {
 
 
   return (
-    <div>
-      <Typography variant="body1">
-      This is "Renter Dashboard - My cars" of user : {props.user.first_name} 
-      </Typography>
-   
+    <div className="wrap_dashboard">
+       <h5 className="page_title">My Cars</h5>
+      
+       <div className="booklist_wrap">
       {displayCars()}
-    
+      </div>
     </div>
   );
 }

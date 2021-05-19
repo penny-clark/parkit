@@ -6,8 +6,36 @@
   justify-content: center;
   padding: .7rem;
 
+}
+
+.booklist_wrap {
+  width: 90%;
 
 }
+
+
+
+.booklist_wrap .MuiAccordionSummary-root {
+  width: 100%;
+  background-color: rgb(190, 236, 151);
+  color: #222;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  padding-left: 1rem;
+}
+
+.booklist_wrap .MuiAccordionSummary-root.Mui-expanded {
+  background-color: rgb(51, 179, 28);
+  color: #fff;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  padding-left: 1rem;
+}
+
+
+
+
+//p
 
 .bookedlist_top {
   display: flex;
