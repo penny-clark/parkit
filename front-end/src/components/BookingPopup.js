@@ -20,12 +20,21 @@ export default function BookingPopup(props) {
     window.location = "http://localhost:3000/payment_complete"
   }
 
+  function convertTimeString(timeObject) {
+    let dateString = timeObject.toString()
+    const dateArray= dateString.split(":")
+    return `${dateArray[0]}:${dateArray[1]}`
+  }
+
   function save() {
-    props.bookSpot(props.user.car_id, props.spot.id, props.startTime, props.endTime, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating)
+    const startTimeString = convertTimeString(props.startTime)
+    const endTimeString = convertTimeString(props.endTime)
+    props.bookSpot(props.user.car_id, props.spot.id, startTimeString, endTimeString, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating);
     handleCheckout();
     redirectToPayment();
     
   }
+
 
   function setTotal () {
     if(!isNaN(props.endTime - props.startTime) && (props.endTime - props.startTime) !== 0) {

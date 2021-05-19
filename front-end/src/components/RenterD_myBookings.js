@@ -62,8 +62,8 @@ export default function RenterD_myBookings(props) {
     for (const bookObj of activeBooking) {
       const num = activeBooking.indexOf(bookObj)+1;
 
-      const startDateArr = bookObj.start_date_time.split("T")
-      const endDateArr = bookObj.end_date_time.split("T")
+      // const startDateArr = bookObj.start_date_time.split("T")
+      // const endDateArr = bookObj.end_date_time.split("T")
  
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
@@ -71,8 +71,8 @@ export default function RenterD_myBookings(props) {
         <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
-          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
+          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           
@@ -104,8 +104,8 @@ export default function RenterD_myBookings(props) {
     for (const bookObj of reversedHistory) {
       const num = activeBooking.length + reversedHistory.indexOf(bookObj)+1;
 
-      const startDateArr = bookObj.start_date_time.split("T")
-      const endDateArr = bookObj.end_date_time.split("T")
+      // const startDateArr = bookObj.start_date_time.split("T")
+      // const endDateArr = bookObj.end_date_time.split("T")
 
       const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
       const rated = spotRated(bookObj.spot.spot_id, props.user.id, props.ratings)
@@ -117,8 +117,8 @@ export default function RenterD_myBookings(props) {
         <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
-          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
+          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           
