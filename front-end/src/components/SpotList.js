@@ -79,7 +79,7 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => handleCheckout()}>
         Book this spot
       </Button>
-      <Button onClick={()=> props.closelayer()}>Return to Map Search</Button>
+      <Button onClick={()=> props.closelayer()}>Go to Map Search</Button>
 
       <Collapse in={checked}>
           <Paper className="popup_checkout">

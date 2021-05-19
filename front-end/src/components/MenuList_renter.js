@@ -26,7 +26,7 @@ export default function RenterMenuList(props) {
         <ListItem button onClick={props.setDrawer}>
           <ListItemIcon>
             <FolderSpecialRoundedIcon  className="icon_with_h6"/>
-            <ListItemText>Bookmark Spots</ListItemText>
+            <ListItemText>Bookmarked Spots</ListItemText>
           </ListItemIcon>
         </ListItem>
         </Link>

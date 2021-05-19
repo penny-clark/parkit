@@ -133,7 +133,6 @@ export default function App(props)  {
       const newCarArr = [ ...state.cars]
       newCarArr.push(newCarObj)
       setState(prev => ({ ...prev, cars: newCarArr}))
-      console.log(newCarArr, "new car arr")
     })
     .catch(err => console.log(err))
   }
@@ -192,7 +191,6 @@ export default function App(props)  {
         const newSpotArr = [ ...state.spots]
         newSpotArr.push(newSpotObj)
         setState(prev => ({ ...prev, spots: newSpotArr}))
-        console.log(newSpotArr, "new spot arr")
       })
       .catch(err => console.log(err))
     }
@@ -227,7 +225,6 @@ export default function App(props)  {
         renter_id: userid,
         street_address: streetadd
       }
-      console.log(newBM.id, "is this 9....")
       return axios
         .post('/api/bookmarks', {
           user_id: userid,
@@ -250,7 +247,6 @@ export default function App(props)  {
         spot_id,
         rating
         }
-        console.log(newRating, "what did I get in app.js?")
         return axios
         .post('/api/spotratings', {
           user_id,
