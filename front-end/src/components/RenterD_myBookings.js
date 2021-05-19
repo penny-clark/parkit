@@ -5,6 +5,7 @@ import SpotRating from './SpotRating';
 //import style & material-ui 
 import './Dashboad.scss';
 import './Popup.scss';
+import './SpotListItem.scss';
 import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -67,7 +68,7 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">{bookObj.spot.street_address}</Typography>
+        <h6 className="page_title">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
@@ -113,7 +114,7 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">{bookObj.spot.street_address}</Typography>
+          <h6 className="page_title">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
@@ -166,7 +167,7 @@ export default function RenterD_myBookings(props) {
       
       <Typography variant="h6" className="page_title">History</Typography>
 
-      <div className="booklist_wrap">
+      <div className="booklist_wrap history">
         {displayHistoryBookings()}
       </div>
 

@@ -13,11 +13,9 @@
 
 }
 
-
-
 .booklist_wrap .MuiAccordionSummary-root {
   width: 100%;
-  background-color: rgb(190, 236, 151);
+  background-color: rgb(236, 230, 151);
   color: #222;
   margin: 0px 0px;
   padding: 0px 0px;
@@ -25,15 +23,20 @@
 }
 
 .booklist_wrap .MuiAccordionSummary-root.Mui-expanded {
-  background-color: rgb(51, 179, 28);
+  background-color: rgb(226, 120, 48);
   color: #fff;
   margin: 0px 0px;
   padding: 0px 0px;
   padding-left: 1rem;
 }
 
-
-
+.booklist_wrap.history .MuiAccordionSummary-root {
+  background-color: #eee;
+}
+.booklist_wrap.history .MuiAccordionSummary-root.Mui-expanded {
+  background-color: #666;
+  color: #fff;
+}
 
 //p
 

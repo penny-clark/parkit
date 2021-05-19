@@ -122,18 +122,18 @@ export default function OwnerD_BookedSchedule(props) {
 
   return (
     <div className="wrap_dashboard">
-      <Typography variant="body1">
-      This is "Owner Dashboard - Booked Schedule list" of user : {props.user.first_name} 
-      </Typography>
-   
+      <h5 className="page_title">Booked Schedule of My Spots</h5>
+      <Typography variant="h6" className="page_title">Active Booked Schedule</Typography>
       
-      <Typography variant="h5" className="page_title">Active Booked Schedule</Typography>
+      <div className="booklist_wrap">
       {displayActiveBookings()}
-
-      <Divider />
-
-      <Typography variant="h5" className="page_title">History</Typography>
+      </div>
+      
+      <Typography variant="h6" className="page_title">History</Typography>
+      <div className="booklist_wrap history">
       {displayHistoryBookings()}
+      </div>
+      
     
     </div>
   );
