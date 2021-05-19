@@ -86,7 +86,7 @@ export default function RenterD_myBookings(props) {
         </AccordionDetails>
           {!confirm &&
           <AccordionActions>
-          <Button variant="contained" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
+          <Button variant="contained" className="right_spaceBT" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
           <Button variant="contained" color="secondary" onClick={() => setConfirm(true)}>
             Cancel
           </Button>
@@ -94,7 +94,7 @@ export default function RenterD_myBookings(props) {
           }
           {confirm && 
           <AccordionActions>
-          <Button variant="contained" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
+          <Button variant="contained" className="right_spaceBT" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
           <Button variant="contained" color="secondary" onClick={() => setConfirm(false)}>Back</Button>
           </AccordionActions>
           }
@@ -147,7 +147,7 @@ export default function RenterD_myBookings(props) {
 
         {rated === false &&
         <div>
-          <Button variant="contained" color="primary" onClick={() => submitRating(bookObj.spot.spot_id)}>
+          <Button variant="contained" className="right_spaceBT" color="primary" onClick={() => submitRating(bookObj.spot.spot_id)}>
             Rate this Spot
           </Button>
                 
@@ -158,13 +158,20 @@ export default function RenterD_myBookings(props) {
         </Collapse>
         </div>
         }
+        
         {rated === true &&
-          <Rating name="read-only" value={rating} readOnly size="large" />  
+        
+          <Rating name="read-only"  className="right_spaceBT" value={rating} readOnly size="large" />  
         }
         {bookmarked === true && 
-          <Button variant="contained" disabled >Bookmarked</Button>}
+        
+          <Button variant="contained" className="left_spaceBT" disabled >Bookmarked</Button>
+          }
         {bookmarked === false &&  
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
+          <Button variant="contained" className="left_spaceBT" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> 
+          
+          } 
+      
         </AccordionActions>
       </Accordion>
 

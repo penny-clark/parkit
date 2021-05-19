@@ -71,15 +71,15 @@ export default function BookingPopup(props) {
         </Grid>
       </LocalizationProvider>
       </Grid>
-      <Button variant="contained" onClick={() => verifyDetails()} color="secondary">Confirm Booking Details</Button> 
-      <Button variant="contained" onClick={handleCheckout} >Close</Button>
+      <Button variant="contained"  onClick={() => verifyDetails()} color="secondary">Confirm Booking Details</Button> 
+      <Button variant="contained" className="left_spaceBT" onClick={handleCheckout} >Close</Button>
       </div>
       }
       {affirmed === true &&
       <div>
       <p>{totalCost}</p>
      <Button variant="contained" onClick={save}>Reserve & Pay</Button> 
-     <Button variant="contained" onClick={() => setAffirmed(false)} color="secondary">Edit booking</Button> 
+     <Button variant="contained" className="left_spaceBT" onClick={() => setAffirmed(false)} color="secondary">Edit booking</Button> 
      </div>
       }
 
