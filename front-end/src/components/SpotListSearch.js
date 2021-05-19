@@ -13,8 +13,10 @@ export default function SpotListSearch(props) {
   const [endTime, setEndTime] = useState(null);
   const searchTerm = keyword.substring(0,4)
   const localSpots = props.spots.filter(spot => spot.postal_code.toLowerCase().includes(searchTerm.toLowerCase()))
-  const filterSpots = checkSpotAvailable(localSpots, props.bookings, startTime, endTime)
-  
+  // const filterSpots = checkSpotAvailable(localSpots, props.bookings, startTime, endTime)
+  const [filterSpots, setFilterSpots] = useState(localSpots)
+
+
   // page view controllers
   const [searching, setSearching] = useState(false);
   const [expanded, setExpanded] = useState(null);
@@ -22,6 +24,24 @@ export default function SpotListSearch(props) {
 
   const handleTabs = (event, newValue) => {
     setSelectedTab(newValue);
+  }
+
+  console.log(startTime, "startTime")
+  console.log(endTime, "endTime")
+  console.log(getMyInfoStartTime(), "booking 14 startime")
+  console.log(getMyInfoEndTime(), "booking 14 endtime")
+
+  console.log(startTime >= getMyInfoStartTime(), "start greater or equal to booking?")
+  console.log(endTime <= getMyInfoEndTime(), "end less or equal to booking?")
+
+  console.log(filterSpots, "filterSpots")
+
+  function getMyInfoStartTime () {
+    if (props.bookings.length > 0) return props.bookings[14].start_date_time
+  }
+
+  function getMyInfoEndTime () {
+    if (props.bookings.length > 0) return props.bookings[14].end_date_time
   }
 
   const itemEls = useRef({})
@@ -57,6 +77,7 @@ export default function SpotListSearch(props) {
    function startSearch(s) {
      searchHandle(s)
      setSearching(true)
+     setFilterSpots(checkSpotAvailable(localSpots, props.bookings, startTime, endTime))
    }
 
    function endSearch(s) {

@@ -126,8 +126,8 @@ export function checkBookingAvailable(spot, bookings, startTime, endTime) {
   //filter bookings to a variable. include if spotid === spotid, startTime === start time, endTime ===endtime
   //if arr.length > 0 return false
   //else return true
-  const bookingUnavailable = bookings.filter(booking => booking.spot.spot_id === spot.id)
-  // const bookingUnavailable = bookings.filter(booking => booking.spot.spot_id === spot.id && booking.start_date_time <= startTime && booking.end_date_time >= endTime)
+
+  const bookingUnavailable = bookings.filter(booking => booking.spot.spot_id === spot.id &&  startTime >= booking.start_date_time && endTime <= booking.end_date_time)
   if (bookingUnavailable.length > 0) return false
   return true
 }

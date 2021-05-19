@@ -36,8 +36,8 @@ export default function SearchBar(props) {
             label="Start Time"
             value={props.startTime}
             onChange={(newValue) => {
-              props.setStartTime(newValue);
-              props.setEndTime(newValue);
+              props.setStartTime(newValue.toISOString());
+              props.setEndTime(newValue.toISOString());
             }}
             minDateTime={new Date()}
           />
@@ -48,7 +48,7 @@ export default function SearchBar(props) {
             label="End Time"
             value={props.endTime}
             onChange={(newValue) => {
-            props.setEndTime(newValue);
+            props.setEndTime(newValue.toISOString());
           }}
           minDateTime={props.startTime}
         />
