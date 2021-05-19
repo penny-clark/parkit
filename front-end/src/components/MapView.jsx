@@ -18,7 +18,7 @@ export default function MapView(props) {
   return(
     <Fragment>
     <div id="map" className="mapBox">
-      <MapContainer center={[49.28214439794972, -123.10596956451279]} zoom={14} scrollWheelZoom={true}>
+      <MapContainer center={[49.27888266483564, -123.11584020044214]} zoom={14} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -43,7 +43,7 @@ export default function MapView(props) {
               
               <div className="flexline">
                 <Rating name="read-only" value={spot.rating} readOnly size="small" className="space_right"/>
-                <Button variant="contained" className="BT_right" size="small" onClick={()=> props.openlayer(spot.id, spot.postal_code)} >Detail </Button>
+                <Button variant="contained" className="BT_right" size="small" onClick={()=> props.openLayer(spot.id, spot.postal_code)} >Detail </Button>
               </div>
 
             </div>

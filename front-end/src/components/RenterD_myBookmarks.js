@@ -10,6 +10,10 @@ export default function RenterD_myBookmarks(props) {
   const [endTime, setEndTime] = useState(null);
   //get this renter's bookmark list from helper function
   const thisUserBookmarks = getRenterBookmarks(props.user.id, props.bookmarks)
+
+  function goToMap () {
+    window.location = "http://localhost:3000/#"
+  }
   
   return (
     <div className="wrap_dashboard">
@@ -22,7 +26,8 @@ export default function RenterD_myBookmarks(props) {
       startTime={startTime}
       setStartTime={setStartTime}
       endTime={endTime}
-      setEndTime={setEndTime} />    
+      setEndTime={setEndTime} 
+      closeLayer={goToMap}/>    
     </div>
   );
 }

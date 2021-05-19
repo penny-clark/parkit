@@ -159,7 +159,7 @@ export default function RenterD_myBookings(props) {
     <div className="wrap_dashboard">
       <h5 className="page_title">My Bookings</h5>
 
-      <Typography variant="h6" className="page_title">Active Booking</Typography>
+      <Typography variant="h6" className="page_title">Active Bookings</Typography>
       
       <div className="booklist_wrap">
         {displayActiveBookings()}

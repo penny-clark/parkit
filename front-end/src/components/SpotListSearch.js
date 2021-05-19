@@ -24,7 +24,7 @@ export default function SpotListSearch(props) {
 
   const itemEls = useRef({})
 
-  function openlayer(id, postalcode) {
+  function openLayer(id, postalcode) {
     setSelectedTab(1)
     setExpanded(`panel${id}`)
     window.location = `http://localhost:3000#spot${id}`
@@ -33,7 +33,7 @@ export default function SpotListSearch(props) {
 
    }
 
-   function closelayer() {
+   function closeLayer() {
      setSelectedTab(0)
      setExpanded(null)
      window.location = `http://localhost:3000#`
@@ -60,6 +60,7 @@ export default function SpotListSearch(props) {
    function endSearch(s) {
      searchHandle(s)
      setSearching(false)
+     window.location = `http://localhost:3000#`
    }
 
   return (
@@ -90,7 +91,7 @@ export default function SpotListSearch(props) {
     {selectedTab === 0 &&  <MapView 
       spots={filterSpots} 
       user={props.user} 
-      openlayer={openlayer} 
+      openLayer={openLayer} 
       />}
 
     {selectedTab === 1 && <SpotList 
@@ -104,7 +105,7 @@ export default function SpotListSearch(props) {
       endTime={endTime} 
       setStartTime={setStartTime} 
       setEndTime={setEndTime} 
-      closelayer={closelayer}
+      closeLayer={closeLayer}
       />}     
 
 

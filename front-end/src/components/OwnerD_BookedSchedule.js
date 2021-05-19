@@ -122,7 +122,7 @@ export default function OwnerD_BookedSchedule(props) {
 
   return (
     <div className="wrap_dashboard">
-      <h5 className="page_title">Booked Schedule of My Spots</h5>
+      <h5 className="page_title">My Spots Booking Schedule</h5>
       <Typography variant="h6" className="page_title">Active Booked Schedule</Typography>
       
       <div className="booklist_wrap">

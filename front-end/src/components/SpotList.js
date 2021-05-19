@@ -29,16 +29,6 @@ export default function SpotList(props) {
     console.log(panel)
    
   };
- 
-
-  // function openlayer(id) {
-  //   // document.querySelector(`#spot3 .MuiPaper-root div.MuiButtonBase-root`).style.ariaExpaned = "true";
-  //   setExpanded(`panel${id}`)
-  //   //  console.log(id, "are you working?")
-  //   window.location = `http://localhost:3000/#spot${id}`
-  //   //document.querySelector(`#spot${id} .MuiAccordionSummary-root`).style.backgroundColor = '#000'
-  //   document.querySelector(`.mapBox`).style.height = "0px";
-  //  }
 
   const spotsmap = () => {
 
@@ -81,7 +71,7 @@ export default function SpotList(props) {
       <Button variant="contained" color="secondary" onClick={() => handleCheckout()}>
         Book this spot
       </Button>
-      <Button onClick={()=> props.closelayer()}>Go to Map Search</Button>
+      <Button onClick={()=> props.closeLayer()}>Go to Map Search</Button>
 
       <Collapse in={checked}>
           <Paper className="popup_checkout">
@@ -111,7 +101,6 @@ export default function SpotList(props) {
 
   return (
     <div class="listview_wrap">
-      {/* <MapView spots={props.spots} user={props.user} openlayer={openlayer}/> */}
     {spotsmap()} 
     </div>
   )
