@@ -1,9 +1,4 @@
-.listview_wrap {
-  width: 100%;
- display: flex;
- flex-direction: column;
-  
-}
+
 .spotlist_wrap {
   width: 90% ;
   padding-top: 1rem;
@@ -57,6 +52,18 @@
 
 }
 
+.spot_picture {
+  display: inline-flex;
+  width: 550px;
+  justify-content: center;
+}
+
+.MuiAccordionDetails-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
 .bodytext_w_h6 {
   padding-top: .3rem;
   padding-left: 2rem;
