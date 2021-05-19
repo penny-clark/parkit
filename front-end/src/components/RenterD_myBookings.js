@@ -66,7 +66,8 @@ export default function RenterD_myBookings(props) {
       const endDateArr = bookObj.end_date_time.split("T")
  
       print.push(
-        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+       
+        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} >
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
@@ -92,6 +93,7 @@ export default function RenterD_myBookings(props) {
           </AccordionActions>
           }
       </Accordion>
+  
       )
     }
     return print;
@@ -112,7 +114,8 @@ export default function RenterD_myBookings(props) {
       const rating = getRentersRatings(bookObj.spot.spot_id, props.user.id, props.ratings)
 
       print.push(
-        <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
+     
+        <Accordion key={num} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
         <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
@@ -147,7 +150,7 @@ export default function RenterD_myBookings(props) {
           <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
         </AccordionActions>
       </Accordion>
-
+   
       )
     }
     return print;

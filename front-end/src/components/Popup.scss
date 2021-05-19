@@ -3,22 +3,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   position: absolute;
   text-align: center;
-  width: 450px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.popup_time .MuiGrid-root {
-  padding: 1rem;
-}
-
-.popup_time .MuiGrid-item {
-  margin: 10px auto;
+.popup_time {
+  text-align: center;
 }
 
 .popup_rating.MuiPaper-root{
@@ -74,10 +70,6 @@
 
   background-color: #fff;
   padding: 0;
-}
-
-h3.map_popup_title {
-
 }
 
 
