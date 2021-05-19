@@ -91,7 +91,15 @@ span .MuiRating-iconEmpty {
   color: #ccc;
 }
 
+.gotoBookingBT.MuiButton-root {
+  background-color: rgb(79, 179, 101);
+}
 
+.gotoBookingBT.MuiButton-root .MuiButton-label{
+  color: #fff;
+  font-size: 1.2rem;
+
+}
 
 //map-layer
 
