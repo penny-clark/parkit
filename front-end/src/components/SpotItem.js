@@ -1,3 +1,4 @@
+
 import React from "react";
 import './Popup.scss';
 import BookingPopup from "./BookingPopup";
@@ -22,7 +23,7 @@ export default function SpotItem(props) {
     }
   }
 
-    return(
+  return(
     <div>
         
       <div class="flexline">
@@ -58,4 +59,4 @@ export default function SpotItem(props) {
   )
 
 
-}
+  }

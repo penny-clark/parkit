@@ -30,6 +30,8 @@ export default function SpotListSearch(props) {
     window.location = `http://localhost:3000#spot${id}`
     searchHandle(false)
     setKeyword(postalcode)
+    startSearch(false)
+
 
    }
 
@@ -39,11 +41,13 @@ export default function SpotListSearch(props) {
      window.location = `http://localhost:3000#`
      searchHandle(true)
      setKeyword("")
+     endSearch(true)
      
    }
 
    function searchHandle(s) {
      const searchDom = document.getElementById('searchbox')
+     const searchBT = document.getElementsByClassName('BT_st1')
     if (s === true ) {
       searchDom.style.display = "block";
     } 

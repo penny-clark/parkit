@@ -24,7 +24,7 @@ export default function BookingPopup(props) {
     props.bookSpot(props.user.car_id, props.spot.id, props.startTime, props.endTime, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating)
     handleCheckout();
     redirectToPayment();
-
+    
   }
 
   function setTotal () {
