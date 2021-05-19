@@ -5,7 +5,7 @@ h5.page_title {
   padding-bottom: .7rem;
   margin-top: 50px;
   text-align: left;
-  font-weight: normal;
+  font-weight: 400;
   border-bottom: 1px solid #ccc;
 }
 
@@ -13,9 +13,9 @@ h6.page_title {
   font-size: 1.2rem;
   color :rgb(44, 40, 40);
   padding-bottom: 1rem;
-  margin-top: 30px;
+  margin-top: 10px;
   text-align: center;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .listview_wrap {
@@ -45,6 +45,21 @@ span.self_right {
 h6, h5 {
   margin-block-start: 0.3rem;
   margin-block-end: 0.3rem;
+  
+}
+
+
+.MuiAccordionSummary-root{
+  width: 100%;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  padding-left: 1rem;
+}
+
+.MuiAccordionSummary-root.Mui-expanded {
+  margin: 0px 0px;
+  padding: 0px 0px;
+  padding-left: 1rem;
 }
 
 .MuiAccordionSummary-content {
@@ -53,6 +68,8 @@ h6, h5 {
   padding: 0px 0px;
   min-height: 10px;
 }
+
+
 
 
 .icon_with_h6 {

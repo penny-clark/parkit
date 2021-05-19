@@ -11,24 +11,14 @@
 .spotlist_wrap .MuiAccordionSummary-root {
   background-color: rgb(46, 107, 185);
   color: #fff;
-  margin: 0px 0px;
-  padding: 0px 0px;
-  padding-left: 1rem;
 }
 
 .spotlist_wrap .MuiAccordionSummary-root.Mui-expanded {
   background-color: rgb(189, 66, 72);
   color: #fff;
-  margin: 0px 0px;
-  padding: 0px 0px;
-  padding-left: 1rem;
 }
 
-.MuiAccordionSummary-content {
-  margin: 0px 0px;
-  padding: 0px 0px;
-  min-height: 10px;
-}
+
 
 .spotlist_box {
   width: 90%;
@@ -71,6 +61,7 @@
 
 .title_text_h6 {
   font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .grid_fix_width {

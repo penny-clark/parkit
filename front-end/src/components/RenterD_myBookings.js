@@ -68,7 +68,7 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <h6 className="page_title">{bookObj.spot.street_address}</h6>
+        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
@@ -114,7 +114,7 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <h6 className="page_title">{bookObj.spot.street_address}</h6>
+        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>

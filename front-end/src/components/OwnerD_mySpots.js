@@ -41,7 +41,7 @@ export default function OwnerD_mySpots(props) {
         <AccordionDetails>
           <Typography variant="subtitle1">{spotObj.city}, {spotObj.province}, {spotObj.postal_code}, {spotObj.country}</Typography><br />
           <Typography variant="subtitle1">Price per hour : {spotObj.price}</Typography><br />
-          <img src={spotObj.picture} height="300px"/>
+          <img src={spotObj.picture} />
         </AccordionDetails>
         <AccordionActions>
           <Button color="secondary" onClick={() => remove(spotObj.id)}>
@@ -56,12 +56,13 @@ export default function OwnerD_mySpots(props) {
 
 
   return (
-    <div>
-      <Typography variant="body1">
-      This is "Owner's Dashboard - My spots" of user : {props.user.first_name} 
-      </Typography>
+    <div className="wrap_dashboard">
+       <h5 className="page_title">My Spots</h5>
+      
+       <div className="booklist_wrap">
    
       {displaySpots()}
+        </div>
     
     </div>
   );
