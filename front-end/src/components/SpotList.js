@@ -1,5 +1,4 @@
-import React, {useState}from "react";
-import { Link, Route } from 'react-router-dom';
+import React from "react";
 
 import './SpotListItem.scss';
 import './Popup.scss';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import UserNameDisplay from './UserNameDisplay';
 import SpotRating from './SpotRating';
@@ -16,7 +16,6 @@ import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
 import EventAvailableRoundedIcon from '@material-ui/icons/EventAvailableRounded';
-import OpenInBrowserRoundedIcon from '@material-ui/icons/OpenInBrowserRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"

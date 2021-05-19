@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 
 import './SpotListItem.scss';
 import { Button, Typography, Grid, TextField } from '@material-ui/core';

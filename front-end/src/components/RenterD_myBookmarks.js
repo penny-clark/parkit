@@ -2,7 +2,6 @@ import React, { useState} from 'react';
 import SpotList from "./SpotList";
 import './SpotListItem.scss';
 import { getRenterBookmarks } from '../helpers/selector';
-import { Divider, Typography } from '@material-ui/core';
 
 export default function RenterD_myBookmarks(props) {
   const [expanded, setExpanded] = useState(null);

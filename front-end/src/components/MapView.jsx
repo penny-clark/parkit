@@ -1,17 +1,10 @@
-import React, {Fragment, useState} from "react";
-import ReactDOM from 'react-dom';
-import { Button, Typography, Box} from '@material-ui/core';
+import React, { Fragment } from "react";
+import { Button, Typography } from '@material-ui/core';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import useDisplayAction from "../hooks/useDisplayAction"
 import './Popup.scss';
-import SpotItem from './SpotItem';
-import BookingPopup from "./BookingPopup";
-import Paper from '@material-ui/core/Paper';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Rating from '@material-ui/lab/Rating';
-import Collapse from '@material-ui/core/Collapse';
-import  { openEmail } from '../helpers/helper'
 
 export default function MapView(props) {
 
