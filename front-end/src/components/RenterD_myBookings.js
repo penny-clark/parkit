@@ -6,7 +6,7 @@ import SpotRating from './SpotRating';
 import './Dashboad.scss';
 import './Popup.scss';
 import './SpotListItem.scss';
-import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
+import { Button, Typography, Divider, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -14,6 +14,10 @@ import AccordionActions from '@material-ui/core/AccordionActions';
 import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
+import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
+import EventAvailableRoundedIcon from '@material-ui/icons/EventAvailableRounded';
+import OpenInBrowserRoundedIcon from '@material-ui/icons/OpenInBrowserRounded';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
 import  { openEmail } from '../helpers/helper'
@@ -68,7 +72,10 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
+          <div className="flexline">
+          <TodayRoundedIcon /> 
+        <h6 className="title_text_h6">&nbsp; {bookObj.spot.street_address}</h6>
+        </div>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
@@ -114,13 +121,26 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
+          <div className="flexline" >
+        <EventAvailableRoundedIcon />
+        <h6 className="title_text_h6"> &nbsp;{bookObj.spot.street_address}</h6>
+        </div>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
-          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
-          <ListItemText>Spot Owner:</ListItemText>
+          <div className="flexline">
+          <ExitToAppRoundedIcon />
+            <p className="innerTextP">Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</p>
+          </div>
+          
+          <div className="flexline">
+            <ExitToAppRoundedIcon rotate="180" />
+            <p className="innerTextP">End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</p>
+          </div>
+
+          <div className="flexline">
+          <ListItemText>Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
+          </div>
           
         </AccordionDetails>
         <AccordionActions>
