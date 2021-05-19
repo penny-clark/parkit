@@ -71,8 +71,10 @@ export default function SpotList(props) {
 
       <AccordionDetails>
       <img src={spot.picture} className="spot_picture"/>
-      <Typography variant="body1">Spot Owner</Typography>
-      <UserNameDisplay user={spot.owner}/>
+      <div className="flexline">
+        <Typography variant="body1">Owner</Typography>
+        <UserNameDisplay user={spot.owner}/>
+      </div>
     </AccordionDetails>
     <AccordionActions>
       <Button variant="contained" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>

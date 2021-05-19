@@ -13,7 +13,7 @@ h6.page_title {
   font-size: 1.2rem;
   color :rgb(44, 40, 40);
   padding-bottom: 1rem;
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
   font-weight: 400;
 }
@@ -71,7 +71,6 @@ h6, h5 {
 
 
 
-
 .icon_with_h6 {
   padding-top: .2rem;
   padding-right: .2rem;
@@ -101,5 +100,10 @@ span .MuiRating-iconEmpty {
 
 }
 
-//map-layer
+//picker
+.PrivatePicker-root-9 .MuiInternalDateTimePickerTabs-tabs {
+  background-color: #ccc;
+}
+
+
 

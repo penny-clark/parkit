@@ -9,12 +9,12 @@
 
 
 .spotlist_wrap .MuiAccordionSummary-root {
-  background-color: rgb(46, 107, 185);
+  background: linear-gradient(130deg, #188ec5 60%, #767c74 5%);
   color: #fff;
 }
 
 .spotlist_wrap .MuiAccordionSummary-root.Mui-expanded {
-  background-color: rgb(189, 66, 72);
+  background: linear-gradient(130deg, #e6a927 60%, #767c74 5%);
   color: #fff;
 }
 
