@@ -16,7 +16,7 @@ export default function BookingPopup(props) {
   };
 
   const redirectToPayment = () => {
-    window.location = "http://localhost:3000/payment_complete"
+    window.location.href = "/payment_complete"
   }
 
   function convertTimeString(timeObject) {
