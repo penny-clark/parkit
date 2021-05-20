@@ -3,6 +3,29 @@ const router = express.Router();
 // for Owner
 module.exports = (db) => {
 
+  router.get("/", (req, res) => {
+    return db.query(
+      `
+      SELECT
+        bookings.id,
+        bookings.spot_id,
+        bookings.car_id,
+        bookings.start_date_time,
+        bookings.end_date_time,
+        bookings.start_string,
+        bookings.end_string
+        FROM bookings
+    `
+    ).then(({ rows: bookings }) => {
+      res.json(
+        bookings.reduce(
+          (previous, current) => ({ ...previous, [current.id]: current }),
+          {}
+        )
+      );
+    });
+  });
+
 //gets all bookings with renter related info - orders from future to past dates
 
 router.get("/renter", (req, res) => {
@@ -14,6 +37,8 @@ router.get("/renter", (req, res) => {
       cars.user_id as renter_id,
       bookings.start_date_time,
       bookings.end_date_time,
+      bookings.start_string,
+      bookings.end_string,
       json_build_object('spot_id', spots.id, 'street_address', spots.street_address, 'city', spots.city, 'province', spots.province, 'postal_code', spots.postal_code, 'price', spots.price, 'picture', spots.picture) 
       AS spot,
       json_build_object('user_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'owner_email', users.email, 'avatar', users.avatar) 
@@ -54,6 +79,8 @@ router.get("/owner", (req, res) => {
       spots.user_id as owner_id,
       bookings.start_date_time,
       bookings.end_date_time,
+      bookings.start_string,
+      bookings.end_string,
       json_build_object('car_id', cars.id, 'car_make', cars.make, 'model', cars.model, 'colour', cars.colour, 'plate_number', cars.plate_number, 'rating', ROUND(AVG(renter_ratings.rating))) 
       AS car,
       json_build_object('renter_id', users.id, 'first_name', users.first_name, 'last_name', users.last_name, 'renter_email', users.email, 'avatar', users.avatar) 
@@ -83,9 +110,9 @@ router.get("/owner", (req, res) => {
 
 router.post("/", (req, res) => {
   return db.query(`
-  INSERT INTO bookings (car_id, spot_id, start_date_time, end_date_time)
-  VALUES ($1, $2, $3, $4);
-  `, [req.body.car_id, req.body.spot_id, req.body.start_datetime, req.body.end_datetime])
+  INSERT INTO bookings (car_id, spot_id, start_date_time, end_date_time, start_string, end_string)
+  VALUES ($1, $2, $3, $4, $5, $6);
+  `, [req.body.car_id, req.body.spot_id, req.body.start_datetime, req.body.end_datetime, req.body.start_string, req.body.end_string])
     .then(booking => {
       res.json({ booking });
     })

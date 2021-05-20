@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.integer('car_id').notNullable().references('id').inTable('cars').onDelete('cascade');
     table.string('start_date_time').notNullable();
     table.string('end_date_time').notNullable();
+    table.string('start_string').notNullable();
+    table.string('end_string').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
     })

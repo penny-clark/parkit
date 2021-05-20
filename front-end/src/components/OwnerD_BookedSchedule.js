@@ -57,8 +57,8 @@ export default function OwnerD_BookedSchedule(props) {
   
          </AccordionSummary>
         <AccordionDetails>
-        <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
+        <ListItemText>Start: {bookObj.start_string}</ListItemText>
+          <ListItemText>End: {bookObj.end_string}</ListItemText>
           <br></br>
           <ListItemText>Renter Car Info</ListItemText>
           <ListItemText>Make: {bookObj.car.car_make}</ListItemText>

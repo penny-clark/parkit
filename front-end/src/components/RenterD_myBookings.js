@@ -78,8 +78,8 @@ export default function RenterD_myBookings(props) {
         </div>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
+          <ListItemText>Start: {bookObj.start_string}</ListItemText>
+          <ListItemText>End: {bookObj.end_string}</ListItemText>
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           
