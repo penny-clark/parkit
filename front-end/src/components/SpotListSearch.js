@@ -2,7 +2,7 @@ import React, {useState, useRef} from "react";
 import SearchBar from "./SearchBar";
 import SpotList from "./SpotList";
 import MapView from "./MapView.jsx";
-import { Tabs, Tab, Button } from '@material-ui/core';
+import { Tabs, Tab } from '@material-ui/core';
 
 
 export default function SpotListSearch(props) {
@@ -47,7 +47,6 @@ export default function SpotListSearch(props) {
 
    function searchHandle(s) {
      const searchDom = document.getElementById('searchbox')
-     const searchBT = document.getElementsByClassName('BT_st1')
     if (s === true ) {
       searchDom.style.display = "block";
     } 

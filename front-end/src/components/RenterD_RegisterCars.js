@@ -1,7 +1,7 @@
 import React, {useState, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import './RegisterForm.scss';
-import {Button, SliderValueLabel, Typography } from '@material-ui/core';
+import {Button, Typography } from '@material-ui/core';
 import { FilledInput } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';

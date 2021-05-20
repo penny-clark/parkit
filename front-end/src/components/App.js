@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 import TopBar from './TopBar';

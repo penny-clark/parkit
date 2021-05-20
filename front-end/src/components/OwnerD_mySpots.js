@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 //import style & material-ui 
 import './Dashboad.scss';
-import { Button, Typography, Divider} from '@material-ui/core';
+import { Button, Typography} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -54,7 +53,7 @@ export default function OwnerD_mySpots(props) {
            &nbsp;Price per hour : {spotObj.price}
             </div>
           <br />
-          <img src={spotObj.picture} />
+          <img src={spotObj.picture} alt="spot"/>
         </AccordionDetails>
         <AccordionActions>
           <Button color="secondary" onClick={() => remove(spotObj.id)}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 //import style & material-ui 
 import './Dashboad.scss';
 import { Button, Typography, ListItem, ListItemText, ListItemAvatar, Avatar} from '@material-ui/core';

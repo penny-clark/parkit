@@ -7,7 +7,7 @@ export default function PaymentComplete(props) {
 
   return(
     <div className="paymentdone_wrap">
-     <img src="https://pr.sssagent.com/img/payment.gif"/>
+     <img src="https://pr.sssagent.com/img/payment.gif" alt="payment completed"/>
      <Typography variant="h4">Your payment is completed!</Typography>
      <Typography variant="h6" className="page_title">Go to check your booking list!</Typography>
      <Link to="/mybookings" >

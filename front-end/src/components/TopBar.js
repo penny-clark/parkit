@@ -1,10 +1,9 @@
-import React, { Component, useState } from 'react';
-import { BrowserRouter as Router, Link, Switch, Route, useParams } from 'react-router-dom';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
 //import style & material-ui 
 import './TopBar.scss';
-import { Button, Typography, Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
-import { AppBar, Toolbar, Drawer, Grid, Divider} from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Drawer } from '@material-ui/core';
 import { Tabs, Tab } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 //import components

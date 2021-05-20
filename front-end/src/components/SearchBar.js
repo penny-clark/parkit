@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './SearchBar.scss';
 import { Grid, TextField } from '@material-ui/core';

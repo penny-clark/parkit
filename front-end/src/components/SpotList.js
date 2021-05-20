@@ -3,7 +3,7 @@ import './SpotListItem.scss';
 import './Popup.scss';
 import BookingPopup from "./BookingPopup";
 import useDisplayAction from "../hooks/useDisplayAction"
-import { Button, Typography, Grid, ListItem, List, Box} from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -14,7 +14,6 @@ import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import  { openEmail } from '../helpers/helper'
-import MapView from "./MapView.jsx";
 import UserNameDisplay from './UserNameDisplay';
 
 export default function SpotList(props) {
@@ -57,7 +56,7 @@ export default function SpotList(props) {
       </AccordionSummary>
 
       <AccordionDetails>
-      <img src={spot.picture} className="spot_picture"/>
+      <img src={spot.picture} className="spot_picture" alt="spot"/>
       <br />
         <Typography variant="body1">Spot Owner:</Typography>
         <UserNameDisplay user={spot.owner}/>

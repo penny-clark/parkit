@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-
 import UserNameDisplay from './UserNameDisplay';
 import SpotRating from './SpotRating';
 //import style & material-ui 
 import './Dashboad.scss';
 import './Popup.scss';
 import './SpotListItem.scss';
-import { Button, Typography, Divider, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
+import { Button, Typography, ListItemText } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
