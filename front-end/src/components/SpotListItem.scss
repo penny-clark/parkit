@@ -43,9 +43,9 @@
 }
 
 .spot_picture {
-  display: inline-flex;
   width: 550px;
-  justify-content: center;
+  display: block;
+  margin: .5rem auto;
 }
 
 .MuiAccordionDetails-root {
