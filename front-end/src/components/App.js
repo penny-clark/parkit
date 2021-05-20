@@ -57,13 +57,15 @@ export default function App(props)  {
 
   // MAKE A NEW BOOKING
 
-  function bookSpot(carId, spotId, startTime, endTime, addr, city, province, pcode, price, pic, ownerid, ownerfn, ownerln, ownerem, owneravatar, spotrating) {
+  function bookSpot(carId, spotId, startTime, endTime, start, end, addr, city, province, pcode, price, pic, ownerid, ownerfn, ownerln, ownerem, owneravatar, spotrating) {
     const newRenterBookingObj = {
       id: (state.renterbookings[state.renterbookings.length -1].id +1),
       car_id: carId,
       renter_id: state.user.id,
       start_date_time: startTime,
       end_date_time: endTime,
+      start_string: start,
+      end_string: end,
       spot: {spot_id: spotId, street_address: addr, city: city, province: province, postal_code: pcode, price: price, picture: pic},
       owner: {user_id: ownerid, first_name: ownerfn, last_name: ownerln, owner_email: ownerem, avatar: owneravatar},
       rating: spotrating
@@ -76,6 +78,8 @@ export default function App(props)  {
       owner_id: ownerid,
       start_date_time: startTime,
       end_date_time: endTime,
+      start_string: start,
+      end_string: end,
       car: {car_id: carId, car_make: "Ford", model: "Prius", colour: "Red", plate_number: "AAAAAA", rating: 3}, 
       renter: {renter_id: state.user.id, first_name: state.user.first_name, last_name: state.user.last_name, renter_email: state.user.email, avatar: state.user.avatar}
     }
@@ -85,7 +89,9 @@ export default function App(props)  {
       car_id: carId,
       spot_id: spotId,
       start_datetime: startTime,
-      end_datetime: endTime
+      end_datetime: endTime,
+      start_string: start,
+      end_string: end
     })
     .then(res => {
       const newOwnerBookingsArr = [ ...state.ownerbookings]

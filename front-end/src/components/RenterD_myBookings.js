@@ -65,8 +65,8 @@ export default function RenterD_myBookings(props) {
     for (const bookObj of activeBooking) {
       const num = activeBooking.indexOf(bookObj)+1;
 
-      const startDateArr = bookObj.start_date_time.split("T")
-      const endDateArr = bookObj.end_date_time.split("T")
+      // const startDateArr = bookObj.start_date_time.split("T")
+      // const endDateArr = bookObj.end_date_time.split("T")
  
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
@@ -77,8 +77,8 @@ export default function RenterD_myBookings(props) {
         </div>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</ListItemText>
-          <ListItemText>End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</ListItemText>
+          <ListItemText>Start: {bookObj.start_string}</ListItemText>
+          <ListItemText>End: {bookObj.end_string}</ListItemText>
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           
@@ -110,8 +110,8 @@ export default function RenterD_myBookings(props) {
     for (const bookObj of reversedHistory) {
       const num = activeBooking.length + reversedHistory.indexOf(bookObj)+1;
 
-      const startDateArr = bookObj.start_date_time.split("T")
-      const endDateArr = bookObj.end_date_time.split("T")
+      // const startDateArr = bookObj.start_date_time.split("T")
+      // const endDateArr = bookObj.end_date_time.split("T")
 
       const bookmarked = checkBookmarkedspot(bookObj.spot.spot_id, thisUserBookmarks)
       const rated = spotRated(bookObj.spot.spot_id, props.user.id, props.ratings)
@@ -128,12 +128,12 @@ export default function RenterD_myBookings(props) {
         <AccordionDetails>
           <div className="flexline">
           <ExitToAppRoundedIcon />
-            <p className="innerTextP">Start: {startDateArr[0]} at {startDateArr[1].substring(0,5)}</p>
+            <p className="innerTextP">Start: {bookObj.start_date_time}</p>
           </div>
           
           <div className="flexline">
             <ExitToAppRoundedIcon rotate="180" />
-            <p className="innerTextP">End: {endDateArr[0]} at {endDateArr[1].substring(0,5)}</p>
+            <p className="innerTextP">End: {bookObj.end_date_time}</p>
           </div>
 
           <div className="flexline">
