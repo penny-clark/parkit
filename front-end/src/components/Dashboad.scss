@@ -15,12 +15,12 @@
 }
 
 .booklist_wrap .MuiAccordionSummary-root {
-  background-color: rgb(236, 230, 151);
+  background-color: #b3e6a4;
   color: #222;
 }
 
 .booklist_wrap .MuiAccordionSummary-root.Mui-expanded {
-  background-color: rgb(226, 120, 48);
+  background-color: #539b3d;
   color: #fff;
 }
 
@@ -45,4 +45,8 @@
 
 .width200Text {
   width: 200px;
+}
+
+.right_spaceBT {
+  margin-right: 10px;
 }

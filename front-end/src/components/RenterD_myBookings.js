@@ -6,7 +6,7 @@ import SpotRating from './SpotRating';
 import './Dashboad.scss';
 import './Popup.scss';
 import './SpotListItem.scss';
-import { Button, Typography, Divider, ListItem, ListItemText} from '@material-ui/core';
+import { Button, Typography, Divider, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -14,6 +14,10 @@ import AccordionActions from '@material-ui/core/AccordionActions';
 import Rating from '@material-ui/lab/Rating';
 import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
+import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
+import EventAvailableRoundedIcon from '@material-ui/icons/EventAvailableRounded';
+import OpenInBrowserRoundedIcon from '@material-ui/icons/OpenInBrowserRounded';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
 import  { openEmail } from '../helpers/helper'
@@ -68,7 +72,10 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
+          <div className="flexline">
+          <TodayRoundedIcon /> 
+        <h6 className="title_text_h6">&nbsp; {bookObj.spot.street_address}</h6>
+        </div>
         </AccordionSummary>
         <AccordionDetails>
           <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
@@ -79,7 +86,7 @@ export default function RenterD_myBookings(props) {
         </AccordionDetails>
           {!confirm &&
           <AccordionActions>
-          <Button variant="contained" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
+          <Button variant="contained" className="right_spaceBT" onClick={()=> openEmail(bookObj.owner.owner_email)}>Contact Owner</Button>
           <Button variant="contained" color="secondary" onClick={() => setConfirm(true)}>
             Cancel
           </Button>
@@ -87,7 +94,7 @@ export default function RenterD_myBookings(props) {
           }
           {confirm && 
           <AccordionActions>
-          <Button variant="contained" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
+          <Button variant="contained" className="right_spaceBT" onClick={() => cancel(bookObj.id)}>Yes, I want to cancel this booking</Button>
           <Button variant="contained" color="secondary" onClick={() => setConfirm(false)}>Back</Button>
           </AccordionActions>
           }
@@ -114,20 +121,33 @@ export default function RenterD_myBookings(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <h6 className="title_text_h6">{bookObj.spot.street_address}</h6>
+          <div className="flexline" >
+        <EventAvailableRoundedIcon />
+        <h6 className="title_text_h6"> &nbsp;{bookObj.spot.street_address}</h6>
+        </div>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
-          <ListItemText>Spot Owner:</ListItemText>
+          <div className="flexline">
+          <ExitToAppRoundedIcon />
+            <p className="innerTextP">Start: {bookObj.start_date_time}</p>
+          </div>
+          
+          <div className="flexline">
+            <ExitToAppRoundedIcon rotate="180" />
+            <p className="innerTextP">End: {bookObj.end_date_time}</p>
+          </div>
+
+          <div className="flexline">
+          <ListItemText>Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
+          </div>
           
         </AccordionDetails>
         <AccordionActions>
 
         {rated === false &&
         <div>
-          <Button variant="contained" color="primary" onClick={() => submitRating(bookObj.spot.spot_id)}>
+          <Button variant="contained" className="right_spaceBT" color="primary" onClick={() => submitRating(bookObj.spot.spot_id)}>
             Rate this Spot
           </Button>
                 
@@ -138,13 +158,20 @@ export default function RenterD_myBookings(props) {
         </Collapse>
         </div>
         }
+        
         {rated === true &&
-          <Rating name="read-only" value={rating} readOnly size="large" />  
+        
+          <Rating name="read-only"  className="right_spaceBT" value={rating} readOnly size="large" />  
         }
         {bookmarked === true && 
-          <Button variant="contained" disabled >Bookmarked</Button>}
+        
+          <Button variant="contained" className="left_spaceBT" disabled >Bookmarked</Button>
+          }
         {bookmarked === false &&  
-          <Button variant="contained" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> } 
+          <Button variant="contained" className="left_spaceBT" onClick={() => setBookmark(bookObj.spot.spot_id, bookObj.owner.user_id, bookObj.owner.first_name, bookObj.owner.last_name, bookObj.owner.owner_email, bookObj.owner.avatar, bookObj.spot.street_address, bookObj.spot.city, bookObj.spot.province, bookObj.spot.country, bookObj.spot.price, bookObj.spot.picture, bookObj.spot.postal_code, bookObj.rating)}>Bookmark</Button> 
+          
+          } 
+      
         </AccordionActions>
       </Accordion>
 

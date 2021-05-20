@@ -28,7 +28,7 @@ h6.page_title {
 .flexline {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -107,3 +107,6 @@ span .MuiRating-iconEmpty {
 
 
 
+.MuiButton-root.left_spaceBT {
+  margin-left: 10px;
+}
