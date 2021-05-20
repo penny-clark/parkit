@@ -74,6 +74,7 @@ router.get("/owner", (req, res) => {
       bookings.id,
       bookings.car_id,
       spots.id as spot_id,
+      spots.street_address,
       spots.user_id as owner_id,
       bookings.start_date_time,
       bookings.end_date_time,

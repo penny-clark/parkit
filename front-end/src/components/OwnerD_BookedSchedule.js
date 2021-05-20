@@ -62,7 +62,7 @@ export default function OwnerD_BookedSchedule(props) {
               </ListItemText>
             </ListItem>
             <ListItem>
-          <Typography variant="body1">My spot: {findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
+          <Typography variant="body1">My spot: {bookObj.street_address}</Typography>
           </ListItem>
   
          </AccordionSummary>
@@ -140,7 +140,7 @@ export default function OwnerD_BookedSchedule(props) {
        
         
           <ListItem>
-          <Typography variant="body1">My spot1: {findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
+          <Typography variant="body1">My spot: {bookObj.street_address}</Typography>
           </ListItem>
         </AccordionSummary>
         <AccordionDetails>
