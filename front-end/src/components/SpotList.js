@@ -1,5 +1,4 @@
 import React from "react";
-
 import './SpotListItem.scss';
 import './Popup.scss';
 import BookingPopup from "./BookingPopup";
@@ -59,10 +58,10 @@ export default function SpotList(props) {
 
       <AccordionDetails>
       <img src={spot.picture} className="spot_picture"/>
-      <div className="flexline">
-        <Typography variant="body1">Owner</Typography>
+      <br />
+        <Typography variant="body1">Spot Owner:</Typography>
         <UserNameDisplay user={spot.owner}/>
-      </div>
+      
     </AccordionDetails>
     <AccordionActions>
       <Button variant="contained" onClick={()=> openEmail(spot.owner.email)}>Contact Owner</Button>

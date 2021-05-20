@@ -16,7 +16,8 @@ import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
 import EventAvailableRoundedIcon from '@material-ui/icons/EventAvailableRounded';
-import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+import AccessAlarmRoundedIcon from '@material-ui/icons/AccessAlarmRounded';
+import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction"
 import  { openEmail } from '../helpers/helper'
@@ -77,8 +78,17 @@ export default function RenterD_myBookings(props) {
         </div>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {bookObj.start_string}</ListItemText>
-          <ListItemText>End: {bookObj.end_string}</ListItemText>
+          <div className="flexline_around">
+             <div className="flexline">
+               Start <AccessAlarmRoundedIcon />
+                <p className="innerTextP">  {bookObj.start_string}</p>
+            </div>
+            <div className="flexline">
+              End <AccessAlarmRoundedIcon />
+            <p className="innerTextP"> {bookObj.end_string}</p>
+            </div>
+          </div>
+
           <ListItemText>Spot Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
           
@@ -126,20 +136,22 @@ export default function RenterD_myBookings(props) {
         </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="flexline">
-          <ExitToAppRoundedIcon />
-            <p className="innerTextP">Start: {bookObj.start_date_time}</p>
+          <div className="flexline_around">
+             <div className="flexline">
+               Start <AccessAlarmRoundedIcon />
+                <p className="innerTextP"> {bookObj.start_string}</p>
+            </div>
+            <div className="flexline">
+              End <AccessAlarmRoundedIcon />
+            <p className="innerTextP"> {bookObj.end_string}</p>
+            </div>
           </div>
-          
           <div className="flexline">
-            <ExitToAppRoundedIcon rotate="180" />
-            <p className="innerTextP">End: {bookObj.end_date_time}</p>
+          <PersonPinCircleIcon />
+          <ListItemText>Spot Owner:</ListItemText>
           </div>
-
-          <div className="flexline">
-          <ListItemText>Owner:</ListItemText>
           <UserNameDisplay user={bookObj.owner}/>
-          </div>
+         
           
         </AccordionDetails>
         <AccordionActions>
@@ -197,10 +209,6 @@ export default function RenterD_myBookings(props) {
         {displayHistoryBookings()}
       </div>
 
-      
-      
-
-      
     
     </div>
   );

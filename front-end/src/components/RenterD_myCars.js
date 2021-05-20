@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState} from 'react';
 
 //import style & material-ui 
 import './Dashboad.scss';
-import { Button, Typography, Divider} from '@material-ui/core';
+import { Button, Typography, ListItemText} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
+import LocalOfferRoundedIcon from '@material-ui/icons/LocalOfferRounded';
+import DriveEtaRoundedIcon from '@material-ui/icons/DriveEtaRounded';
+import ColorLensRoundedIcon from '@material-ui/icons/ColorLensRounded';
+import MoreRoundedIcon from '@material-ui/icons/MoreRounded';
 //import hooks & helper
 import { getRenterCars } from '../helpers/selector';
 
@@ -45,9 +48,23 @@ export default function RenterD_myCars(props) {
           <Typography variant="h6">My Car {num} : {carObj.plate_number}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="subtitle1">Make : {carObj.make}</Typography><br />
-          <Typography variant="subtitle1">Model : {carObj.model}</Typography><br />
-          <Typography variant="subtitle1">Colour : {carObj.colour}</Typography>
+        <br></br>
+          <ListItemText className="textBG">My car details</ListItemText>
+          <div className="carinfo">
+            <div className="flexline">
+              <LocalOfferRoundedIcon /> Make: {carObj.make}
+            </div>
+            <div className="flexline">
+            <DriveEtaRoundedIcon /> &nbsp; Model: {carObj.model}
+            </div>
+            <div className="flexline">
+            <ColorLensRoundedIcon />&nbsp; Colour: {carObj.colour}
+            </div>
+            <div className="flexline">
+              <MoreRoundedIcon />&nbsp; License plate: {carObj.plate_number}
+            </div>
+          </div>
+
         </AccordionDetails>
         <AccordionActions>
           {defaultCar === true &&

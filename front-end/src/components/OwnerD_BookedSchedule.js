@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-
-import UserNameDisplay from './UserNameDisplay';
 //import style & material-ui 
 import './Dashboad.scss';
-import { Button, Typography, Divider, ListItem, ListItemText, Grid} from '@material-ui/core';
+import { Button, Typography, ListItem, ListItemText, ListItemAvatar, Avatar} from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
+import AccessAlarmRoundedIcon from '@material-ui/icons/AccessAlarmRounded';
+import LocalOfferRoundedIcon from '@material-ui/icons/LocalOfferRounded';
+import DriveEtaRoundedIcon from '@material-ui/icons/DriveEtaRounded';
+import ColorLensRoundedIcon from '@material-ui/icons/ColorLensRounded';
+import MoreRoundedIcon from '@material-ui/icons/MoreRounded';
 //import hooks & helper
 import useDisplayAction from "../hooks/useDisplayAction";
 import  { openEmail } from '../helpers/helper'
@@ -50,22 +53,46 @@ export default function OwnerD_BookedSchedule(props) {
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
          <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
 
-           <UserNameDisplay user={bookObj.renter}/>
-          <ListItem>
-          <Typography variant="body1"> {findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
+         <ListItem>
+             <ListItemAvatar>
+             <Avatar alt="user_name" src={bookObj.renter.avatar} /> 
+             </ListItemAvatar>
+              <ListItemText className="userName2">
+              {bookObj.renter.first_name} {bookObj.renter.last_name}
+              </ListItemText>
+            </ListItem>
+            <ListItem>
+          <Typography variant="body1">My spot1: {findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
           </ListItem>
   
          </AccordionSummary>
         <AccordionDetails>
-        <ListItemText>Start: {bookObj.start_string}</ListItemText>
-          <ListItemText>End: {bookObj.end_string}</ListItemText>
+          <div className="flexline_around">
+             <div className="flexline">
+               Start <AccessAlarmRoundedIcon />
+                <p className="innerTextP">  {bookObj.start_string}</p>
+            </div>
+            <div className="flexline">
+              End <AccessAlarmRoundedIcon />
+            <p className="innerTextP"> {bookObj.end_string}</p>
+            </div>
+          </div>
           <br></br>
-          <ListItemText>Renter Car Info</ListItemText>
-          <ListItemText>Make: {bookObj.car.car_make}</ListItemText>
-          <ListItemText>Model: {bookObj.car.model}</ListItemText>
-          <ListItemText>Colour: {bookObj.car.colour}</ListItemText>
-          <ListItemText>License plate: {bookObj.car.plate_number}</ListItemText>
-
+          <ListItemText className="textBG">Renter Car Info</ListItemText>
+          <div className="carinfo">
+            <div className="flexline">
+              <LocalOfferRoundedIcon /> Make: {bookObj.car.car_make}
+            </div>
+            <div className="flexline">
+            <DriveEtaRoundedIcon /> &nbsp; Model: {bookObj.car.model}
+            </div>
+            <div className="flexline">
+            <ColorLensRoundedIcon />&nbsp; Colour: {bookObj.car.colour}
+            </div>
+            <div className="flexline">
+              <MoreRoundedIcon />&nbsp; License plate: {bookObj.car.plate_number}
+            </div>
+          </div>
         </AccordionDetails>
         {!confirm &&
           <AccordionActions>
@@ -101,14 +128,49 @@ export default function OwnerD_BookedSchedule(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-        <UserNameDisplay user={bookObj.renter}/>
+  
           <ListItem>
-          <Typography variant="body1">{findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
+             <ListItemAvatar>
+             <Avatar alt="user_name" src={bookObj.renter.avatar} /> 
+             </ListItemAvatar>
+              <ListItemText className="userName2">
+              {bookObj.renter.first_name} {bookObj.renter.last_name}
+              </ListItemText>
+            </ListItem>
+       
+        
+          <ListItem>
+          <Typography variant="body1">My spot1: {findSpotAddress(bookObj.spot_id, thisUserSpots)}</Typography>
           </ListItem>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemText>Start: {bookObj.start_date_time}</ListItemText>
-          <ListItemText>End: {bookObj.end_date_time}</ListItemText>
+          <div className="flexline_around">
+             <div className="flexline">
+               Start <AccessAlarmRoundedIcon />
+                <p className="innerTextP">  {bookObj.start_string}</p>
+            </div>
+            <div className="flexline">
+              End <AccessAlarmRoundedIcon />
+            <p className="innerTextP"> {bookObj.end_string}</p>
+            </div>
+          </div>
+
+          <br></br>
+          <ListItemText className="textBG">Renter Car Info</ListItemText>
+          <div className="carinfo">
+            <div className="flexline">
+              <LocalOfferRoundedIcon /> Make: {bookObj.car.car_make}
+            </div>
+            <div className="flexline">
+            <DriveEtaRoundedIcon /> &nbsp; Model: {bookObj.car.model}
+            </div>
+            <div className="flexline">
+            <ColorLensRoundedIcon />&nbsp; Colour: {bookObj.car.colour}
+            </div>
+            <div className="flexline">
+              <MoreRoundedIcon />&nbsp; License plate: {bookObj.car.plate_number}
+            </div>
+          </div>
         </AccordionDetails>
         <AccordionActions>
         </AccordionActions>

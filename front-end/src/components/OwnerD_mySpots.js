@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 //import style & material-ui 
 import './Dashboad.scss';
@@ -8,8 +7,10 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionActions from '@material-ui/core/AccordionActions';
+import PinDropRoundedIcon from '@material-ui/icons/PinDropRounded';
+import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
+import MonetizationOnRoundedIcon from '@material-ui/icons/MonetizationOnRounded';
 //import hooks & helper
-import useDisplayAction from "../hooks/useDisplayAction"
 import { getOwnerSpots } from '../helpers/selector';
 
 export default function OwnerD_mySpots(props) {
@@ -36,11 +37,23 @@ export default function OwnerD_mySpots(props) {
       print.push(
         <Accordion key={num} square={false} expanded={expanded === `panel${num}`} onChange={handleChange(`panel${num}`)} className="Accbox">
         <AccordionSummary aria-controls={`panel${num}d-content`} id={`panel${num}d-header`}>
-          <Typography variant="h6">My Spot {num} : {spotObj.street_address}</Typography>
+          <div className="flexline">
+            <PinDropRoundedIcon />
+           <Typography variant="h6">My Spot {num}: {spotObj.street_address}</Typography>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="subtitle1">{spotObj.city}, {spotObj.province}, {spotObj.postal_code}, {spotObj.country}</Typography><br />
-          <Typography variant="subtitle1">Price per hour : {spotObj.price}</Typography><br />
+          <br />
+        <div className="flexline"> 
+          <RoomRoundedIcon />
+          {spotObj.city}, {spotObj.province}, {spotObj.postal_code}, {spotObj.country}
+        </div>
+        <br />
+          <div className="flexline">
+           <MonetizationOnRoundedIcon /> 
+           &nbsp;Price per hour : {spotObj.price}
+            </div>
+          <br />
           <img src={spotObj.picture} />
         </AccordionDetails>
         <AccordionActions>

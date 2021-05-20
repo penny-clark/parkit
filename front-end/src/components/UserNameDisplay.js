@@ -5,7 +5,7 @@ import {Avatar, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core
 export default function UserNameDisplay(props) {
 
   return (
-    <ListItem>
+    <ListItem className="userName_box">
       <ListItemAvatar>
         <Avatar alt="user_name" src={props.user.avatar} /> 
       </ListItemAvatar>

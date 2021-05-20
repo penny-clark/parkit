@@ -32,6 +32,14 @@ h6.page_title {
   align-items: center;
 }
 
+
+.flexline_around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .space_right{
   margin-right: 1rem;
 }
@@ -46,6 +54,11 @@ h6, h5 {
   margin-block-start: 0.3rem;
   margin-block-end: 0.3rem;
   
+}
+
+.innerTextP {
+  font-size: 1.1rem;
+  padding: 1rem 1rem;
 }
 
 
@@ -105,8 +118,21 @@ span .MuiRating-iconEmpty {
   background-color: rgb(206, 214, 223);
 }
 
-
-
 .MuiButton-root.left_spaceBT {
   margin-left: 10px;
+}
+
+
+//etc
+.userName_box {
+  width: 150px;
+  background-color: #eee;
+}
+
+.userName_box span, .userName2 span {
+  font-size: 1.1rem;
+}
+
+.noBGcolor .userName_box {
+  background-color: none;
 }
