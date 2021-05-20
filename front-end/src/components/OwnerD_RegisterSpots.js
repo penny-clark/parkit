@@ -43,7 +43,7 @@ export default function OwnerD_RegisterSpots(props) {
               value={streetAddress}
               placeholder={"example: 123 Robson St"}
               onChange={(event) => setStreetAddress(event.target.value)}
-              labelWidth={7}
+       
             />
           </FormControl>
         </Grid>
@@ -55,7 +55,7 @@ export default function OwnerD_RegisterSpots(props) {
               id="city"
               value={city}
               onChange={(event) => setCity(event.target.value)}
-              labelWidth={7}
+        
             />
           </FormControl>
         </Grid>
@@ -69,7 +69,7 @@ export default function OwnerD_RegisterSpots(props) {
               id="Province"
               value={province}
               onChange={(event) => setProvince(event.target.value)}
-              labelWidth={7}
+       
             />
           </FormControl>
         </Grid>
@@ -81,7 +81,7 @@ export default function OwnerD_RegisterSpots(props) {
               id="potal_code"
               value={postalCode}
               onChange={(event) => setPostalCode(event.target.value)}
-              labelWidth={7}
+        
             />
           </FormControl>
         </Grid>
@@ -96,7 +96,7 @@ export default function OwnerD_RegisterSpots(props) {
               id="Country"
               value={country}
               onChange={(event) => setCountry(event.target.value)}
-              labelWidth={7}
+           
             />
           </FormControl>
         </Grid>
@@ -113,7 +113,7 @@ export default function OwnerD_RegisterSpots(props) {
                 value={latitude}
                 placeholder={"Enter latitude"}
                 onChange={(event) => setLatitude(event.target.value)}
-                labelWidth={7}
+           
               />
             </FormControl>
           </Grid>
@@ -125,7 +125,7 @@ export default function OwnerD_RegisterSpots(props) {
                 id="longitude"
                 value={longitude}
                 onChange={(event) => setLongitude(event.target.value)}
-                labelWidth={7}
+           
               />
             </FormControl>
           </Grid>
@@ -140,7 +140,7 @@ export default function OwnerD_RegisterSpots(props) {
           placeholder={"Enter your spot's price per hour"}
           onChange={(event) => setPrice(event.target.value)}
           startAdornment={<InputAdornment position="start"><MonetizationOnIcon /></InputAdornment>}
-          labelWidth={7}
+      
         />
       </FormControl>
 
@@ -153,7 +153,7 @@ export default function OwnerD_RegisterSpots(props) {
           placeholder={"Enter your spot image url"}
           onChange={(event) => setPicture(event.target.value)}
           startAdornment={<InputAdornment position="start"><ImageRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+     
         />
       </FormControl>
       <Link to="/myspots" >

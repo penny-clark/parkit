@@ -35,7 +35,7 @@ export default function MapView(props) {
               </div>
               
               <div className="flexline">
-                <Rating name="read-only" value={spot.rating} readOnly size="small" className="space_right"/>
+                <Rating name="read-only" value={Number(spot.rating)} readOnly size="small" className="space_right"/>
                 <Button variant="contained" className="BT_right" size="small" onClick={()=> props.openLayer(spot.id, spot.postal_code)} >Detail </Button>
               </div>
 

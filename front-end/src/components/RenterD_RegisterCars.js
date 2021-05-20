@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './RegisterForm.scss';
 import {Button, SliderValueLabel, Typography } from '@material-ui/core';
 import { FilledInput } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import LocalOfferRoundedIcon from '@material-ui/icons/LocalOfferRounded';
@@ -36,7 +35,7 @@ export default function RenterD_RegisterCars(props) {
           placeholder={"Enter your car's make"}
           onChange={(event) => setMake(event.target.value)}
           startAdornment={<InputAdornment position="start"><LocalOfferRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+        
         />
     </FormControl>
     
@@ -49,7 +48,7 @@ export default function RenterD_RegisterCars(props) {
           placeholder={"Enter your car's model"}
           onChange={(event) => setModel(event.target.value)}
           startAdornment={<InputAdornment position="start"><DriveEtaRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+   
         />
     </FormControl>
 
@@ -62,7 +61,7 @@ export default function RenterD_RegisterCars(props) {
           placeholder={"Enter your car's colour"}
           onChange={(event) => setColour(event.target.value)}
           startAdornment={<InputAdornment position="start"><ColorLensRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+     
         />
     </FormControl>
 
@@ -75,7 +74,7 @@ export default function RenterD_RegisterCars(props) {
           placeholder={"Enter your car's plate number"}
           onChange={(event) => setPlateNumber(event.target.value)}
           startAdornment={<InputAdornment position="start"><MoreRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+      
         />
       </FormControl>
       <Link to="/mycars" >

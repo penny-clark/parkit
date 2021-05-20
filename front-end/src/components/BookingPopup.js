@@ -16,7 +16,7 @@ export default function BookingPopup(props) {
   };
 
   const redirectToPayment = () => {
-    window.location = "http://localhost:3000/payment_complete"
+    window.location.href = "/payment_complete"
   }
 
   function convertTimeString(timeObject) {
@@ -54,7 +54,7 @@ export default function BookingPopup(props) {
      <div>
      <Grid container spacing={1} justify="center" className="popup_time">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Grid item spacing={2} justify="center">
+        <Grid item justify="center">
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="Start Time"
@@ -66,7 +66,7 @@ export default function BookingPopup(props) {
             minDateTime={new Date()}
           />
         </Grid>
-        <Grid item spacing={2} justify="center">
+        <Grid item justify="center">
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="End Time"

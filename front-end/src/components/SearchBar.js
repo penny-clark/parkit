@@ -15,8 +15,8 @@ export default function SearchBar(props) {
 
   return (
     <div id="searchbox">
-      <div class="size_control_w600">
-      <FormControl fullWidth variant="filled">
+      <div className="size_control_w600">
+      <FormControl variant="filled" fullWidth={true} >
       <InputLabel htmlFor="outlined-adornment-amount">Search by Postal code</InputLabel>
         <FilledInput
           id="outlined-adornment-amount"
@@ -24,13 +24,13 @@ export default function SearchBar(props) {
           placeholder={"Enter your destination's postal code"}
           onChange={(event) => props.setKeyword(event.target.value)}
           startAdornment={<InputAdornment position="start"><AddLocationRoundedIcon /></InputAdornment>}
-          labelWidth={7}
+          
         />
       </FormControl>
         
       <Grid container spacing={1} justify="center" className="timepicker">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Grid item spacing={2} justify="center">
+        <Grid item justify="center">
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="Start Time"
@@ -42,7 +42,7 @@ export default function SearchBar(props) {
             minDateTime={new Date()}
           />
         </Grid>
-        <Grid item spacing={2} justify="center">
+        <Grid item justify="center">
           <DateTimePicker
             renderInput={(props) => <TextField {...props} />}
             label="End Time"

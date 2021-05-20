@@ -25,7 +25,6 @@ export default function SpotList(props) {
 
     const handleChange = (panel) => (event, newExpanded) => {
     props.setExpanded(newExpanded ? panel : false);
-    console.log(panel)
    
   };
 
@@ -54,7 +53,7 @@ export default function SpotList(props) {
             <Typography variant="body1"> / hour</Typography>
           </div>
      
-          <Rating className="self_right" name="read-only" value={spot.rating} readOnly />
+          <Rating className="self_right" name="read-only" value={Number(spot.rating)} readOnly />
         </div> 
       </AccordionSummary>
 
@@ -99,7 +98,7 @@ export default function SpotList(props) {
   
 
   return (
-    <div class="listview_wrap">
+    <div className="listview_wrap">
     {spotsmap()} 
     </div>
   )
