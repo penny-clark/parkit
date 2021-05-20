@@ -66,8 +66,6 @@ router.get("/renter", (req, res) => {
 });
 
 
-//get bookings for a specific renter - moved to users route
-
 //gets all the bookigns with info relevant to the owner
 router.get("/owner", (req, res) => {
   return db.query(

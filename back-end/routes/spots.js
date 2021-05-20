@@ -94,19 +94,5 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-//Renter route - brings back spots matching search criteria
-// I think we could do this with a filter in the front end instead
-// router.get("/search/:city", (req, res) => {
-//   db.getSpotsForSearch(city)
-//     .then(spot => {
-//       res.json({ spot });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
 return router;
 }

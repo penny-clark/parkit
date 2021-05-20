@@ -15,9 +15,9 @@ export default function BookingPopup(props) {
     props.setChecked((prev) => !prev);
   };
 
-  const redirectToPayment = () => {
-    window.location.href = "/payment_complete"
-  }
+  // const redirectToPayment = () => {
+  //   window.location.href = "/payment_complete"
+  // }
 
   function convertTimeString(timeObject) {
     let dateString = timeObject.toString()
@@ -25,12 +25,13 @@ export default function BookingPopup(props) {
     return `${dateArray[0]}:${dateArray[1]}`
   }
 
-  function save() {
+  function save(e) {
+    e.preventDefault()
     const startTimeString = convertTimeString(props.startTime)
     const endTimeString = convertTimeString(props.endTime)
     props.bookSpot(props.user.car_id, props.spot.id, props.startTime, props.endTime, startTimeString, endTimeString, props.spot.street_address, props.spot.city, props.spot.province, props.spot.pcode, props.spot.price, props.spot.picture, props.spot.owner.user_id, props.spot.owner.first_name, props.spot.owner.last_name, props.spot.owner.owner_email, props.spot.owner.avatar, props.spot.rating);
     handleCheckout();
-    redirectToPayment();
+    // redirectToPayment();
     
   }
 
@@ -86,7 +87,7 @@ export default function BookingPopup(props) {
       {affirmed === true &&
       <div>
       <p>{totalCost}</p>
-     <Button variant="contained" onClick={save}>Reserve & Pay</Button> 
+     <Button variant="contained" onClick={(e) => save(e)}>Reserve & Pay</Button> 
      <Button variant="contained" className="left_spaceBT" onClick={() => setAffirmed(false)} color="secondary">Edit booking</Button> 
      </div>
       }

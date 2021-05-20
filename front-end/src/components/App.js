@@ -99,6 +99,7 @@ export default function App(props)  {
       newOwnerBookingsArr.push(newOwnerBookingObj)
       newRenterBookingsArr.push(newRenterBookingObj)
       setState(prev => ({ ...prev, renterbookings: newRenterBookingsArr, ownerbookings: newOwnerBookingsArr}))
+      window.location.href = "/payment_complete"
     })
     .catch(err => console.log(err))
   }
