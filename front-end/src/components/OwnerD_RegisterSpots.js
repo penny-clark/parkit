@@ -144,7 +144,7 @@ export default function OwnerD_RegisterSpots(props) {
         />
       </FormControl>
 
-      <Typography variant="h6" className="form_title">Upload Spot Pictue</Typography>
+      <Typography variant="h6" className="form_title">Upload Spot Picture</Typography>
     <FormControl fullWidth variant="filled" >
         <FilledInput
           className="input_register"
