@@ -1,8 +1,8 @@
-# Part It
+# Park It
 
 ## About this project
 
-Park It is the parking lot sharing app for everyone with a car and everyone with a spot. Users of this app can book parking spaces for short term rental or list their own spaces for rent. Park It was built in just over a week by Penny Clark and Noah Jung as their final project for the Lighthouse Labs bootcamp.
+Park It is the parking lot sharing app for everyone with a car and everyone with a spot. Users of this app can book parking spaces for short term rental or list their own spaces for rent. Park It was planned and built in just under two weeks by Penny Clark and Noah MJ Jung as their final project for the Lighthouse Labs bootcamp.
 
 ## Dependencies
 
